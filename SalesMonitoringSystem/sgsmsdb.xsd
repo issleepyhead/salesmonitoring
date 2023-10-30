@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="sgsmsdb" targetNamespace="http://tempuri.org/sgsmsdb.xsd" xmlns:mstns="http://tempuri.org/sgsmsdb.xsd" xmlns="http://tempuri.org/sgsmsdb.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="sgsmsdbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sgsmsdbConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SalesMonitoringSystem.MySettings.GlobalReference.Default.sgsmsdbConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtbldeliveriesTableAdapter" GeneratorDataComponentClassName="viewtbldeliveriesTableAdapter" Name="viewtbldeliveries" UserDataComponentName="viewtbldeliveriesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtbldeliveries" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, PRODUCT, SUPPLIER, STATUS, QUANTITY, [PRODUCT COST], [TOTAL COST], [DELIVERY DATE], DATE FROM dbo.viewtbldeliveries</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="PRODUCT" DataSetColumn="PRODUCT" />
+              <Mapping SourceColumn="SUPPLIER" DataSetColumn="SUPPLIER" />
+              <Mapping SourceColumn="STATUS" DataSetColumn="STATUS" />
+              <Mapping SourceColumn="QUANTITY" DataSetColumn="QUANTITY" />
+              <Mapping SourceColumn="PRODUCT COST" DataSetColumn="PRODUCT COST" />
+              <Mapping SourceColumn="TOTAL COST" DataSetColumn="TOTAL COST" />
+              <Mapping SourceColumn="DELIVERY DATE" DataSetColumn="DELIVERY DATE" />
+              <Mapping SourceColumn="DATE" DataSetColumn="DATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtblinventoryTableAdapter" GeneratorDataComponentClassName="viewtblinventoryTableAdapter" Name="viewtblinventory" UserDataComponentName="viewtblinventoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtblinventory" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, [REF NO.], [PRODUCT NAME], [SUPPLIER NAME], [STOCK IN], [DATE ORDERED], [DATE RECIEVED] FROM dbo.viewtblinventory</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="REF NO." DataSetColumn="REF NO_" />
+              <Mapping SourceColumn="PRODUCT NAME" DataSetColumn="PRODUCT NAME" />
+              <Mapping SourceColumn="SUPPLIER NAME" DataSetColumn="SUPPLIER NAME" />
+              <Mapping SourceColumn="STOCK IN" DataSetColumn="STOCK IN" />
+              <Mapping SourceColumn="DATE ORDERED" DataSetColumn="DATE ORDERED" />
+              <Mapping SourceColumn="DATE RECIEVED" DataSetColumn="DATE RECIEVED" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtblproductsTableAdapter" GeneratorDataComponentClassName="viewtblproductsTableAdapter" Name="viewtblproducts" UserDataComponentName="viewtblproductsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtblproducts" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, [PRODUCT NAME], CATEGORY, PRICE, [DATE ADDED] FROM dbo.viewtblproducts</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="PRODUCT NAME" DataSetColumn="PRODUCT NAME" />
+              <Mapping SourceColumn="CATEGORY" DataSetColumn="CATEGORY" />
+              <Mapping SourceColumn="PRICE" DataSetColumn="PRICE" />
+              <Mapping SourceColumn="DATE ADDED" DataSetColumn="DATE ADDED" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtbltransactionsTableAdapter" GeneratorDataComponentClassName="viewtbltransactionsTableAdapter" Name="viewtbltransactions" UserDataComponentName="viewtbltransactionsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtbltransactions" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, [INVOICE NO.], [PRODUCT NAME], [PROCESSED BY], QUANTITY, [TOTAL AMOUNT], DATE FROM dbo.viewtbltransactions</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="INVOICE NO." DataSetColumn="INVOICE NO_" />
+              <Mapping SourceColumn="PRODUCT NAME" DataSetColumn="PRODUCT NAME" />
+              <Mapping SourceColumn="PROCESSED BY" DataSetColumn="PROCESSED BY" />
+              <Mapping SourceColumn="QUANTITY" DataSetColumn="QUANTITY" />
+              <Mapping SourceColumn="TOTAL AMOUNT" DataSetColumn="TOTAL AMOUNT" />
+              <Mapping SourceColumn="DATE" DataSetColumn="DATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtblusersTableAdapter" GeneratorDataComponentClassName="viewtblusersTableAdapter" Name="viewtblusers" UserDataComponentName="viewtblusersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtblusers" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, FULL_NAME, ROLE, ADDRESS, CONTACT, USERNAME, DATE_CREATED FROM dbo.viewtblusers</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="FULL_NAME" DataSetColumn="FULL_NAME" />
+              <Mapping SourceColumn="ROLE" DataSetColumn="ROLE" />
+              <Mapping SourceColumn="ADDRESS" DataSetColumn="ADDRESS" />
+              <Mapping SourceColumn="CONTACT" DataSetColumn="CONTACT" />
+              <Mapping SourceColumn="USERNAME" DataSetColumn="USERNAME" />
+              <Mapping SourceColumn="DATE_CREATED" DataSetColumn="DATE_CREATED" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtblcategoriesTableAdapter" GeneratorDataComponentClassName="viewtblcategoriesTableAdapter" Name="viewtblcategories" UserDataComponentName="viewtblcategoriesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtblcategories" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, CATEGORY_NAME, DESCRIPTION, PARENT FROM dbo.viewtblcategories</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="CATEGORY_NAME" DataSetColumn="CATEGORY_NAME" />
+              <Mapping SourceColumn="DESCRIPTION" DataSetColumn="DESCRIPTION" />
+              <Mapping SourceColumn="PARENT" DataSetColumn="PARENT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewtblsuppliersTableAdapter" GeneratorDataComponentClassName="viewtblsuppliersTableAdapter" Name="viewtblsuppliers" UserDataComponentName="viewtblsuppliersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sgsmsdbConnectionString (MySettings)" DbObjectName="dbo.viewtblsuppliers" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, SUPPLIER_NAME, ADDRESS, CONTACT, DATE_ADDED FROM dbo.viewtblsuppliers</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="SUPPLIER_NAME" DataSetColumn="SUPPLIER_NAME" />
+              <Mapping SourceColumn="ADDRESS" DataSetColumn="ADDRESS" />
+              <Mapping SourceColumn="CONTACT" DataSetColumn="CONTACT" />
+              <Mapping SourceColumn="DATE_ADDED" DataSetColumn="DATE_ADDED" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="sgsmsdb" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="sgsmsdb" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="sgsmsdb">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="viewtbldeliveries" msprop:Generator_RowClassName="viewtbldeliveriesRow" msprop:Generator_RowEvHandlerName="viewtbldeliveriesRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtbldeliveriesRowDeleted" msprop:Generator_RowDeletingName="viewtbldeliveriesRowDeleting" msprop:Generator_RowEvArgName="viewtbldeliveriesRowChangeEvent" msprop:Generator_TablePropName="viewtbldeliveries" msprop:Generator_RowChangedName="viewtbldeliveriesRowChanged" msprop:Generator_UserTableName="viewtbldeliveries" msprop:Generator_RowChangingName="viewtbldeliveriesRowChanging" msprop:Generator_TableClassName="viewtbldeliveriesDataTable" msprop:Generator_TableVarName="tableviewtbldeliveries">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="PRODUCT" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PRODUCT" msprop:Generator_ColumnPropNameInTable="PRODUCTColumn" msprop:Generator_ColumnPropNameInRow="PRODUCT" msprop:Generator_ColumnVarNameInTable="columnPRODUCT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SUPPLIER" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SUPPLIER" msprop:Generator_ColumnPropNameInTable="SUPPLIERColumn" msprop:Generator_ColumnPropNameInRow="SUPPLIER" msprop:Generator_ColumnVarNameInTable="columnSUPPLIER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="STATUS" msprop:Generator_UserColumnName="STATUS" msprop:Generator_ColumnPropNameInTable="STATUSColumn" msprop:Generator_ColumnPropNameInRow="STATUS" msprop:Generator_ColumnVarNameInTable="columnSTATUS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QUANTITY" msprop:Generator_UserColumnName="QUANTITY" msprop:Generator_ColumnPropNameInTable="QUANTITYColumn" msprop:Generator_ColumnPropNameInRow="QUANTITY" msprop:Generator_ColumnVarNameInTable="columnQUANTITY" type="xs:int" />
+              <xs:element name="PRODUCT_x0020_COST" msprop:Generator_UserColumnName="PRODUCT COST" msprop:Generator_ColumnPropNameInTable="PRODUCT_COSTColumn" msprop:Generator_ColumnPropNameInRow="PRODUCT_COST" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_COST" type="xs:double" minOccurs="0" />
+              <xs:element name="TOTAL_x0020_COST" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TOTAL COST" msprop:Generator_ColumnPropNameInTable="TOTAL_COSTColumn" msprop:Generator_ColumnPropNameInRow="TOTAL_COST" msprop:Generator_ColumnVarNameInTable="columnTOTAL_COST" type="xs:double" minOccurs="0" />
+              <xs:element name="DELIVERY_x0020_DATE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DELIVERY DATE" msprop:Generator_ColumnPropNameInTable="DELIVERY_DATEColumn" msprop:Generator_ColumnPropNameInRow="DELIVERY_DATE" msprop:Generator_ColumnVarNameInTable="columnDELIVERY_DATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DATE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DATE" msprop:Generator_ColumnPropNameInTable="DATEColumn" msprop:Generator_ColumnPropNameInRow="_DATE" msprop:Generator_ColumnVarNameInTable="columnDATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtblinventory" msprop:Generator_RowClassName="viewtblinventoryRow" msprop:Generator_RowEvHandlerName="viewtblinventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtblinventoryRowDeleted" msprop:Generator_RowDeletingName="viewtblinventoryRowDeleting" msprop:Generator_RowEvArgName="viewtblinventoryRowChangeEvent" msprop:Generator_TablePropName="viewtblinventory" msprop:Generator_RowChangedName="viewtblinventoryRowChanged" msprop:Generator_UserTableName="viewtblinventory" msprop:Generator_RowChangingName="viewtblinventoryRowChanging" msprop:Generator_TableClassName="viewtblinventoryDataTable" msprop:Generator_TableVarName="tableviewtblinventory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="REF_x0020_NO_" msprop:Generator_UserColumnName="REF NO_" msprop:Generator_ColumnPropNameInTable="REF_NO_Column" msprop:Generator_ColumnPropNameInRow="REF_NO_" msprop:Generator_ColumnVarNameInTable="columnREF_NO_">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRODUCT_x0020_NAME" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PRODUCT NAME" msprop:Generator_ColumnPropNameInTable="PRODUCT_NAMEColumn" msprop:Generator_ColumnPropNameInRow="PRODUCT_NAME" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SUPPLIER_x0020_NAME" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SUPPLIER NAME" msprop:Generator_ColumnPropNameInTable="SUPPLIER_NAMEColumn" msprop:Generator_ColumnPropNameInRow="SUPPLIER_NAME" msprop:Generator_ColumnVarNameInTable="columnSUPPLIER_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="STOCK_x0020_IN" msprop:Generator_UserColumnName="STOCK IN" msprop:Generator_ColumnPropNameInTable="STOCK_INColumn" msprop:Generator_ColumnPropNameInRow="STOCK_IN" msprop:Generator_ColumnVarNameInTable="columnSTOCK_IN" type="xs:int" />
+              <xs:element name="DATE_x0020_ORDERED" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DATE ORDERED" msprop:Generator_ColumnPropNameInTable="DATE_ORDEREDColumn" msprop:Generator_ColumnPropNameInRow="DATE_ORDERED" msprop:Generator_ColumnVarNameInTable="columnDATE_ORDERED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DATE_x0020_RECIEVED" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DATE RECIEVED" msprop:Generator_ColumnPropNameInTable="DATE_RECIEVEDColumn" msprop:Generator_ColumnPropNameInRow="DATE_RECIEVED" msprop:Generator_ColumnVarNameInTable="columnDATE_RECIEVED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtblproducts" msprop:Generator_RowClassName="viewtblproductsRow" msprop:Generator_RowEvHandlerName="viewtblproductsRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtblproductsRowDeleted" msprop:Generator_RowDeletingName="viewtblproductsRowDeleting" msprop:Generator_RowEvArgName="viewtblproductsRowChangeEvent" msprop:Generator_TablePropName="viewtblproducts" msprop:Generator_RowChangedName="viewtblproductsRowChanged" msprop:Generator_UserTableName="viewtblproducts" msprop:Generator_RowChangingName="viewtblproductsRowChanging" msprop:Generator_TableClassName="viewtblproductsDataTable" msprop:Generator_TableVarName="tableviewtblproducts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="PRODUCT_x0020_NAME" msprop:Generator_UserColumnName="PRODUCT NAME" msprop:Generator_ColumnPropNameInTable="PRODUCT_NAMEColumn" msprop:Generator_ColumnPropNameInRow="PRODUCT_NAME" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CATEGORY" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CATEGORY" msprop:Generator_ColumnPropNameInTable="CATEGORYColumn" msprop:Generator_ColumnPropNameInRow="CATEGORY" msprop:Generator_ColumnVarNameInTable="columnCATEGORY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRICE" msprop:Generator_UserColumnName="PRICE" msprop:Generator_ColumnPropNameInTable="PRICEColumn" msprop:Generator_ColumnPropNameInRow="PRICE" msprop:Generator_ColumnVarNameInTable="columnPRICE" type="xs:double" />
+              <xs:element name="DATE_x0020_ADDED" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DATE ADDED" msprop:Generator_ColumnPropNameInTable="DATE_ADDEDColumn" msprop:Generator_ColumnPropNameInRow="DATE_ADDED" msprop:Generator_ColumnVarNameInTable="columnDATE_ADDED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtbltransactions" msprop:Generator_RowClassName="viewtbltransactionsRow" msprop:Generator_RowEvHandlerName="viewtbltransactionsRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtbltransactionsRowDeleted" msprop:Generator_RowDeletingName="viewtbltransactionsRowDeleting" msprop:Generator_RowEvArgName="viewtbltransactionsRowChangeEvent" msprop:Generator_TablePropName="viewtbltransactions" msprop:Generator_RowChangedName="viewtbltransactionsRowChanged" msprop:Generator_UserTableName="viewtbltransactions" msprop:Generator_RowChangingName="viewtbltransactionsRowChanging" msprop:Generator_TableClassName="viewtbltransactionsDataTable" msprop:Generator_TableVarName="tableviewtbltransactions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="INVOICE_x0020_NO_" msprop:Generator_UserColumnName="INVOICE NO_" msprop:Generator_ColumnPropNameInTable="INVOICE_NO_Column" msprop:Generator_ColumnPropNameInRow="INVOICE_NO_" msprop:Generator_ColumnVarNameInTable="columnINVOICE_NO_">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRODUCT_x0020_NAME" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PRODUCT NAME" msprop:Generator_ColumnPropNameInTable="PRODUCT_NAMEColumn" msprop:Generator_ColumnPropNameInRow="PRODUCT_NAME" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PROCESSED_x0020_BY" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PROCESSED BY" msprop:Generator_ColumnPropNameInTable="PROCESSED_BYColumn" msprop:Generator_ColumnPropNameInRow="PROCESSED_BY" msprop:Generator_ColumnVarNameInTable="columnPROCESSED_BY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QUANTITY" msprop:Generator_UserColumnName="QUANTITY" msprop:Generator_ColumnPropNameInTable="QUANTITYColumn" msprop:Generator_ColumnPropNameInRow="QUANTITY" msprop:Generator_ColumnVarNameInTable="columnQUANTITY" type="xs:int" />
+              <xs:element name="TOTAL_x0020_AMOUNT" msprop:Generator_UserColumnName="TOTAL AMOUNT" msprop:Generator_ColumnPropNameInTable="TOTAL_AMOUNTColumn" msprop:Generator_ColumnPropNameInRow="TOTAL_AMOUNT" msprop:Generator_ColumnVarNameInTable="columnTOTAL_AMOUNT" type="xs:double" />
+              <xs:element name="DATE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DATE" msprop:Generator_ColumnPropNameInTable="DATEColumn" msprop:Generator_ColumnPropNameInRow="_DATE" msprop:Generator_ColumnVarNameInTable="columnDATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtblusers" msprop:Generator_RowEvHandlerName="viewtblusersRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtblusersRowDeleted" msprop:Generator_RowDeletingName="viewtblusersRowDeleting" msprop:Generator_RowEvArgName="viewtblusersRowChangeEvent" msprop:Generator_TablePropName="viewtblusers" msprop:Generator_RowChangedName="viewtblusersRowChanged" msprop:Generator_RowChangingName="viewtblusersRowChanging" msprop:Generator_TableClassName="viewtblusersDataTable" msprop:Generator_RowClassName="viewtblusersRow" msprop:Generator_TableVarName="tableviewtblusers" msprop:Generator_UserTableName="viewtblusers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="FULL_NAME" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="FULL_NAME" msprop:Generator_ColumnPropNameInTable="FULL_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnFULL_NAME" msprop:Generator_UserColumnName="FULL_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ROLE" msprop:Generator_ColumnPropNameInRow="ROLE" msprop:Generator_ColumnPropNameInTable="ROLEColumn" msprop:Generator_ColumnVarNameInTable="columnROLE" msprop:Generator_UserColumnName="ROLE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ADDRESS" msprop:Generator_ColumnPropNameInRow="ADDRESS" msprop:Generator_ColumnPropNameInTable="ADDRESSColumn" msprop:Generator_ColumnVarNameInTable="columnADDRESS" msprop:Generator_UserColumnName="ADDRESS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONTACT" msprop:Generator_ColumnPropNameInRow="CONTACT" msprop:Generator_ColumnPropNameInTable="CONTACTColumn" msprop:Generator_ColumnVarNameInTable="columnCONTACT" msprop:Generator_UserColumnName="CONTACT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="USERNAME" msprop:Generator_ColumnPropNameInRow="USERNAME" msprop:Generator_ColumnPropNameInTable="USERNAMEColumn" msprop:Generator_ColumnVarNameInTable="columnUSERNAME" msprop:Generator_UserColumnName="USERNAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DATE_CREATED" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="DATE_CREATED" msprop:Generator_ColumnPropNameInTable="DATE_CREATEDColumn" msprop:Generator_ColumnVarNameInTable="columnDATE_CREATED" msprop:Generator_UserColumnName="DATE_CREATED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtblcategories" msprop:Generator_RowEvHandlerName="viewtblcategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtblcategoriesRowDeleted" msprop:Generator_RowDeletingName="viewtblcategoriesRowDeleting" msprop:Generator_RowEvArgName="viewtblcategoriesRowChangeEvent" msprop:Generator_TablePropName="viewtblcategories" msprop:Generator_RowChangedName="viewtblcategoriesRowChanged" msprop:Generator_RowChangingName="viewtblcategoriesRowChanging" msprop:Generator_TableClassName="viewtblcategoriesDataTable" msprop:Generator_RowClassName="viewtblcategoriesRow" msprop:Generator_TableVarName="tableviewtblcategories" msprop:Generator_UserTableName="viewtblcategories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="CATEGORY_NAME" msprop:Generator_ColumnPropNameInRow="CATEGORY_NAME" msprop:Generator_ColumnPropNameInTable="CATEGORY_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnCATEGORY_NAME" msprop:Generator_UserColumnName="CATEGORY_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_UserColumnName="DESCRIPTION">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PARENT" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PARENT" msprop:Generator_ColumnPropNameInTable="PARENTColumn" msprop:Generator_ColumnVarNameInTable="columnPARENT" msprop:Generator_UserColumnName="PARENT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewtblsuppliers" msprop:Generator_RowEvHandlerName="viewtblsuppliersRowChangeEventHandler" msprop:Generator_RowDeletedName="viewtblsuppliersRowDeleted" msprop:Generator_RowDeletingName="viewtblsuppliersRowDeleting" msprop:Generator_RowEvArgName="viewtblsuppliersRowChangeEvent" msprop:Generator_TablePropName="viewtblsuppliers" msprop:Generator_RowChangedName="viewtblsuppliersRowChanged" msprop:Generator_RowChangingName="viewtblsuppliersRowChanging" msprop:Generator_TableClassName="viewtblsuppliersDataTable" msprop:Generator_RowClassName="viewtblsuppliersRow" msprop:Generator_TableVarName="tableviewtblsuppliers" msprop:Generator_UserTableName="viewtblsuppliers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="SUPPLIER_NAME" msprop:Generator_ColumnPropNameInRow="SUPPLIER_NAME" msprop:Generator_ColumnPropNameInTable="SUPPLIER_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnSUPPLIER_NAME" msprop:Generator_UserColumnName="SUPPLIER_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ADDRESS" msprop:Generator_ColumnPropNameInRow="ADDRESS" msprop:Generator_ColumnPropNameInTable="ADDRESSColumn" msprop:Generator_ColumnVarNameInTable="columnADDRESS" msprop:Generator_UserColumnName="ADDRESS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONTACT" msprop:Generator_ColumnPropNameInRow="CONTACT" msprop:Generator_ColumnPropNameInTable="CONTACTColumn" msprop:Generator_ColumnVarNameInTable="columnCONTACT" msprop:Generator_UserColumnName="CONTACT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DATE_ADDED" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="DATE_ADDED" msprop:Generator_ColumnPropNameInTable="DATE_ADDEDColumn" msprop:Generator_ColumnVarNameInTable="columnDATE_ADDED" msprop:Generator_UserColumnName="DATE_ADDED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtbldeliveries" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="viewtblinventory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtblinventory" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="viewtblproducts_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtblproducts" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="viewtbltransactions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtbltransactions" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="viewtblusers_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtblusers" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="viewtblsuppliers_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewtblsuppliers" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

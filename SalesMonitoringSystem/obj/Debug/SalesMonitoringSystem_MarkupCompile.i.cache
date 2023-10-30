@@ -1,0 +1,20 @@
+﻿SalesMonitoringSystem
+
+
+winexe
+VB
+.vb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\
+SalesMonitoringSystem
+none
+false
+
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Application.xaml
+201348806240
+2-1454831250
+27-1371598027
+222103686479
+Dialogs\AccountDialog.xaml;Custom\AccountsPanel.xaml;Custom\CategoriesPanel.xaml;Custom\DeliveryPanel.xaml;Custom\InventoryPanel.xaml;Custom\MaintenancePanel.xaml;Custom\ProductsPanel.xaml;Custom\ReportsPanel.xaml;Custom\SuppliersPanel.xaml;Custom\TransactionsPanel.xaml;Dialogs\CategoryDialog.xaml;Dialogs\DeliveryCartDialog.xaml;Dialogs\DeliveryDialog.xaml;Dialogs\ProductDialog.xaml;Dialogs\SupplierDialog.xaml;Forms\Dashboard.xaml;Resources\colors\ColorResource.xaml;Resources\imgs\ImageResource.xaml;Resources\strings\StringResource.xaml;Resources\styles\StyleResource.xaml;
+
+True
+

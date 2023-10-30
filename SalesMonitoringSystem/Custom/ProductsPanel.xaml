@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="ProductsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesMonitoringSystem"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="{StaticResource ApplicationLight}"
+             xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Grid Background="{StaticResource ApplicationLight}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Height="45"
+                  Grid.Row="0"
+                  Margin="5 0">
+                <hc:FlexPanel JustifyContent="SpaceBetween"
+                              Margin="5 10 5 0">
+                    <hc:SearchBar x:Name="ProductSearch"
+                                  IsRealTime="True"
+                                  hc:InfoElement.Placeholder="Search Product"
+                                  Width="280"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  Style="{StaticResource SearchBarExtend}"/>
+                    <Button x:Name="AddButton" Foreground="#fff" FontSize="9"
+                            hc:BorderElement.CornerRadius="0"
+                            Content="Add"
+                            hc:IconElement.Geometry="{StaticResource ic_add}"
+                            hc:IconElement.Height="12"
+                            hc:IconElement.Width="12"
+                            Height="28"
+                            Width="120"
+                            Padding="0"
+                            BorderThickness="0"
+                            Background="{StaticResource ApplicationPrimaryDark}"
+                            VerticalAlignment="Center"/>
+                </hc:FlexPanel>
+            </Grid>
+            <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
+                  ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                  CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                  x:Name="ProductDataGridView"
+                  Style="{DynamicResource CustomDataGridStyle}"
+                  IsReadOnly="True"
+                  CanUserResizeColumns="False"
+                  AutoGenerateColumns="False"
+                  Grid.Row="1"
+                  Margin="10 5 10 0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="PRODUCT NAME"
+                                    Binding="{Binding ProductName}"/>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="CATEGORY"
+                                    Binding="{Binding ProductCategory}"/>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="PRICE"
+                                    Binding="{Binding ProductPrice}"/>
+
+                    <DataGridTemplateColumn Width="100">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="ACTIONS"
+                                   FontSize="13"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <hc:FlexPanel JustifyContent="SpaceAround">
+                                    <Button Margin="5"
+                                            Foreground="{StaticResource ApplicationLight}"
+                                            FontSize="9"
+                                            hc:BorderElement.CornerRadius="0"
+                                            hc:IconElement.Geometry="{StaticResource ic_edit}"
+                                            hc:IconElement.Height="12"
+                                            hc:IconElement.Width="12"
+                                            Height="24"
+                                            Width="24"
+                                            Padding="0"
+                                            BorderThickness="0"
+                                            Background="{StaticResource ApplicationPrimaryBlue}"
+                                            VerticalAlignment="Center"
+                                            />
+                                    <Border BorderThickness=".5 0 0 0"
+                                        BorderBrush="{StaticResource ApplicationButtonBorderColor}"/>
+                                    <Button Margin="5"
+                                            Foreground="{StaticResource ApplicationLight}"
+                                            FontSize="9"
+                                            hc:BorderElement.CornerRadius="0"
+                                            hc:IconElement.Geometry="{StaticResource ic_delete}"
+                                            hc:IconElement.Height="12"
+                                            hc:IconElement.Width="12"
+                                            Height="24"
+                                            Width="24"
+                                            Padding="0"
+                                            BorderThickness="0"
+                                            Background="#FF00"
+                                            VerticalAlignment="Center"
+                                            />
+                                </hc:FlexPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

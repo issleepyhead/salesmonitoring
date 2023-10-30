@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--#region DASHBOARD FORM LABELS-->
+    <system:String x:Key="en_products">Products</system:String>
+    <system:String x:Key="en_dashboard">Dashboard</system:String>
+    <system:String x:Key="en_settings">Settings</system:String>
+    <system:String x:Key="en_reports">Reports</system:String>
+    <system:String x:Key="en_logout">Log out</system:String>
+    <system:String x:Key="en_transaction">Transactions</system:String>
+    <!--#endregion-->
+
+
+    <!--#region LOG IN FORM LABELS-->
+    <system:String x:Key="en_login">LOG IN</system:String>
+    <system:String x:Key="en_username">Username</system:String>
+    <system:String x:Key="en_password">Password</system:String>
+    <system:String x:Key="en_name_first">St. Gabriel</system:String>
+    <system:String x:Key="en_name_second">Medical &amp; Diagnostic Clinic</system:String>
+    <system:String x:Key="en_name_third">Sales Monitoring System</system:String>
+    <!--#endregion-->
+</ResourceDictionary>

@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="AccountDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d" Width="694">
+    <Grid Background="{StaticResource ApplicationPrimaryLight}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
+            <TextBlock Text="ADD ACCOUNT"
+                       Foreground="{StaticResource ApplicationLight}"
+                       FontSize="24"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30 0 0 0"/>
+            <Button Name="Closebtn"
+                    Height="30"
+                    Width="30"
+                    Style="{StaticResource ButtonIcon}"
+                    hc:IconElement.Geometry="{StaticResource ErrorGeometry}"
+                    Command="hc:ControlCommands.Close"
+                    Margin="0 0 30 0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+        </hc:SimplePanel>
+        <StackPanel Orientation="Vertical"
+            Grid.Row="1"
+            Margin="30 8"
+            VerticalAlignment="Center">
+
+            <Grid Margin="0 15 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                    Margin="0 0 5 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="FIRST NAME: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="FirstNameTextBox"
+                             Text="{Binding first_name}"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="40"
+                             hc:InfoElement.Necessary="True"
+                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Margin="5 0 0 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="LAST NAME: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="LastNameTextBox"
+                             Text="{Binding last_name}"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="40"
+                             hc:InfoElement.Necessary="True"
+                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)"/>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="0 15 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Margin="0 0 5 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="ROLE: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <hc:ComboBox Name="RoleComboBox"
+                                 Text="{Binding Role}"
+                                 HorizontalAlignment="Stretch"
+                                 hc:BorderElement.CornerRadius="0"
+                                 Height="40"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Margin="5 0 0 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="CONTACT : "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="ContactTextBox"
+                             Text="{Binding Contact}"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="40"
+                             hc:InfoElement.Necessary="True"
+                             hc:InfoElement.RegexPattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4, 6}$"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Margin="0 15 0 0">
+                <TextBlock HorizontalAlignment="Left"
+                           Text="ADDRESS: "
+                           FontSize="18"
+                           Padding="0 0 0 5"
+                           FontWeight="Bold"/>
+                <TextBox Name="AddressTextBox"
+                         Text="{Binding Address}"
+                         HorizontalAlignment="Stretch"
+                         hc:BorderElement.CornerRadius="0"
+                         Height="40"/>
+            </StackPanel>
+            <Grid Margin="0 15 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Margin="0 0 5 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="USERNAME: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="UsernameTextBox"
+                             Text="{Binding Username}"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="35"
+                             hc:InfoElement.RegexPattern="\w+{6, 20}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Margin="5 0 0 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="PASSWORD: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="PasswordTextBox"
+                             Text="{Binding password}"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="35"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <hc:SimplePanel Grid.Row="2">
+            <hc:FlexPanel JustifyContent="FlexEnd">
+                <Button Name="SaveButton"
+                        Margin="0 0 30 0"
+                        Foreground="#fff"
+                        FontSize="16"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="SAVE"
+                        Height="40"
+                        Width="140"
+                        BorderThickness="0"
+                        Background="{StaticResource ApplicationPrimaryDark}"/>
+            </hc:FlexPanel>
+        </hc:SimplePanel>
+    </Grid>
+</UserControl>
