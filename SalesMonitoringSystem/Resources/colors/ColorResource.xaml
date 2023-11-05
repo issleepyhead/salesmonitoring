@@ -25,6 +25,7 @@
     <!-- LOGO PALLETE -->
     <SolidColorBrush x:Key="ApplicationDarkBlue" Color="#173157"/>
     <SolidColorBrush x:Key="ApplicationDimBlue" Color="#427A9C"/>
+    <SolidColorBrush x:Key="ApplicationBlue" Color="#FF76AFD2"/>
     <SolidColorBrush x:Key="ApplicationLightBlue" Color="#447D96"/>
     <SolidColorBrush x:Key="ApplicationLightCyan" Color="#1EBBC2"/>
     <SolidColorBrush x:Key="ApplicationDarkRed" Color="#FF0201"/>

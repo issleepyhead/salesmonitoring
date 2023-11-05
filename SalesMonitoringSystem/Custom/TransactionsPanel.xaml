@@ -42,12 +42,12 @@
                 </StackPanel>
                 <Button x:Name="AddButton" Foreground="{StaticResource ApplicationLight}" FontSize="9"
                         hc:BorderElement.CornerRadius="0"
-                        Content="New Transaction"
+                        Content="New"
                         hc:IconElement.Geometry="{StaticResource ic_add}"
                         hc:IconElement.Height="12"
                         hc:IconElement.Width="12"
-                        Height="28"
-                        Width="100"
+                        Height="30"
+                        Width="140"
                         Padding="0"
                         BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"
@@ -58,7 +58,7 @@
         <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                   CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                  x:Name="CategoriesDataGridView"
+                  x:Name="TransactionsDataGridView"
                   Style="{DynamicResource CustomDataGridStyle}"
                   IsReadOnly="True"
                   CanUserResizeColumns="False"
@@ -67,43 +67,29 @@
                   Margin="10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="TRANSACTION ID"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="ID"
+                                    Binding="{Binding ID}"
+                                    Width="50"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="PROCESSED BY"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="INVOICE NO."
+                                    Binding="{Binding INVOICE_NO}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="TYPE"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="PRODUCT NAME"
+                                    Binding="{Binding PRODUCT_NAME}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="DATE &amp; TIME"
-                                    Binding="{Binding CategoryName}"/>
-
-                <DataGridTemplateColumn Width="80">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="ACTIONS"
-                                   FontSize="13"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <hc:FlexPanel JustifyContent="SpaceAround">
-                                <Button Margin="5"
-                                        Foreground="{StaticResource ApplicationLight}"
-                                        FontSize="9"
-                                        hc:BorderElement.CornerRadius="0"
-                                        hc:IconElement.Geometry="{StaticResource ic_eye}"
-                                        hc:IconElement.Height="12"
-                                        hc:IconElement.Width="12"
-                                        Height="24"
-                                        Width="24"
-                                        Padding="0"
-                                        BorderThickness="0"
-                                        Background="{StaticResource ApplicationPrimaryBlue}"
-                                        VerticalAlignment="Center"/>
-                            </hc:FlexPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                    Header="PROCESS BY"
+                                    Binding="{Binding PROCESSED_BY}"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="TOTAL DUE"
+                                    Binding="{Binding TOTAL_AMOUNT}"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="QTY"
+                                    Binding="{Binding QUANTITY}"
+                                    Width="60"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="DATE"
+                                    Binding="{Binding DATE}"
+                                    Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

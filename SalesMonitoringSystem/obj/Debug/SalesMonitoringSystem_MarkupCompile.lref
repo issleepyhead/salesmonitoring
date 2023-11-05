@@ -1,5 +1,6 @@
 ﻿
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Application.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\AuditTrailPanel.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\AccountDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\CategoriesPanel.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\DeliveryPanel.xaml;;
@@ -15,4 +16,8 @@ FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\DeliveryDia
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\ProductDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\SupplierDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Forms\Dashboard.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Forms\Login.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\AboutDialog.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\TransactionDialog.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\TransactionProductDialog.xaml;;
 

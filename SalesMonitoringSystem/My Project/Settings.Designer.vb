@@ -54,14 +54,37 @@ Namespace My
             End Get
         End Property
         
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property userID() As String
+            Get
+                Return CType(Me("userID"),String)
+            End Get
+            Set
+                Me("userID") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\SCHOOL FILES\SalesMonitori"& _ 
+            "ngSystem\SalesMonitoringSystem\sgsmsdb.mdf;Integrated Security=True")>  _
+        Public ReadOnly Property sgsmsdbConnectionString() As String
+            Get
+                Return CType(Me("sgsmsdbConnectionString"),String)
+            End Get
+        End Property
+        
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\sgsmsdb.mdf;I"& _ 
             "ntegrated Security=True")>  _
-        Public ReadOnly Property sgsmsdbConnectionString() As String
+        Public ReadOnly Property sgsmsdbConnectionString1() As String
             Get
-                Return CType(Me("sgsmsdbConnectionString"),String)
+                Return CType(Me("sgsmsdbConnectionString1"),String)
             End Get
         End Property
     End Class

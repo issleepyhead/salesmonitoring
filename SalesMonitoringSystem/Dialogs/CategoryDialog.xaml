@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SalesMonitoringSystem"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
-             d:DesignWidth="500">
+             Width="500">
     <Grid Background="{StaticResource ApplicationPrimaryLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -35,27 +35,67 @@
                     Grid.Row="1"
                     Margin="30 8"
                     VerticalAlignment="Center">
-            <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+            <StackPanel>
+                <StackPanel Margin="0 8 0 0">
+                    <TextBlock HorizontalAlignment="Left"
                            Text="CATEGORY NAME: "
                            FontSize="18"
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
-                <TextBox Name="CategoryNameTextBox"
-                         Text="{Binding CategoryName}"
+                    <TextBox Name="CategoryNameTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Margin="0 8 0 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="CATEGORY DESCRIPTION: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <TextBox Name="CategoryDescriptionTextBox"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             MinHeight="40"
+                             Height="Auto"
+                             AcceptsReturn="True"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Margin="0 8 0 0">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="PARENT CATEGORY: "
+                               FontSize="18"
+                               Padding="0 0 0 5"
+                               FontWeight="Bold"/>
+                    <ComboBox Name="CategoryParentComboBox"
+                             HorizontalAlignment="Stretch"
+                             hc:BorderElement.CornerRadius="0"
+                             MinHeight="40"
+                             Height="Auto"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">
             <hc:FlexPanel JustifyContent="FlexEnd">
+                <Button Name="DeleteCategoryButton"
+                        Margin="0 0 10 0"
+                        Foreground="#fff"
+                        FontSize="16"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="DELETE"
+                        Height="40"
+                        Width="140"
+                        BorderThickness="0"
+                        Background="{StaticResource ApplicationPrimaryDark}"/>
                 <Button Name="SaveCategoryButton"
                         Margin="0 0 30 0"
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="SAVE"
+                        Content="ADD"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

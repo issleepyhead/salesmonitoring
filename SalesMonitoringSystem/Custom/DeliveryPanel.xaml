@@ -6,7 +6,8 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:local="clr-namespace:SalesMonitoringSystem.My"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <Grid Background="{StaticResource ApplicationLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -28,7 +29,7 @@
                     hc:IconElement.Height="12"
                     hc:IconElement.Width="12"
                     Height="30"
-                    Width="100"
+                    Width="140"
                     Padding="0"
                     Margin="10 0"
                     BorderThickness="0"
@@ -47,83 +48,23 @@
                     Margin="10 0 10 10">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="REF NO."
-                                    Binding="{Binding ReferenceNo}"/>
+                                    Header="REFERENCE NO."
+                                    Binding="{Binding REFERENCE_NUMBER}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="SUPPLIER NAME"
-                                    Binding="{Binding SupplierName}"/>
+                                    Binding="{Binding SUPPLIER}"
+                                    Header="SUPPLIER"/>
                 <DataGridTextColumn FontSize="13"
-                                    Binding="{Binding DeliveryDate}"
-                                    Header="DELIVERY DATE"/>
+                                    Header="QUANTITY"
+                                    Binding="{Binding QUANTITY}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="TOTAL AMOUNT"
-                                    Binding="{Binding Total}"/>
+                                    Header="TOTAL COST"
+                                    Binding="{Binding TOTAL_COST}"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="STATUS"
-                                    Binding="{Binding Status}"/>
-                <DataGridTemplateColumn Width="200">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="ACTIONS"
-                                                    FontSize="13"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <hc:FlexPanel JustifyContent="SpaceAround">
-                                <Button Name="RecievedDeliveryButton"
-                                        Margin="5"
-                                        Foreground="{StaticResource ApplicationPrimaryLight}"
-                                        FontSize="9"
-                                        hc:BorderElement.CornerRadius="0"
-                                        Height="24"
-                                        Width="80"
-                                        Padding="0"
-                                        BorderThickness="0"
-                                        Background="{StaticResource ApplicationPrimaryDark}"
-                                        VerticalAlignment="Center"
-                                        Content="Received"
-                                        />
-
-                                <Border BorderThickness=".5 0 0 0"
-                                        BorderBrush="{StaticResource ApplicationPrimaryDark}"/>
-
-                                <Button Name="EditDeliveryButton"
-                                        Margin="5"
-                                        Foreground="{StaticResource ApplicationPrimaryLight}"
-                                        FontSize="9"
-                                        hc:BorderElement.CornerRadius="0"
-                                        hc:IconElement.Geometry="{StaticResource ic_edit}"
-                                        hc:IconElement.Height="12"
-                                        hc:IconElement.Width="12"
-                                        Height="24"
-                                        Width="24"
-                                        Padding="0"
-                                        BorderThickness="0"
-                                        Background="{StaticResource ApplicationPrimaryBlue}"
-                                        VerticalAlignment="Center"
-                                        />
-
-                                <Border BorderThickness=".5 0 0 0"
-                                        BorderBrush="{StaticResource ApplicationPrimaryDark}"/>
-
-                                <Button Name="DeleteDeliveryButton"
-                                        Margin="5"
-                                        Foreground="{StaticResource ApplicationPrimaryLight}"
-                                        FontSize="9"
-                                        hc:BorderElement.CornerRadius="0"
-                                        hc:IconElement.Geometry="{StaticResource ic_delete}"
-                                        hc:IconElement.Height="12"
-                                        hc:IconElement.Width="12"
-                                        Height="24"
-                                        Width="24"
-                                        Padding="0"
-                                        BorderThickness="0"
-                                        Background="{StaticResource ApplicationDarkRed}"
-                                        VerticalAlignment="Center"
-                                        />
-                            </hc:FlexPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                    Binding="{Binding STATUS}"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="DALIVERY DATE"
+                                    Binding="{Binding DELIVERY_DATE}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:SalesMonitoringSystem"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d"
-             d:DesignHeight="550"
-             d:DesignWidth="750">
+             Height="550" Width="800">
     <Grid Background="{StaticResource ApplicationPrimaryLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -44,7 +43,7 @@
                            FontWeight="Medium"
                            Margin="30 0 0 0"/>
                 <TextBlock Name="ReferenceNumberLabel"
-                           Text="0"
+                           Text="{Binding REFERENCE_NUMBER}"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Bold"
@@ -75,14 +74,14 @@
                     <hc:ComboBox Name="SupplierNameComboBox"
                                  HorizontalAlignment="Stretch"
                                  hc:BorderElement.CornerRadius="0"
-                                 Height="40"
+                                 Height="35"
                                  Width="200"
                                  Margin="8 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <hc:DatePicker Name="DeliveryDate"
                                    Width="190"
-                                   Height="40"
+                                   Height="35"
                                    Margin="0 0 8 0"/>
                     <Button Name="AddItemButton"
                             Foreground="{StaticResource ApplicationPrimaryLight}"
@@ -92,7 +91,7 @@
                             hc:IconElement.Geometry="{StaticResource ic_add}"
                             hc:IconElement.Height="12"
                             hc:IconElement.Width="12"
-                            Height="40"
+                            Height="35"
                             Width="140"
                             BorderThickness="0"
                             Background="{StaticResource ApplicationPrimaryDark}"/>
@@ -114,76 +113,43 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRODUCT NAME"
-                                        Binding="{Binding ProductName}"/>
+                                        Binding="{Binding PRODUCT_NAME}"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="QUANTITY"
-                                        Binding="{Binding Quantity}"/>
+                                        Binding="{Binding QUANTITY}"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRICE"
-                                        Binding="{Binding Price}"/>
+                                        Binding="{Binding PRICE}"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="COST"
-                                        Binding="{Binding Cost}"/>
+                                        Binding="{Binding COST}"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="TOTAL"
-                                        Binding="{Binding Total}"/>
-                    <DataGridTemplateColumn Width="100">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="ACTIONS"
-                                       FontSize="13"/>
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <hc:FlexPanel JustifyContent="SpaceAround">
-                                    <Button Margin="5"
-                                            Foreground="{StaticResource ApplicationPrimaryLight}"
-                                            FontSize="9"
-                                            hc:BorderElement.CornerRadius="0"
-                                            hc:IconElement.Geometry="{StaticResource ic_edit}"
-                                            hc:IconElement.Height="12"
-                                            hc:IconElement.Width="12"
-                                            Height="24"
-                                            Width="24"
-                                            Padding="0"
-                                            BorderThickness="0"
-                                            Background="{StaticResource ApplicationPrimaryBlue}"
-                                            VerticalAlignment="Center"/>
-
-                                    <Border BorderThickness=".5 0 0 0"
-                                            BorderBrush="{StaticResource ApplicationPrimaryDark}"/>
-
-                                    <Button Margin="5"
-                                            Foreground="{StaticResource ApplicationPrimaryLight}"
-                                            FontSize="9"
-                                            hc:BorderElement.CornerRadius="0"
-                                            hc:IconElement.Geometry="{StaticResource ic_delete}"
-                                            hc:IconElement.Height="12"
-                                            hc:IconElement.Width="12"
-                                            Height="24"
-                                            Width="24"
-                                            Padding="0"
-                                            BorderThickness="0"
-                                            Background="{StaticResource ApplicationDarkRed}"
-                                            VerticalAlignment="Center"/>
-                                </hc:FlexPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                                        Binding="{Binding TOTAL}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         <hc:SimplePanel Grid.Row="4">
             <hc:FlexPanel JustifyContent="FlexEnd">
-                <Button Name="UpdateButton"
-                        Margin="0 0 30 0"
+                <Button Name="CancelButton"
+                        Margin="0 0 10 0"
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="Update"
-                        Height="32"
-                        Width="130"
+                        Content="Cancel Delivery"
+                        Height="40"
+                        Width="140"
                         BorderThickness="0"
-                        Visibility="Collapsed"
+                        Background="{StaticResource ApplicationPrimaryDark}"/>
+                <Button Name="RecievedButton"
+                        Margin="0 0 10 0"
+                        Foreground="#fff"
+                        FontSize="16"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="Recieve Delivery"
+                        Height="40"
+                        Width="140"
+                        BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"/>
                 <Button Name="SaveButton"
                         Margin="0 0 30 0"

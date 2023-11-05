@@ -293,7 +293,7 @@
                                        TextAlignment="Center"/>
                         </hc:FlexPanel>
                     </Button>
-                    <Button Name="BottomContainerMaintainaceButton"
+                    <Button Name="BottomContainerMaintenaceButton"
                             Style="{x:Null}"
                             Height="50"
                             Background="{x:Null}"
@@ -317,7 +317,7 @@
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"/>
                             <!-- STRING -->
-                            <TextBlock Text="Maintainance"
+                            <TextBlock Text="Maintenance"
                                        FontSize="8"
                                        TextAlignment="Center"/>
                         </hc:FlexPanel>
@@ -347,6 +347,35 @@
                                            HorizontalAlignment="Center"/>
                             <!-- STRING -->
                             <TextBlock Text="Inventory"
+                                       FontSize="8"
+                                       TextAlignment="Center"/>
+                        </hc:FlexPanel>
+                    </Button>
+                    <Button Name="BottomContainerLogsButton"
+                            Style="{x:Null}"
+                            Height="50"
+                            Background="{x:Null}"
+                            Width="60"
+                            BorderThickness=".3"
+                            BorderBrush="{StaticResource ApplicationButtonBorderColor}"
+                            HorizontalAlignment="Center"
+                            Margin="0 10 0 0"
+                            Template="{StaticResource CustomTemplateButton}">
+                        <hc:FlexPanel Height="{Binding Height, ElementName=BottomContainerDashboardButton}"
+                                    Width="{Binding Width, ElementName=BottomContainerDashboardButton}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FlexDirection="Column"
+                                    JustifyContent="Center"
+                                    AlignContent="Center">
+                            <hc:ImageBlock Name="BottomContainerLogsImage"
+                                           Source="{StaticResource ic_logs}"
+                                           Width="28"
+                                           Height="28"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            <!-- STRING -->
+                            <TextBlock Text="Audit Trail"
                                        FontSize="8"
                                        TextAlignment="Center"/>
                         </hc:FlexPanel>
@@ -599,6 +628,15 @@
                   Visibility="Collapsed"
                   Margin="15 10">
                 <local:InventoryPanel/>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region INVENTORY -->
+            <Grid x:Name="AuditTrailPanel"
+                  Grid.Column="1"
+                  Visibility="Collapsed"
+                  Margin="15 10">
+                <local:AuditTrailPanel/>
             </Grid>
             <!--#endregion-->
         </Grid>

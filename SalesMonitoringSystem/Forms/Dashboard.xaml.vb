@@ -1,4 +1,6 @@
-﻿Class Dashboard
+﻿Imports HandyControl.Controls
+
+Class Dashboard
     Implements IObservablePanel
     Private _observables As New List(Of IObserverPanel)
 
@@ -16,15 +18,16 @@
     ' Use for panel switching
     Public Sub SwitchPanelEvents(sender As Object, e As EventArgs) Handles BottomContainerDashboardButton.Click,
         BottomContainerProductsButton.Click, BottomContainerTransactionsButton.Click, BottomContainerLogoutButton.Click,
-        BottomContainerMaintainaceButton.Click, BottomContainerInventoryButton.Click
+        BottomContainerMaintenaceButton.Click, BottomContainerInventoryButton.Click, BottomContainerLogsButton.Click
 
         Dim panels As Object() = {
-            DashboardPanel, ProductsPanel, TransactionsPanel, MaintenancePanel, InventoryPanel
+            DashboardPanel, ProductsPanel, TransactionsPanel, MaintenancePanel, InventoryPanel,
+            AuditTrailPanel
         }
         Dim buttons As Object() = {
             BottomContainerDashboardButton, BottomContainerProductsButton,
-            BottomContainerTransactionsButton, BottomContainerMaintainaceButton,
-            BottomContainerInventoryButton
+            BottomContainerTransactionsButton, BottomContainerMaintenaceButton,
+            BottomContainerInventoryButton, BottomContainerLogsButton
         }
 
         ' Collapse all the panels first before opening the desired panel
@@ -40,7 +43,7 @@
         ' Make the panel visible and change the button's background
         For i = 0 To buttons.Count - 1
             If sender.Equals(buttons(i)) Then
-                buttons(i).Background = New BrushConverter().ConvertFromString("#447D96")
+                buttons(i).Background = New BrushConverter().ConvertFromString("#FF76AFD2")
                 panels(i).Visibility = Visibility.Visible
             End If
         Next
@@ -83,5 +86,9 @@
             SettingsMenu.IsOpen = True
 
         End If
+    End Sub
+
+    Private Sub AboutButtonItem_Click(sender As Object, e As RoutedEventArgs) Handles AboutButtonItem.Click
+        Dialog.Show(New AboutDialog)
     End Sub
 End Class

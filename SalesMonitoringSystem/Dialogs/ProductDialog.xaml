@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SalesMonitoringSystem"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
-             d:DesignWidth="500">
+             Width="500">
     <Grid Background="{StaticResource ApplicationPrimaryLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -42,7 +42,6 @@
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
                 <hc:ComboBox Name="CategoryComboBox"
-                         Text="{Binding ProductCategory}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
@@ -53,8 +52,8 @@
                            FontSize="18"
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
-                <TextBox Name="ProductTextBox"
-                         Text="{Binding ProductName}"
+                <TextBox Name="ProductNameTextBox"
+                         Text="{Binding PRODUCT_NAME}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
@@ -66,7 +65,7 @@
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
                 <TextBox Name="ProductDescriptionTextBox"
-                         Text="{Binding ProductDescription}"
+                         Text="{Binding PRODUCT_DESCRIPTION}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
@@ -78,7 +77,7 @@
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
                 <TextBox Name="ProductPriceTextBox"
-                         Text="{Binding ProductPrice}"
+                         Text="{Binding PRODUCT_PRICE}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
@@ -86,6 +85,16 @@
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">
             <hc:FlexPanel JustifyContent="FlexEnd">
+                <Button Name="DeleteButton"
+                        Margin="0 0 10 0"
+                        Foreground="#fff"
+                        FontSize="16"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="DELETE"
+                        Height="40"
+                        Width="140"
+                        BorderThickness="0"
+                        Background="{StaticResource ApplicationPrimaryDark}"/>
                 <Button Name="SaveButton"
                         Margin="0 0 30 0"
                         Foreground="#fff"

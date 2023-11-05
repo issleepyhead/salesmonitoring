@@ -48,7 +48,6 @@
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
                     <TextBox Name="FirstNameTextBox"
-                             Text="{Binding first_name}"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
@@ -63,7 +62,7 @@
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
                     <TextBox Name="LastNameTextBox"
-                             Text="{Binding last_name}"
+
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
@@ -84,7 +83,6 @@
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
                     <hc:ComboBox Name="RoleComboBox"
-                                 Text="{Binding Role}"
                                  HorizontalAlignment="Stretch"
                                  hc:BorderElement.CornerRadius="0"
                                  Height="40"/>
@@ -97,12 +95,9 @@
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
                     <TextBox Name="ContactTextBox"
-                             Text="{Binding Contact}"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
-                             Height="40"
-                             hc:InfoElement.Necessary="True"
-                             hc:InfoElement.RegexPattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4, 6}$"/>
+                             Height="40"/>
                 </StackPanel>
             </Grid>
             <StackPanel Margin="0 15 0 0">
@@ -112,7 +107,6 @@
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
                 <TextBox Name="AddressTextBox"
-                         Text="{Binding Address}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
@@ -130,10 +124,9 @@
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
                     <TextBox Name="UsernameTextBox"
-                             Text="{Binding Username}"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
-                             Height="35"
+                             Height="40"
                              hc:InfoElement.RegexPattern="\w+{6, 20}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
@@ -143,22 +136,32 @@
                                FontSize="18"
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
-                    <TextBox Name="PasswordTextBox"
-                             Text="{Binding password}"
+                    <hc:PasswordBox Name="PasswordTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
-                             Height="35"/>
+                             ShowEyeButton="True"
+                             Height="40"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">
             <hc:FlexPanel JustifyContent="FlexEnd">
+                <Button Name="DeleteButton"
+                        Margin="0 0 10 0"
+                        Foreground="#fff"
+                        FontSize="16"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="DELETE"
+                        Height="40"
+                        Width="140"
+                        BorderThickness="0"
+                        Background="{StaticResource ApplicationPrimaryDark}"/>
                 <Button Name="SaveButton"
                         Margin="0 0 30 0"
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="SAVE"
+                        Content="ADD"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

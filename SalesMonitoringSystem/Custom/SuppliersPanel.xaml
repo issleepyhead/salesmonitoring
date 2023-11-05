@@ -30,7 +30,7 @@
                         hc:IconElement.Height="12"
                         hc:IconElement.Width="12"
                         Height="30"
-                        Width="100"
+                        Width="140"
                         Padding="0"
                         BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"
@@ -58,9 +58,11 @@
                                     Header="SUPPLIER NAME"
                                     Binding="{Binding SUPPLIER_NAME}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="ID"
-                                    Binding="{Binding ID}"/>
-
+                                    Header="ADDRESS"
+                                    Binding="{Binding ADDRESS}"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="CONTACT"
+                                    Binding="{Binding CONTACT}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

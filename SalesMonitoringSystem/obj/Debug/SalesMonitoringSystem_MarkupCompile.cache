@@ -10,11 +10,11 @@ none
 false
 
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Application.xaml
-201348806240
+25-1723860227
 2-1454831250
-26-143132619
-222103686479
-Dialogs\AccountDialog.xaml;Custom\AccountsPanel.xaml;Custom\CategoriesPanel.xaml;Custom\DeliveryPanel.xaml;Custom\InventoryPanel.xaml;Custom\MaintenancePanel.xaml;Custom\ProductsPanel.xaml;Custom\ReportsPanel.xaml;Custom\SuppliersPanel.xaml;Custom\TransactionsPanel.xaml;Dialogs\CategoryDialog.xaml;Dialogs\DeliveryCartDialog.xaml;Dialogs\DeliveryDialog.xaml;Dialogs\ProductDialog.xaml;Dialogs\SupplierDialog.xaml;Forms\Dashboard.xaml;Resources\colors\ColorResource.xaml;Resources\imgs\ImageResource.xaml;Resources\strings\StringResource.xaml;Resources\styles\StyleResource.xaml;
+483926428
+251819088679
+Custom\AuditTrailPanel.xaml;Dialogs\AboutDialog.xaml;Dialogs\AccountDialog.xaml;Custom\AccountsPanel.xaml;Custom\CategoriesPanel.xaml;Custom\DeliveryPanel.xaml;Custom\InventoryPanel.xaml;Custom\MaintenancePanel.xaml;Custom\ProductsPanel.xaml;Custom\ReportsPanel.xaml;Custom\SuppliersPanel.xaml;Custom\TransactionsPanel.xaml;Dialogs\CategoryDialog.xaml;Dialogs\DeliveryCartDialog.xaml;Dialogs\DeliveryDialog.xaml;Dialogs\ProductDialog.xaml;Dialogs\SupplierDialog.xaml;Dialogs\TransactionDialog.xaml;Dialogs\TransactionProductDialog.xaml;Forms\Dashboard.xaml;Forms\Login.xaml;Resources\colors\ColorResource.xaml;Resources\imgs\ImageResource.xaml;Resources\strings\StringResource.xaml;Resources\styles\StyleResource.xaml;
 
 False
 

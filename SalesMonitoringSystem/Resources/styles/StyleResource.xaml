@@ -94,7 +94,7 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="Button.MouseOver.Background.Dash" Color="#447D96"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background.Dash" Color="#FF6DA0BF"/>
     <ControlTemplate x:Key="CustomTemplateButton" TargetType="{x:Type ButtonBase}">
         <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" SnapsToDevicePixels="true">
             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>

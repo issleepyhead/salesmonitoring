@@ -54,57 +54,21 @@
                   Margin="10 5 10 0">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="13"
+                                    Header="ID"
+                                    Binding="{Binding ID}"
+                                    Width="60"/>
+                    <DataGridTextColumn FontSize="13"
                                     Header="PRODUCT NAME"
-                                    Binding="{Binding ProductName}"/>
+                                    Binding="{Binding PRODUCT_NAME}"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="CATEGORY"
-                                    Binding="{Binding ProductCategory}"/>
+                                    Binding="{Binding CATEGORY}"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="PRICE"
-                                    Binding="{Binding ProductPrice}"/>
-
-                    <DataGridTemplateColumn Width="100">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="ACTIONS"
-                                   FontSize="13"/>
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <hc:FlexPanel JustifyContent="SpaceAround">
-                                    <Button Margin="5"
-                                            Foreground="{StaticResource ApplicationLight}"
-                                            FontSize="9"
-                                            hc:BorderElement.CornerRadius="0"
-                                            hc:IconElement.Geometry="{StaticResource ic_edit}"
-                                            hc:IconElement.Height="12"
-                                            hc:IconElement.Width="12"
-                                            Height="24"
-                                            Width="24"
-                                            Padding="0"
-                                            BorderThickness="0"
-                                            Background="{StaticResource ApplicationPrimaryBlue}"
-                                            VerticalAlignment="Center"
-                                            />
-                                    <Border BorderThickness=".5 0 0 0"
-                                        BorderBrush="{StaticResource ApplicationButtonBorderColor}"/>
-                                    <Button Margin="5"
-                                            Foreground="{StaticResource ApplicationLight}"
-                                            FontSize="9"
-                                            hc:BorderElement.CornerRadius="0"
-                                            hc:IconElement.Geometry="{StaticResource ic_delete}"
-                                            hc:IconElement.Height="12"
-                                            hc:IconElement.Width="12"
-                                            Height="24"
-                                            Width="24"
-                                            Padding="0"
-                                            BorderThickness="0"
-                                            Background="#FF00"
-                                            VerticalAlignment="Center"
-                                            />
-                                </hc:FlexPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                                    Binding="{Binding PRICE}"/>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="DATE ADDED"
+                                    Binding="{Binding DATE_ADDED}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

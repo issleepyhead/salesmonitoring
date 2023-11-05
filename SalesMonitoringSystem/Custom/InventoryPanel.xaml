@@ -38,17 +38,26 @@
                 Name="InventoryRecordsDataGrid">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="PRODUCT NAME"
+                                    Header="REFERENCE NO"
+                                    Binding="{Binding REF_NO}"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="PRODUCT"
                                     Binding="{Binding PRODUCT_NAME}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="SUPPLIER NAME"
+                                    Header="SUPPLIER"
                                     Binding="{Binding SUPPLIER_NAME}"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="STOCK IN"
-                                    Binding="{Binding STOCKIN}"/>
+                                    Binding="{Binding STOCK_IN}"
+                                    Width="100"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="DATE"
-                                    Binding="{Binding DATE_ADDED}"/>
+                                    Header="ORDERED"
+                                    Binding="{Binding DATE_ORDERED}"
+                                    Width="100"/>
+                <DataGridTextColumn FontSize="13"
+                                    Header="RECIEVED"
+                                    Binding="{Binding DATE_RECIEVED}"
+                                    Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

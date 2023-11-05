@@ -19,6 +19,9 @@
     <BitmapImage x:Key="ic_transactions" UriSource="/Resources/imgs/ic_transactions.png"/>
     <BitmapImage x:Key="ic_product" UriSource="/Resources/imgs/ic_products.png"/>
     <BitmapImage x:Key="ic_inventory" UriSource="/Resources/imgs/ic_inventory.png"/>
+    <BitmapImage x:Key="ic_logs" UriSource="/Resources/imgs/ic_logs.png"/>
+    <BitmapImage x:Key="ic_tfvc" UriSource="/Resources/imgs/tfvc-logo.png"/>
+    <BitmapImage x:Key="ic_ccs" UriSource="/Resources/imgs/ccs-logo.png"/>
     <!--#endregion-->
 
     <!--#region GEOMETRY ICONS-->

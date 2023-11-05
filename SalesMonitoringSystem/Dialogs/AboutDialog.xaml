@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="AboutDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d" Width="500">
+    <Grid Background="{StaticResource ApplicationPrimaryLight}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
+            <TextBlock Text="ABOUT"
+                       Foreground="{StaticResource ApplicationLight}"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="10 0 0 0"/>
+            <Button Name="Closebtn"
+                    Height="20"
+                    Width="20"
+                    Style="{StaticResource ButtonIcon}"
+                    hc:IconElement.Geometry="{StaticResource ErrorGeometry}"
+                    Command="hc:ControlCommands.Close"
+                    Margin="0 0 10 0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+        </hc:SimplePanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <hc:SimplePanel Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{StaticResource ic_ccs}" Height="150" Width="150" Stretch="Uniform"/>
+                </StackPanel>
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="1">
+                <StackPanel Orientation="Vertical"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="St. Gabriel Medical &amp; Diagnostic Clinic"
+                               FontSize="16"
+                               FontWeight="DemiBold"/>
+                    <TextBlock Text="Sales &amp; Monitoring System"
+                               FontSize="16"
+                               FontWeight="DemiBold"
+                               TextAlignment="Center"/>
+                </StackPanel>
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="2">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center">
+                    <hc:Shield Subject=".Net" Status=">=4.0" Color="#1182c3"/>
+                    <hc:Shield Subject="VB" Status="16.9" Margin="4,0,0,0" Color="#1182c3"/>
+                    <hc:Shield Subject="IDE" Status="2022" Margin="4,0,0,0" Color="#1182c3"/>
+                    <hc:Shield Subject="GIT" Status="Github" Margin="4,0,0,0" Color="{StaticResource ApplicationDark}" Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/issleepyhead/salesmonitoring"/>
+
+                </StackPanel>
+            </hc:SimplePanel>
+        </Grid>
+    </Grid>
+</UserControl>

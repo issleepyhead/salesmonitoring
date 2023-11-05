@@ -31,7 +31,7 @@
                         hc:IconElement.Height="12"
                         hc:IconElement.Width="12"
                         Height="30"
-                        Width="100"
+                        Width="140"
                         Padding="0"
                         BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"
