@@ -1,4 +1,6 @@
-﻿Public Class CategoryDialog
+﻿Imports HandyControl.Controls
+
+Public Class CategoryDialog
     Private _data As Dictionary(Of String, String)
     Private _subject As IObservablePanel
     Public Sub New(Optional data As Dictionary(Of String, String) = Nothing, Optional subject As IObservablePanel = Nothing)
@@ -13,7 +15,7 @@
     End Sub
 
     Private Sub CategoryDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        CategoryParentComboBox.ItemsSource = FillByParentCategory().DefaultView
+        CategoryParentComboBox.ItemsSource = BaseCategory.FillByParentCategory().DefaultView
         CategoryParentComboBox.DisplayMemberPath = "category_name"
         CategoryParentComboBox.SelectedValuePath = "id"
 
@@ -37,24 +39,29 @@
         Next
 
         If Not result.Any(Function(item As Object()) Not item(0)) Then
-            Dim data As New Dictionary(Of String, String) From {
-                {"id", _data?.Item("id")},
-                {"parent_id", If(CategoryParentComboBox.SelectedIndex = -1, "NULL", CategoryParentComboBox.SelectedValue)},
-                {"category_name", CategoryNameTextBox.Text},
-                {"category_description", CategoryDescriptionTextBox.Text}
-            }
+            If BaseCategory.Exists(result(1)(1)) = 0 Then
+                Dim data As New Dictionary(Of String, String) From {
+                    {"id", _data?.Item("id")},
+                    {"parent_id", If(CategoryParentComboBox.SelectedIndex = -1, "NULL", CategoryParentComboBox.SelectedValue)},
+                    {"category_name", result(1)(1)},
+                    {"category_description", result(0)(1)}
+                }
 
-            Dim baseCommand As New BaseCategory(data)
-            Dim invoker As ICommandInvoker
-            If _data Is Nothing Then
-                invoker = New AddCommand(baseCommand)
+                Dim baseCommand As New BaseCategory(data)
+                Dim invoker As ICommandInvoker
+                If _data Is Nothing Then
+                    invoker = New AddCommand(baseCommand)
+                Else
+                    invoker = New UpdateCommand(baseCommand)
+                End If
+
+                invoker.Execute()
+                _subject.NotifyObserver()
+                CloseDialog(Closebtn)
             Else
-                invoker = New UpdateCommand(baseCommand)
+                Growl.Info("Category exists!")
             End If
 
-            invoker.Execute()
-            _subject.NotifyObserver()
-            CloseDialog(Closebtn)
         End If
     End Sub
 

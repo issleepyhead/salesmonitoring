@@ -100,16 +100,21 @@
                 </hc:RelativePanel>
 
                 <Border BorderBrush="{StaticResource ApplicationBorderColor}"
-                            BorderThickness=".5 0 0 0"
-                            Height="15"
+                        BorderThickness=".5 0 0 0"
+                        Height="15"
                         Visibility="Collapsed"/>
 
-                <hc:ContextMenuButton x:Name="SettingsButton" Style="{StaticResource ButtonCustom}">
-                    <Image Source="{StaticResource ic_settings}" Height="18" Width="18"/>
+                <hc:ContextMenuButton x:Name="SettingsButton"
+                                      Style="{StaticResource ButtonCustom}">
+                    <Image Source="{StaticResource ic_settings}"
+                           Height="18"
+                           Width="18"/>
                     <hc:ContextMenuButton.ContextMenu>
 
-                        <ContextMenu hc:MenuAttach.AnimationMode="Right2LeftWithFade" Name="SettingsMenu">
-                            <MenuItem Name="AboutButtonItem" Header="About"/>
+                        <ContextMenu hc:MenuAttach.AnimationMode="Right2LeftWithFade"
+                                     Name="SettingsMenu">
+                            <MenuItem Name="AboutButtonItem"
+                                      Header="About"/>
                         </ContextMenu>
                     </hc:ContextMenuButton.ContextMenu>
                 </hc:ContextMenuButton>
@@ -198,7 +203,7 @@
                                     JustifyContent="Center"
                                     AlignContent="Center">
                             <hc:ImageBlock Name="BottomContainerDashboardImage"
-                                           Source="/Resources/imgs/ic_dashboard.png"
+                                           Source="{StaticResource ic_dashboard}"
                                            Width="28"
                                            Height="28"
                                            VerticalAlignment="Center"
@@ -497,7 +502,7 @@
                                                Grid.Row="0"
                                                FontSize="16"/>
                                     <TextBlock Name="LabelTotalTransactions"
-                                                Text="0"
+                                               Text="0"
                                                VerticalAlignment="Center"
                                                Grid.Row="1"
                                                FontWeight="SemiBold"
@@ -545,7 +550,7 @@
                         </UniformGrid>
                     </Border>
                 </hc:SimplePanel>
-                <!--<Grid Grid.Row="1">
+                <Grid Grid.Row="1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -554,18 +559,18 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid  Grid.Row="0"
+                        <!--<Grid  Grid.Row="0"
                            Grid.Column="0"
                            Background="{StaticResource ApplicationLight}"
                            Margin="0 0 5 0">
                             <Border Padding="10">
                                 <local:GraphControl/>
                             </Border>
-                        </Grid>
+                        </Grid>-->
                         <Grid Grid.Row="0"
-                          Grid.Column="1"
-                          Background="{StaticResource ApplicationLight}"
-                          Margin="5 0 0 0">
+                              Grid.Column="1"
+                              Background="{StaticResource ApplicationLight}"
+                              Margin="5 0 0 0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
@@ -573,23 +578,17 @@
                             <hc:SimplePanel Height="30" Grid.Row="0">
                                 <Border BorderThickness="0 0 0 .3" BorderBrush="{StaticResource ApplicationButtonBorderColor}"/>
                                 <TextBlock Text="Notifications"
-                                       VerticalAlignment="Center"
-                                       Padding="10 0 0 0"/>
+                                           VerticalAlignment="Center"
+                                           Padding="10 0 0 0"/>
                             </hc:SimplePanel>
                             <hc:ScrollViewer Name="BottomRightScrollViewPanel"
-                                         Margin="5"
-                                         Grid.Row="1">
-                                <StackPanel Orientation="Vertical">
-                                    <local:StackNotificationControl/>
-                                    <local:StackNotificationControl/>
-                                    <local:StackNotificationControl/>
-                                    <local:StackNotificationControl/>
-
+                                             Grid.Row="1">
+                                <StackPanel Name="StackNotifContainer" Orientation="Vertical">
                                 </StackPanel>
                             </hc:ScrollViewer>
                         </Grid>
                     </Grid>
-                </Grid>-->
+                </Grid>
             </Grid>
             <!--#endregion -->
 
@@ -618,7 +617,7 @@
                   Grid.Column="1"
                   Visibility="Collapsed"
                   Margin="15 10">
-                <local:MaintenancePanel/>
+                <local:MaintenancePanel x:Name="MaintainanceContainer"/>
             </Grid>
             <!--#endregion-->
 

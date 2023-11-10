@@ -1,4 +1,6 @@
-﻿Public Class AccountDialog
+﻿Imports HandyControl.Controls
+
+Public Class AccountDialog
     Private _data As Dictionary(Of String, String)
     Private _subject As IObservablePanel
     Public Sub New(
@@ -32,25 +34,28 @@
         Next
 
         If Not result.Any(Function(item As Object()) Not item(0)) Then
-            Dim data As New Dictionary(Of String, String) From {
-                {"id", _data?.Item("id")},
-                {"role_id", RoleComboBox.SelectedValue},
-                {"first_name", result(1)(1)},
-                {"last_name", result(2)(1)},
-                {"address", result(3)(1)},
-                {"contact", result(4)(1)},
-                {"username", result(5)(1)},
-                {"password", result(6)(1)}
-            }
-            Dim baseCommand As New BaseAccount(data)
-            Dim invoker As ICommandInvoker
-            If _data Is Nothing Then
-                invoker = New AddCommand(baseCommand)
+            If BaseAccount.Exists(result(5)(1)) = 0 Then
+                Dim data As New Dictionary(Of String, String) From {
+                    {"id", _data?.Item("id")},
+                    {"role_id", RoleComboBox.SelectedValue},
+                    {"first_name", result(1)(1)},
+                    {"last_name", result(2)(1)},
+                    {"address", result(3)(1)},
+                    {"contact", result(4)(1)},
+                    {"username", result(5)(1)},
+                    {"password", result(6)(1)}
+                }
+                Dim baseCommand As New BaseAccount(data)
+                Dim invoker As ICommandInvoker
+                If _data Is Nothing Then
+                    invoker = New AddCommand(baseCommand)
+                Else
+                    invoker = New UpdateCommand(baseCommand)
+                End If
+                invoker.Execute()
             Else
-                invoker = New UpdateCommand(baseCommand)
+                Growl.Info("Username exists!")
             End If
-
-            invoker.Execute()
             _subject.NotifyObserver()
             CloseDialog(Closebtn)
         End If
@@ -66,7 +71,7 @@
     End Sub
 
     Private Sub AccountDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        RoleComboBox.ItemsSource = FillByRoles().DefaultView
+        RoleComboBox.ItemsSource = BaseAccount.FillByRoles().DefaultView
         RoleComboBox.DisplayMemberPath = "role_name"
         RoleComboBox.SelectedValuePath = "id"
 

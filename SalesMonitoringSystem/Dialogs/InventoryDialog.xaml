@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="InventoryDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d"
+             Height="550" Width="800">
+    <Grid Background="{StaticResource ApplicationPrimaryLight}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
+            <TextBlock Text="INVENTORY PRODUCTS"
+                       Foreground="{StaticResource ApplicationLight}"
+                       FontSize="18"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="10 0 0 0"
+                       FontWeight="DemiBold"/>
+            <Button Name="Closebtn"
+                    Height="24"
+                    Width="24"
+                    Style="{StaticResource ButtonIcon}"
+                    hc:IconElement.Geometry="{StaticResource ErrorGeometry}"
+                    Command="hc:ControlCommands.Close"
+                    Margin="0 0 10 0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+        </hc:SimplePanel>
+        <hc:SimplePanel Grid.Row="1"
+                        Margin="0 8 0 0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <TextBlock Text="INVOICE NUMBER:"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Medium"
+                           Margin="10 0 0 0"/>
+                <TextBlock Name="ReferenceNumberLabel"
+                           Text="{Binding REF_NO}"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Margin="4 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="TOTAL:"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Medium"/>
+                <TextBlock Name="TotalCost"
+                           Text=""
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Margin="4 0 30 0"/>
+            </StackPanel>
+        </hc:SimplePanel>
+        <Grid Grid.Row="2"
+              Margin="0 0 0 8">
+            <DataGrid Name="ProductsDataGridView"
+                      RowStyle="{DynamicResource CustomDataGridRowStyle}"
+                      ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                      CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                      Style="{DynamicResource CustomDataGridStyle}"
+                      IsReadOnly="True"
+                      CanUserResizeColumns="False"
+                      AutoGenerateColumns="False"
+                      Margin="10,0,10,10"
+                      Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="13"
+                                        Header="PRODUCT NAME"
+                                        Binding="{Binding PRODUCT_NAME}"/>
+                    <DataGridTextColumn FontSize="13"
+                                        Header="PRODUCT PRICE"
+                                        Binding="{Binding PRODUCT_PRICE}"/>
+                    <DataGridTextColumn FontSize="13"
+                                        Header="PRODUCT COST"
+                                        Binding="{Binding COST}"/>
+                    <DataGridTextColumn FontSize="13"
+                                        Header="STOCK IN"
+                                        Binding="{Binding STOCK_IN}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

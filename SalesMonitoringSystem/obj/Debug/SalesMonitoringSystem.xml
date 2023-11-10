@@ -64,12 +64,32 @@ AuditTrailPanel
 InitializeComponent
 </summary>
 </member>
+<member name="T:SalesMonitoringSystem.StackNotificationControl">
+<summary>
+StackNotificationControl
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.StackNotificationControl.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:SalesMonitoringSystem.AboutDialog">
 <summary>
 AboutDialog
 </summary>
 </member>
 <member name="M:SalesMonitoringSystem.AboutDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.InventoryDialog">
+<summary>
+InventoryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.InventoryDialog.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
@@ -101,6 +121,16 @@ TransactionProductDialog
 InitializeComponent
 </summary>
 </member>
+<member name="T:SalesMonitoringSystem.WelcomeDialog">
+<summary>
+WelcomeDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.WelcomeDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:SalesMonitoringSystem.Login">
 <summary>
 Login
@@ -121,12 +151,17 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsDataTable">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -141,17 +176,17 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesDataTable">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -161,12 +196,17 @@ Represents the strongly named DataTable class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRow">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -181,17 +221,17 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRow">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -201,12 +241,17 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRowChangeEvent">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -221,17 +266,17 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRowChangeEvent">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -241,12 +286,17 @@ Row event argument class
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbllogsTableAdapter">
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbldeliveriesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblproductsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblusersTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -261,17 +311,17 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblusersTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbldeliveriesTableAdapter">
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryrecordsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbllogsTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -321,6 +371,27 @@ Used to sort self-referenced table's rows
  An invoice generator function that returns a string with a format of SGMS-{DATE}-{8_DIGIT_SINCE_FIRST_EPOCH_UNIX_TIME}
  </summary>
  <returns>String containing the generated invoice number</returns>
+</member>
+<member name="M:SalesMonitoringSystem.Helpers.CloseDialog(System.Windows.Controls.Button)">
+ <summary>
+ Searches for button within a dialog then invoke the click command in it.
+ </summary>
+ <param name="btn">A control inherited to button.</param>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Delete">
+ <summary>
+ Serves as a delete command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Update">
+ <summary>
+ Serves as an update command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Add">
+ <summary>
+ Serves as an add command to tables
+ </summary>
 </member>
 <member name="T:SalesMonitoringSystem.AccountDialog">
 <summary>

@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports HandyControl.Controls
 Imports SalesMonitoringSystem.sgsmsdbTableAdapters
 Public Class TransactionProductDialog
     Private _tableAdapter As New viewtblproductsTableAdapter
@@ -34,19 +35,36 @@ Public Class TransactionProductDialog
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
         If InputValidation.ValidateInputString(QuantityTextBox, DataInput.STRING_INTEGER)(0) Then
-            _parent._itemSource.Rows.Add({
-                 ID_NOT_SET, ProductNameComboBox.SelectedValue,
-                 ProductNameComboBox.Text, SellingPriceTextBox.Text, QuantityTextBox.Text,
-                 CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
-            })
-            _parent.UpdateVisual()
-            CloseDialog(Closebtn)
+            If CInt(QuantityAvailable.Text) > QuantityTextBox.Text Then
+                Dim is_existing As Boolean = False
+                For Each item As DataRow In _parent._itemSource.Rows
+                    If item.Item("PRODUCT_NAME") = ProductNameComboBox.Text Then
+                        item.Item("QUANTITY") += CInt(QuantityTextBox.Text)
+                        item.Item("TOTAL") += CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
+                        is_existing = True
+                        Exit For
+                    End If
+                Next
+
+                If Not is_existing Then
+                    _parent._itemSource.Rows.Add({
+                         ID_NOT_SET, ProductNameComboBox.SelectedValue,
+                         ProductNameComboBox.Text, SellingPriceTextBox.Text, QuantityTextBox.Text,
+                         CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
+                    })
+                End If
+                _parent.UpdateVisual()
+                CloseDialog(Closebtn)
+            Else
+                Growl.Warning("Insufficient stocks.")
+            End If
         End If
 
 
     End Sub
 
     Private Sub ProductNameComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ProductNameComboBox.SelectionChanged
-        SellingPriceTextBox.Text = CStr(ScalarPrice(ProductNameComboBox.SelectedValue))
+        SellingPriceTextBox.Text = CStr(BaseProduct.ScalarPrice(ProductNameComboBox.SelectedValue))
+        QuantityAvailable.Text = CStr(BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue))
     End Sub
 End Class

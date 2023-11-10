@@ -1,4 +1,5 @@
 ﻿Imports HandyControl.Controls
+Imports HandyControl.Data
 
 Public Class SuppliersPanel
     Implements IObserverPanel
@@ -38,5 +39,9 @@ Public Class SuppliersPanel
             Dialog.Show(New SupplierDialog(data, _subject))
             SuppliersDataGridView.SelectedIndex = -1
         End If
+    End Sub
+
+    Private Sub SupplierSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles SupplierSearch.SearchStarted
+        SuppliersDataGridView.ItemsSource = BaseSupplier.Search(SupplierSearch.Text).DefaultView
     End Sub
 End Class

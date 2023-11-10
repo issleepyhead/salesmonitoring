@@ -69,8 +69,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\SCHOOL FILES\SalesMonitori"& _ 
-            "ngSystem\SalesMonitoringSystem\sgsmsdb.mdf;Integrated Security=True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\SCHOOL FILES\SalesMonitor"& _ 
+            "ingSystem\SalesMonitoringSystem\sgsmsdb.mdf"";Integrated Security=True")>  _
         Public ReadOnly Property sgsmsdbConnectionString() As String
             Get
                 Return CType(Me("sgsmsdbConnectionString"),String)
@@ -86,6 +86,18 @@ Namespace My
             Get
                 Return CType(Me("sgsmsdbConnectionString1"),String)
             End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("-1")>  _
+        Public Property userRole() As String
+            Get
+                Return CType(Me("userRole"),String)
+            End Get
+            Set
+                Me("userRole") = value
+            End Set
         End Property
     End Class
 End Namespace

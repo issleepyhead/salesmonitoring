@@ -46,13 +46,26 @@ Public Class DeliveryDialog
         If Not res.Any(Function(item As Object()) Not item(0)) Then
             If _data Is Nothing Then
                 ' Temporarily adding the data to the datagrid
-                _parent._itemSource.Rows.Add({
-                   ID_NOT_SET, ProductNameComboBox.SelectedValue,
-                   _parent.SupplierNameComboBox.SelectedValue,
-                   ProductNameComboBox.Text, QuantityTextBox.Text,
-                   SellingPriceTextBox.Text, CostPriceTextBox.Text,
-                   CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
-                })
+                Dim is_existing As Boolean = False
+                For Each item As DataRow In _parent._itemSource.Rows
+                    If item.Item("PRODUCT_NAME") = ProductNameComboBox.Text AndAlso item.Item("COST") = CostPriceTextBox.Text Then
+                        item.Item("QUANTITY") = CStr(CInt(QuantityTextBox.Text) + item.Item("QUANTITY"))
+                        item.Item("TOTAL") += CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
+                        is_existing = True
+                        Exit For
+                    End If
+                Next
+
+                ' If the product is not yet existing then add it to the cart
+                If Not is_existing Then
+                    _parent._itemSource.Rows.Add({
+                        ID_NOT_SET, ProductNameComboBox.SelectedValue,
+                        _parent.SupplierNameComboBox.SelectedValue,
+                        ProductNameComboBox.Text, QuantityTextBox.Text,
+                        SellingPriceTextBox.Text, CostPriceTextBox.Text,
+                        CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
+                    })
+                End If
             Else
                 ' Update the data value
                 _data.Row.Item("PRODUCT_ID") = ProductNameComboBox.SelectedValue
@@ -68,7 +81,7 @@ Public Class DeliveryDialog
     End Sub
 
     Private Sub ProductNameComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ProductNameComboBox.SelectionChanged
-        SellingPriceTextBox.Text = CStr(ScalarPrice(ProductNameComboBox.SelectedValue))
+        SellingPriceTextBox.Text = CStr(BaseProduct.ScalarPrice(ProductNameComboBox.SelectedValue))
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As RoutedEventArgs) Handles DeleteButton.Click

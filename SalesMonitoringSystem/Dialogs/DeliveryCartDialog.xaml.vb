@@ -53,7 +53,7 @@ Public Class DeliveryCartDialog
         SupplierNameComboBox.SelectedValuePath = "ID"
 
         If _data IsNot Nothing Then
-            _itemSource = FillByProductDelivery(_data.Item("REFERENCE_NUMBER"), _data.Item("DELIVERY_DATE"))
+            _itemSource = BaseDeliveryCart.FillByProductDelivery(_data.Item("REFERENCE_NUMBER"), _data.Item("DELIVERY_DATE"))
             ItemsDataGridView.ItemsSource = _itemSource.DefaultView
             SupplierNameComboBox.SelectedValue = _itemSource.Rows(0).Item("SUPPLIER_ID")
             UpdateVisual()

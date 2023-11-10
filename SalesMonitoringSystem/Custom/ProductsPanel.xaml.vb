@@ -1,4 +1,5 @@
 ﻿Imports HandyControl.Controls
+Imports HandyControl.Data
 
 Public Class ProductsPanel
     Implements IObserverPanel
@@ -32,5 +33,9 @@ Public Class ProductsPanel
             Dialog.Show(New ProductDialog(_subject, ProductDataGridView.SelectedItems(0)))
             ProductDataGridView.SelectedIndex = -1
         End If
+    End Sub
+
+    Private Sub ProductSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles ProductSearch.SearchStarted
+        ProductDataGridView.ItemsSource = BaseProduct.Search(ProductSearch.Text).DefaultView
     End Sub
 End Class

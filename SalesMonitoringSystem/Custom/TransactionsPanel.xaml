@@ -15,7 +15,7 @@
         <hc:FlexPanel Grid.Row="0"
                       JustifyContent="SpaceBetween"
                       Margin="10 10 10 0">
-            <hc:SearchBar x:Name="SalesSearch"
+            <hc:SearchBar x:Name="TransactionSearch"
                           IsRealTime="True"
                           hc:InfoElement.Placeholder="Search Transaction"
                           Width="280"
@@ -28,18 +28,18 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal"
+                <!--<StackPanel Orientation="Horizontal"
                             Margin="0 0 10 0">
                     <TextBlock Text="TOTAL RECORDS:"
                                VerticalAlignment="Center"
                                Grid.Column="0"
                                FontWeight="Medium"
                                Margin="0 0 8 0"/>
-                    <TextBlock Text="0"
+                    <TextBdlock Text="0"
                                VerticalAlignment="Center"
                                Grid.Column="0"
                                FontWeight="ExtraBold"/>
-                </StackPanel>
+                </StackPanel>-->
                 <Button x:Name="AddButton" Foreground="{StaticResource ApplicationLight}" FontSize="9"
                         hc:BorderElement.CornerRadius="0"
                         Content="New"
@@ -67,25 +67,11 @@
                   Margin="10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="ID"
-                                    Binding="{Binding ID}"
-                                    Width="50"/>
-                <DataGridTextColumn FontSize="13"
                                     Header="INVOICE NO."
                                     Binding="{Binding INVOICE_NO}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="PRODUCT NAME"
-                                    Binding="{Binding PRODUCT_NAME}"/>
-                <DataGridTextColumn FontSize="13"
                                     Header="PROCESS BY"
                                     Binding="{Binding PROCESSED_BY}"/>
-                <DataGridTextColumn FontSize="13"
-                                    Header="TOTAL DUE"
-                                    Binding="{Binding TOTAL_AMOUNT}"/>
-                <DataGridTextColumn FontSize="13"
-                                    Header="QTY"
-                                    Binding="{Binding QUANTITY}"
-                                    Width="60"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="DATE"
                                     Binding="{Binding DATE}"

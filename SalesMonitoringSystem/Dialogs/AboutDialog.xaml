@@ -31,7 +31,7 @@
         </hc:SimplePanel>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -40,7 +40,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="{StaticResource ic_ccs}" Height="150" Width="150" Stretch="Uniform"/>
+                    <Image Source="{StaticResource ic_icon}" Height="100" Width="230" Stretch="Uniform"/>
                 </StackPanel>
             </hc:SimplePanel>
             <hc:SimplePanel Grid.Row="1">
@@ -60,11 +60,9 @@
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center">
-                    <hc:Shield Subject=".Net" Status=">=4.0" Color="#1182c3"/>
-                    <hc:Shield Subject="VB" Status="16.9" Margin="4,0,0,0" Color="#1182c3"/>
-                    <hc:Shield Subject="IDE" Status="2022" Margin="4,0,0,0" Color="#1182c3"/>
+                    <hc:Shield Subject=".Net" Status=">=4.0" Color="{StaticResource ApplicationDimBlue}"/>
+                    <hc:Shield Subject="IDE" Status=">=2019" Margin="4,0,0,0" Color="{StaticResource ApplicationDimBlue}"/>
                     <hc:Shield Subject="GIT" Status="Github" Margin="4,0,0,0" Color="{StaticResource ApplicationDark}" Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/issleepyhead/salesmonitoring"/>
-
                 </StackPanel>
             </hc:SimplePanel>
         </Grid>

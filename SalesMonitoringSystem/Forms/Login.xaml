@@ -72,7 +72,8 @@
                         Height="35"
                         BorderThickness="0"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
+                        VerticalAlignment="Top"
+                        Command="hc:ControlCommands.Close">
                     <hc:ImageBlock x:Name="CloseIcon"
                                    Source="{StaticResource ic_closedark}"
                                    Height="14"

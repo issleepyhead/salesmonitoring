@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 
 Public Class BaseProduct
     Inherits SqlBaseConnection
@@ -42,4 +43,38 @@ Public Class BaseProduct
 
         End If
     End Sub
+
+    Public Shared Function ScalarPrice(id As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT product_price FROM tblproducts WHERE id = @id", conn)
+        cmd.Parameters.AddWithValue("@id", id)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function ScalarProducts() As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblproducts", conn)
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function Exists(name As String, price As String, category As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblproducts WHERE LOWER(PRODUCT_NAME) = LOWER(@name) AND PRODUCT_PRICE = @price AND CATEGORY_ID = @category", conn)
+        cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
+        cmd.Parameters.AddWithValue("@price", price.Trim)
+        cmd.Parameters.AddWithValue("@category", category.Trim)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function Search(query As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT * FROM viewtblproducts WHERE PRODUCT_NAME LIKE CONCAT('%', @query, '%')", conn)
+        cmd.Parameters.AddWithValue("@query", query)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
 End Class

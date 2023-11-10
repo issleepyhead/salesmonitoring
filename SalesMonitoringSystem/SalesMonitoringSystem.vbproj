@@ -80,6 +80,9 @@
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Spire.XLS, Version=13.10.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.13.10.1\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -121,14 +124,23 @@
     <Compile Include="Custom\AuditTrailPanel.xaml.vb">
       <DependentUpon>AuditTrailPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom\StackNotificationControl.xaml.vb">
+      <DependentUpon>StackNotificationControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\AboutDialog.xaml.vb">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\InventoryDialog.xaml.vb">
+      <DependentUpon>InventoryDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\TransactionDialog.xaml.vb">
       <DependentUpon>TransactionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\TransactionProductDialog.xaml.vb">
       <DependentUpon>TransactionProductDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WelcomeDialog.xaml.vb">
+      <DependentUpon>WelcomeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.xaml.vb">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -141,6 +153,7 @@
     <Compile Include="src\bases\BaseAccount.vb" />
     <Compile Include="src\bases\BaseCategory.vb" />
     <Compile Include="src\bases\BaseDeliveryCart.vb" />
+    <Compile Include="src\bases\BaseInventory.vb" />
     <Compile Include="src\bases\BaseProduct.vb" />
     <Compile Include="src\bases\BaseSupplier.vb" />
     <Compile Include="src\bases\BaseTransaction.vb" />
@@ -160,6 +173,10 @@
     <Compile Include="src\interfaces\IObservablePanel.vb" />
     <Compile Include="src\interfaces\IObserverPanel.vb" />
     <Page Include="Custom\AuditTrailPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom\StackNotificationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,6 +236,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\InventoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\ProductDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\TransactionProductDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\WelcomeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -403,6 +428,7 @@
     <Resource Include="Resources\imgs\ic_logs.png" />
     <Resource Include="Resources\imgs\tfvc-logo.png" />
     <Resource Include="Resources\imgs\ccs-logo.png" />
+    <Resource Include="Resources\imgs\ic_welcome.png" />
     <Content Include="sgsmsdb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

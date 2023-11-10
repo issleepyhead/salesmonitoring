@@ -2,6 +2,7 @@
 Imports HandyControl.Controls
 Public Class Login
     Private _loginModule As New LoginModule
+
     Private Sub LoginButton_Click(sender As Object, e As RoutedEventArgs) Handles LoginButton.Click
         If String.IsNullOrEmpty(PasswordTextBox.Password) Then
             PasswordTextBox.BorderBrush = Brushes.Red
@@ -21,6 +22,18 @@ Public Class Login
         Dim res As Object() = _loginModule.LoginAccount(UsernameTextBox.Text, PasswordTextBox.Password)
         If res(0) Then
             Dim dash As New Dashboard
+            If My.Settings.userRole <> 1 Then
+                dash.BottomContainerProductsButton.Visibility = Visibility.Collapsed
+                dash.BottomContainerLogsButton.Visibility = Visibility.Collapsed
+                'dash.MaintainanceContainer.AccountTab.Visibility = Visibility.Collapsed
+                'dash.MaintainanceContainer.CategoryTab.Visibility = Visibility.Collapsed
+                'dash.MaintainanceContainer.SupplierTab.Visibility = Visibility.Collapsed
+                Dim tabs As ItemCollection = dash.MaintainanceContainer.TabControlContainer.Items()
+                tabs.Remove(dash.MaintainanceContainer.AccountTab)
+                tabs.Remove(dash.MaintainanceContainer.CategoryTab)
+                tabs.Remove(dash.MaintainanceContainer.SupplierTab)
+
+            End If
             dash.Show()
             Close()
         Else

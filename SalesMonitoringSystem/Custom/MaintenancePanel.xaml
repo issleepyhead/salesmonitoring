@@ -14,17 +14,17 @@
                        IsDraggable="False"
                        IsTabFillEnabled="True"
                        Grid.RowSpan="2">
-            <hc:TabItem  Header="Accounts">
+            <hc:TabItem  Header="Accounts" Name="AccountTab">
                 <local:AccountsPanel/>
             </hc:TabItem>
-            <hc:TabItem Header="Categories">
+            <hc:TabItem Header="Categories" Name="CategoryTab">
                 <local:CategoriesPanel/>
             </hc:TabItem>
-            <hc:TabItem Header="Suppliers">
-                <local:SuppliersPanel x:Name="SupplierPanelWrapper"/>
+            <hc:TabItem Header="Suppliers" Name="SupplierTab">
+                <local:SuppliersPanel/>
             </hc:TabItem>
             <hc:TabItem Header="Delivery">
-                <local:DeliveryPanel x:Name="Delivery"/>
+                <local:DeliveryPanel/>
             </hc:TabItem>
         </hc:TabControl>
     </Grid>

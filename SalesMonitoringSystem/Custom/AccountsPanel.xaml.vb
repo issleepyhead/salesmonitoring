@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Interop
 Imports HandyControl.Controls
+Imports HandyControl.Data
 Imports SalesMonitoringSystem.My
 
 Public Class AccountsPanel
@@ -34,7 +35,7 @@ Public Class AccountsPanel
             Dim full_name As String() = cols.Item(0).Item(1).ToString.Split(" ")
             Dim data As New Dictionary(Of String, String) From {
                 {"id", cols.Item(0).Item(0)},
-                {"role_id", ScalarRoleName(cols.Item(0).Item(2))},
+                {"role_id", BaseAccount.ScalarRoleName(cols.Item(0).Item(2))},
                 {"first_name", String.Join(" ", full_name.Take(full_name.Count - 1))},
                 {"last_name", full_name.Last},
                 {"address", cols.Item(0).Item(3)},
@@ -48,4 +49,7 @@ Public Class AccountsPanel
         End If
     End Sub
 
+    Private Sub SalesSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles SalesSearch.SearchStarted
+        AccountsDataGridView.ItemsSource = BaseAccount.Search(SalesSearch.Text).DefaultView
+    End Sub
 End Class

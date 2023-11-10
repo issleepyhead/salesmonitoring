@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 Imports HandyControl.Controls
 
 Public Class BaseDeliveryCart
@@ -64,4 +65,15 @@ Public Class BaseDeliveryCart
             Growl.Info("Failed adding the product!")
         End If
     End Sub
+
+    Public Shared Function FillByProductDelivery(refNo As String, delivery_date As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("EXEC FetchProductDeliveryProcedure @ref_no, @delivery_date", conn)
+        cmd.Parameters.AddWithValue("@ref_no", refNo)
+        cmd.Parameters.AddWithValue("@delivery_date", delivery_date)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
 End Class

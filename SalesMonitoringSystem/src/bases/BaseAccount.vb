@@ -1,4 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports HandyControl.Controls
 
 Public Class BaseAccount
     Inherits SqlBaseConnection
@@ -13,8 +15,8 @@ Public Class BaseAccount
         _sqlCommand = New SqlCommand("EXEC DeleteAccountProcedure @id, @user_id;", _sqlConnection)
         _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+        If _sqlCommand.ExecuteNonQuery() <= 0 Then
+            Growl.Error("An error occured!")
         End If
     End Sub
 
@@ -29,8 +31,8 @@ Public Class BaseAccount
         _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
         _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+        If _sqlCommand.ExecuteNonQuery() <= 0 Then
+            Growl.Error("An error occured!")
         End If
     End Sub
 
@@ -44,8 +46,46 @@ Public Class BaseAccount
         _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
         _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+        If _sqlCommand.ExecuteNonQuery() <= 0 Then
+            Growl.Error("An error occured")
         End If
     End Sub
+
+    Public Shared Function ScalarRoleName(rolename As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT id FROM tblroles WHERE role_name = @role_name", conn)
+        cmd.Parameters.AddWithValue("@role_name", rolename)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function Exists(data As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblusers WHERE USERNAME = @data", conn)
+        cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function FillByRoles() As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT id, role_name FROM tblroles WHERE id <> 1", conn)
+
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+    Public Shared Function Search(query As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT * FROM viewtblusers WHERE id <> 1 AND FULL_NAME LIKE CONCAT('%', @query, '%') OR USERNAME LIKE CONCAT('%', @query, '%')", conn)
+        cmd.Parameters.AddWithValue("@query", query)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+
 End Class

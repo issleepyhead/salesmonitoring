@@ -32,7 +32,6 @@ Public Class TransactionDialog
     End Sub
 
     Private Sub AddItemButton_Click(sender As Object, e As RoutedEventArgs) Handles AddItemButton.Click
-        'Dialog.Show(New DeliveryDialog(parent:=Me))
         Dialog.Show(New TransactionProductDialog(parent:=Me))
     End Sub
 
@@ -44,7 +43,7 @@ Public Class TransactionDialog
     Private Sub DeliveryCartDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
 
         If _data IsNot Nothing Then
-            ItemsDataGridView.ItemsSource = _itemSource.DefaultView
+            _itemSource = BaseTransaction.FillByProductTransaction(ReferenceNumberLabel.Text)
             UpdateVisual()
         Else
             ReferenceNumberLabel.Text = GenInvoiceNumber()

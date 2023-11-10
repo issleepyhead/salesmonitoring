@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 Imports HandyControl.Controls
 
 Public Class BaseSupplier
@@ -41,4 +42,23 @@ Public Class BaseSupplier
             Growl.Info("Supplier has been added successfully!")
         End If
     End Sub
+
+    Public Shared Function Search(query As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT * FROM viewtblsuppliers WHERE SUPPLIER_NAME LIKE CONCAT('%', @query, '%')", conn)
+        cmd.Parameters.AddWithValue("@query", query)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+    Public Shared Function Exists(name As String, address As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblsuppliers WHERE LOWER(SUPPLIER_NAME) = LOWER(@name) AND LOWER(ADDRESS) = LOWER(@address)", conn)
+        cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
+        cmd.Parameters.AddWithValue("@address", address.Trim.ToLower)
+
+        Return cmd.ExecuteScalar()
+    End Function
 End Class

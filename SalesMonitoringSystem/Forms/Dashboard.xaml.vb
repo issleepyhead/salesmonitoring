@@ -1,8 +1,17 @@
-﻿Imports HandyControl.Controls
+﻿Imports System.Data
+Imports HandyControl.Controls
+Imports HandyControl.Tools.Extension
 
 Class Dashboard
-    Implements IObservablePanel
+    Implements IObservablePanel, IObserverPanel
+
     Private _observables As New List(Of IObserverPanel)
+
+    Public Sub New()
+        InitializeComponent()
+        RegisterObserver(Me)
+        NotifyObserver()
+    End Sub
 
     Public Sub RegisterObserver(o As IObserverPanel) Implements IObservablePanel.RegisterObserver
         _observables.Add(o)
@@ -86,6 +95,29 @@ Class Dashboard
             SettingsMenu.IsOpen = True
 
         End If
+    End Sub
+
+    Public Sub Update() Implements IObserverPanel.Update
+        StackNotifContainer.Children.Clear()
+        LabelTotalProducts.Text = BaseProduct.ScalarProducts()
+        LabelTotalSales.Text = BaseTransaction.ScalarSales()
+        LabelTotalTransactions.Text = BaseTransaction.ScalarTransactions()
+
+        Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
+        For Each item As DataRow In _itemSource.Rows
+            Dim stackpan As New StackNotificationControl
+            stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
+            stackpan.LabelStackDescription.Text = item.Item("product_description")
+            stackpan.LabelStackHeading.Text = item.Item("product_name")
+            If CDate(item.Item("date_added")).ToShortDateString <> Date.Now.ToShortDateString Then
+                stackpan.ActiveIndicator.Background = Brushes.LightGray
+            Else
+                stackpan.ActiveIndicator.Background = Brushes.Red
+                stackpan.Background = New BrushConverter().ConvertFromString("#E1F1FD")
+            End If
+            StackNotifContainer.Children.Add(stackpan)
+            stackpan.Show
+        Next
     End Sub
 
     Private Sub AboutButtonItem_Click(sender As Object, e As RoutedEventArgs) Handles AboutButtonItem.Click

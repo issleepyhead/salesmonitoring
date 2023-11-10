@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports HandyControl.Controls
 
 Public Class ProductDialog
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtblcategoriesTableAdapter
@@ -33,25 +34,40 @@ Public Class ProductDialog
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
-        Dim data As New Dictionary(Of String, String) From {
-            {"id", _data?.Item("ID")},
-            {"category_id", CategoryComboBox.SelectedValue},
-            {"product_name", ProductNameTextBox.Text},
-            {"product_description", ProductDescriptionTextBox.Text},
-            {"product_price", ProductPriceTextBox.Text}
-        }
+        Dim controls As Object() = {ProductNameTextBox, ProductDescriptionTextBox, ProductPriceTextBox}
+        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_STRING, DataInput.STRING_INTEGER}
 
-        Dim baseCommand As New BaseProduct(data)
-        Dim invoker As ICommandInvoker
-        If _data Is Nothing Then
-            invoker = New AddCommand(baseCommand)
-        Else
-            invoker = New UpdateCommand(baseCommand)
+        Dim res As New List(Of Object())
+        For i = 0 To controls.Count - 1
+            res.Add(InputValidation.ValidateInputString(controls(i), types(i)))
+        Next
+
+        If Not res.Any(Function(item As Object()) Not item(0)) Then
+            If BaseProduct.Exists(res(0)(1), res(2)(1), CategoryComboBox.SelectedValue) <= 0 Then
+                Dim data As New Dictionary(Of String, String) From {
+                    {"id", _data?.Item("ID")},
+                    {"category_id", CategoryComboBox.SelectedValue},
+                    {"product_name", ProductNameTextBox.Text},
+                    {"product_description", ProductDescriptionTextBox.Text},
+                    {"product_price", ProductPriceTextBox.Text}
+                }
+
+                Dim baseCommand As New BaseProduct(data)
+                Dim invoker As ICommandInvoker
+                If _data Is Nothing Then
+                    invoker = New AddCommand(baseCommand)
+                Else
+                    invoker = New UpdateCommand(baseCommand)
+                End If
+
+                invoker.Execute()
+            Else
+                Growl.Info("Product exists!")
+
+            End If
+            _subject.NotifyObserver()
+            CloseDialog(Closebtn)
         End If
-
-        invoker.Execute()
-        _subject.NotifyObserver()
-        CloseDialog(Closebtn)
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As RoutedEventArgs) Handles DeleteButton.Click

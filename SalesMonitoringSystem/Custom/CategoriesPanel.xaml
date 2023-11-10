@@ -16,7 +16,7 @@
         <hc:FlexPanel Grid.Row="0"
                       JustifyContent="SpaceBetween"
                       Margin="10 0">
-            <hc:SearchBar x:Name="SalesSearch"
+            <hc:SearchBar x:Name="CategorySearch"
                           IsRealTime="True"
                           hc:InfoElement.Placeholder="Search Category"
                           Width="280"

@@ -1,4 +1,5 @@
 ﻿Imports HandyControl.Controls
+Imports HandyControl.Data
 
 Public Class TransactionsPanel
     Implements IObserverPanel
@@ -27,6 +28,13 @@ Public Class TransactionsPanel
     End Sub
 
     Private Sub TransactionsDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles TransactionsDataGridView.SelectionChanged
-        ' TO DO PASS THE ID TO THE CRAP.
+        If TransactionsDataGridView.SelectedItems.Count > 0 Then
+            Dialog.Show(New TransactionDialog(TransactionsDataGridView.SelectedItems(0), _subject))
+            TransactionsDataGridView.SelectedIndex = -1
+        End If
+    End Sub
+
+    Private Sub TransactionSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles TransactionSearch.SearchStarted
+        TransactionsDataGridView.ItemsSource = BaseTransaction.Search(TransactionSearch.Text).DefaultView
     End Sub
 End Class

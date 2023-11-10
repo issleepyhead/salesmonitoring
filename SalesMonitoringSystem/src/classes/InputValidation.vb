@@ -44,7 +44,7 @@ Public Class InputValidation
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_PHONE
-                If Not Regex.IsMatch(stringInput, ".*[A-Za-z].*") Then
+                If Not Regex.IsMatch(stringInput, ".*[A-Za-z\p{P}\p{S}].*") Then
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_USERNAME
@@ -52,7 +52,7 @@ Public Class InputValidation
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_INTEGER
-                If Not Regex.IsMatch(stringInput, ".*[A-Za-z].*") Then
+                If Not Regex.IsMatch(stringInput, ".*[A-Za-z\p{P}\p{S}].*") OrElse Not stringInput = "0" Then
                     Return {True, stringInput}
                 End If
         End Select

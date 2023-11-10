@@ -1,5 +1,6 @@
-﻿Imports System.ComponentModel
+﻿
 Imports HandyControl.Controls
+Imports HandyControl.Data
 Imports HandyControl.Tools.Extension
 
 Public Class CategoriesPanel
@@ -33,7 +34,7 @@ Public Class CategoriesPanel
             Dim cols As IList(Of DataGridCellInfo) = CategoriesDataGridView.SelectedCells()
             Dim data As New Dictionary(Of String, String) From {
                 {"id", cols.Item(0).Item(0).ToString},
-                {"parent_id", ScalarCategoryParentID(cols.Item(0).Item(0).ToString)},
+                {"parent_id", BaseCategory.ScalarCategoryParentID(cols.Item(0).Item(0).ToString)},
                 {"category_name", cols.Item(0).Item(1).ToString},
                 {"category_description", cols.Item(0).Item(2).ToString}
             }
@@ -41,5 +42,9 @@ Public Class CategoriesPanel
             Dialog.Show(New CategoryDialog(data, _subject))
             CategoriesDataGridView.SelectedIndex = -1
         End If
+    End Sub
+
+    Private Sub CategorySearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles CategorySearch.SearchStarted
+        CategoriesDataGridView.ItemsSource = BaseCategory.Search(CategorySearch.Text).DefaultView
     End Sub
 End Class

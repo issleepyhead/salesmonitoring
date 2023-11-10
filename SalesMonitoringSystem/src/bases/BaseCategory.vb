@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 
 Public Class BaseCategory
     Inherits SqlBaseConnection
@@ -41,4 +42,40 @@ Public Class BaseCategory
             HandyControl.Controls.MessageBox.Info("INSERTED SUCCESSFULLY!")
         End If
     End Sub
+
+    Public Shared Function ScalarCategoryParentID(id As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT CASE WHEN parent_category IS NULL THEN -1 ELSE parent_category END AS parent_category FROM tblcategories WHERE id = @id", conn)
+        cmd.Parameters.AddWithValue("@id", id)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function Exists(data As String) As Integer
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblcategories WHERE LOWER(CATEGORY_NAME) = LOWER(@data)", conn)
+        cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
+
+        Return cmd.ExecuteScalar()
+    End Function
+
+    Public Shared Function FillByParentCategory() As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT id, category_name FROM tblcategories WHERE parent_category IS NULL", conn)
+
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+    Public Shared Function Search(query As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT * FROM viewtblcategories WHERE CATEGORY_NAME LIKE CONCAT('%', @query, '%')", conn)
+        cmd.Parameters.AddWithValue("@query", query)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
 End Class

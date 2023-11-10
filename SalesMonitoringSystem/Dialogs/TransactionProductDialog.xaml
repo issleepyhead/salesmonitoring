@@ -59,6 +59,18 @@
                          IsEnabled="False"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
+                <TextBlock Padding="0 0 0 5"
+                           Text="Remaining Quantity: "
+                           FontSize="18"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"/>
+                <TextBox Name="QuantityAvailable"
+                         HorizontalAlignment="Stretch"
+                         hc:BorderElement.CornerRadius="0"
+                         Height="40"
+                         IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Margin="0 8 0 0">
                 <TextBlock HorizontalAlignment="Left"
                            Text="QUANTITY: "
                            FontSize="18"

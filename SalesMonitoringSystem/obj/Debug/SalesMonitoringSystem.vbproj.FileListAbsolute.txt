@@ -86,3 +86,11 @@ D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\Tr
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\TransactionDialog.baml
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\TransactionProductDialog.g.vb
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\TransactionProductDialog.baml
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\WelcomeDialog.g.vb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\WelcomeDialog.baml
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Custom\StackNotificationControl.g.vb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Custom\StackNotificationControl.baml
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\InventoryDialog.g.vb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\InventoryDialog.baml
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\bin\Debug\Spire.XLS.dll
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\bin\Debug\Spire.XLS.xml
