@@ -15,65 +15,109 @@
                        Grid.RowSpan="2">
             <hc:TabItem Header="Inventory Transactions">
                 <Grid Background="{StaticResource ApplicationLight}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <hc:FlexPanel Grid.Row="0"
+                                  JustifyContent="SpaceBetween"
+                                  Margin="15 0">
+                        <hc:SearchBar x:Name="SearchInventoryTransactions"
+                                      IsRealTime="True"
+                                      hc:InfoElement.Placeholder="Search Category"
+                                      Width="280"
+                                      Height="30"
+                                      VerticalAlignment="Center"
+                                      Style="{StaticResource SearchBarExtend}"/>
+                        <hc:Pagination Name="PaginationTransactions"
+                           MaxPageCount="10"
+                           PageIndex="1"
+                           MaxPageInterval="3"
+                           DataCountPerPage="15"
+                           VerticalAlignment="Center"
+                           hc:BorderElement.CornerRadius="0"/>
+                    </hc:FlexPanel>
                     <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
-                                  ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
-                                  CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                                  Style="{DynamicResource CustomDataGridStyle}"
-                                  IsReadOnly="True"
-                                  CanUserResizeColumns="False"
-                                  AutoGenerateColumns="False"
-                                  Grid.Row="1"
-                                  Margin="15 15 15 10"
-                                  Name="InventoryTransactionsDataGrid"
-                                  Background="{StaticResource ApplicationLight}">
+                              ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                              CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                              Style="{DynamicResource CustomDataGridStyle}"
+                              IsReadOnly="True"
+                              CanUserResizeColumns="False"
+                              AutoGenerateColumns="False"
+                              Grid.Row="1"
+                              Margin="15 8 15 10"
+                              Name="InventoryTransactionsDataGrid"
+                              Background="{StaticResource ApplicationLight}">
                         <DataGrid.Columns>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="REFERENCE NO"
-                                                    Binding="{Binding REF_NO}"/>
+                                                Header="REFERENCE NO"
+                                                Binding="{Binding REF_NO}"/>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="PRODUCT"
-                                                    Binding="{Binding PRODUCT_NAME}"/>
+                                                Header="PRODUCT"
+                                                Binding="{Binding PRODUCT_NAME}"/>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="SUPPLIER"
-                                                    Binding="{Binding SUPPLIER_NAME}"/>
+                                                Header="SUPPLIER"
+                                                Binding="{Binding SUPPLIER_NAME}"/>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="STOCK IN"
-                                                    Binding="{Binding STOCK_IN}"
-                                                    Width="100"/>
+                                                Header="STOCK IN"
+                                                Binding="{Binding STOCK_IN}"
+                                                Width="100"/>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="ORDERED"
-                                                    Binding="{Binding DATE_ORDERED}"
-                                                    Width="100"/>
+                                                Header="ORDERED"
+                                                Binding="{Binding DATE_ORDERED}"
+                                                Width="100"/>
                             <DataGridTextColumn FontSize="13"
-                                                    Header="RECIEVED"
-                                                    Binding="{Binding DATE_RECIEVED}"
-                                                    Width="100"/>
+                                                Header="RECIEVED"
+                                                Binding="{Binding DATE_RECIEVED}"
+                                                Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </hc:TabItem>
             <hc:TabItem Header="Inventory Record">
                 <Grid Background="{StaticResource ApplicationLight}">
-                <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
-                          ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
-                          CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                          Style="{DynamicResource CustomDataGridStyle}"
-                          IsReadOnly="True"
-                          CanUserResizeColumns="False"
-                          AutoGenerateColumns="False"
-                          Grid.Row="1"
-                          Margin="15 15 15 10"
-                          Name="InventoryRecordsDataGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <hc:FlexPanel Grid.Row="0"
+                                  JustifyContent="SpaceBetween"
+                                  Margin="15 0">
+                        <hc:SearchBar x:Name="SearchInventoryRecords"
+                                      IsRealTime="True"
+                                      hc:InfoElement.Placeholder="Search Category"
+                                      Width="280"
+                                      Height="30"
+                                      VerticalAlignment="Center"
+                                      Style="{StaticResource SearchBarExtend}"/>
+                        <hc:Pagination Name="PaginationRecords"
+                           MaxPageCount="10"
+                           PageIndex="1"
+                           MaxPageInterval="3"
+                           DataCountPerPage="15"
+                           VerticalAlignment="Center"
+                           hc:BorderElement.CornerRadius="0"/>
+                    </hc:FlexPanel>
+                    <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
+                              ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                              CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                              Style="{DynamicResource CustomDataGridStyle}"
+                              IsReadOnly="True"
+                              CanUserResizeColumns="False"
+                              AutoGenerateColumns="False"
+                              Grid.Row="1"
+                              Margin="15 8 15 10"
+                              Name="InventoryRecordsDataGrid">
                         <DataGrid.Columns>
                             <DataGridTextColumn FontSize="13"
-                                    Header="PRODUCT"
-                                    Binding="{Binding PRODUCT_NAME}"/>
+                                        Header="PRODUCT"
+                                        Binding="{Binding PRODUCT_NAME}"/>
                             <DataGridTextColumn FontSize="13"
-                                    Header="PRODUCT PRICE"
-                                    Binding="{Binding PRODUCT_PRICE}"/>
+                                        Header="PRODUCT PRICE"
+                                        Binding="{Binding PRODUCT_PRICE}"/>
                             <DataGridTextColumn FontSize="13"
-                                    Header="REMAINING STOCKS"
-                                    Binding="{Binding STOCK_IN}"/>
+                                        Header="REMAINING STOCKS"
+                                        Binding="{Binding STOCK_IN}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

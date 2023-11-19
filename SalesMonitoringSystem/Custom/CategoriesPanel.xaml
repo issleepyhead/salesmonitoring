@@ -23,7 +23,15 @@
                           Height="30"
                           VerticalAlignment="Center"
                           Style="{StaticResource SearchBarExtend}"/>
-            <Grid>
+            <StackPanel Orientation="Horizontal">
+                <hc:Pagination Name="Pagination"
+                           MaxPageCount="10"
+                           PageIndex="1"
+                           MaxPageInterval="3"
+                           DataCountPerPage="15"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"
+                           hc:BorderElement.CornerRadius="0"/>
                 <Button x:Name="AddButton" Foreground="{StaticResource ApplicationLight}" FontSize="9"
                         hc:BorderElement.CornerRadius="0"
                         Content="Add"
@@ -37,7 +45,8 @@
                         Background="{StaticResource ApplicationPrimaryDark}"
                         VerticalAlignment="Center"
                         Grid.Column="1"/>
-            </Grid>
+
+            </StackPanel>
         </hc:FlexPanel>
         <DataGrid x:Name="CategoriesDataGridView"
                   RowStyle="{DynamicResource CustomDataGridRowStyle}"

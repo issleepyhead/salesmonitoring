@@ -6,6 +6,7 @@ Public Class ProductsPanel
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtblproductsTableAdapter
     Private _dataTable As New sgsmsdb.viewtblproductsDataTable
     Private _subject As IObservablePanel
+    Private Const MAX_PAGE_COUNT = 30
 
     Public Sub New()
         InitializeComponent()
@@ -13,7 +14,6 @@ Public Class ProductsPanel
             _subject = Application.Current.Windows.OfType(Of Dashboard).FirstOrDefault
             _subject?.RegisterObserver(Me)
             _subject?.NotifyObserver()
-        Catch ic As InvalidCastException
         Catch ex As Exception
             HandyControl.Controls.MessageBox.Error(ex.Message, "Observer Error")
         End Try
@@ -21,7 +21,9 @@ Public Class ProductsPanel
 
     Public Sub Update() Implements IObserverPanel.Update
         _tableAdapter.Fill(_dataTable)
-        ProductDataGridView.ItemsSource = _dataTable.DefaultView
+        ProductDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+
+        PaginationConfig()
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As RoutedEventArgs) Handles AddButton.Click
@@ -36,6 +38,26 @@ Public Class ProductsPanel
     End Sub
 
     Private Sub ProductSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles ProductSearch.SearchStarted
-        ProductDataGridView.ItemsSource = BaseProduct.Search(ProductSearch.Text).DefaultView
+        _dataTable = BaseProduct.Search(ProductSearch.Text)
+        ProductDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+        PaginationConfig()
+    End Sub
+
+    ''' <summary>
+    ''' To configure the paginations pages
+    ''' </summary>
+    Private Sub PaginationConfig()
+        If _dataTable.Count <= MAX_PAGE_COUNT Then
+            Pagination.Visibility = Visibility.Collapsed
+            Return
+        Else
+            Pagination.Visibility = Visibility.Visible
+        End If
+
+        If MAX_PAGE_COUNT / _dataTable.Count < 0 Then
+            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
+        Else
+            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT
+        End If
     End Sub
 End Class

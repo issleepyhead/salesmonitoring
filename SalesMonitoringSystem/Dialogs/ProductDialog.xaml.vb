@@ -1,19 +1,20 @@
 ﻿Imports System.Data
 Imports HandyControl.Controls
+Imports SalesMonitoringSystem.sgsmsdb
 
 Public Class ProductDialog
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtblcategoriesTableAdapter
     Private _subject As IObservablePanel
-    Private _data As DataRowView
+    Private _data As viewtblproductsRow
     Public Sub New(
         Optional subject As IObservablePanel = Nothing,
-        Optional data As DataRowView = Nothing
+        Optional data As viewtblproductsRow = Nothing
     )
         InitializeComponent()
 
         _data = data
         _subject = subject
-        DataContext = _data
+        DataContext = data
         If _data IsNot Nothing Then
             SaveButton.Content = "UPDATE"
         Else
@@ -34,8 +35,8 @@ Public Class ProductDialog
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
-        Dim controls As Object() = {ProductNameTextBox, ProductDescriptionTextBox, ProductPriceTextBox}
-        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_STRING, DataInput.STRING_INTEGER}
+        Dim controls As Object() = {ProductNameTextBox, ProductDescriptionTextBox, ProductPriceTextBox, ProductCostTextBox}
+        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_STRING, DataInput.STRING_INTEGER, DataInput.STRING_INTEGER}
 
         Dim res As New List(Of Object())
         For i = 0 To controls.Count - 1
@@ -47,9 +48,10 @@ Public Class ProductDialog
                 Dim data As New Dictionary(Of String, String) From {
                     {"id", _data?.Item("ID")},
                     {"category_id", CategoryComboBox.SelectedValue},
-                    {"product_name", ProductNameTextBox.Text},
-                    {"product_description", ProductDescriptionTextBox.Text},
-                    {"product_price", ProductPriceTextBox.Text}
+                    {"product_name", res(0)(1)},
+                    {"product_description", If(String.IsNullOrEmpty(res(0)(1)), DBNull.Value, res(1)(1))},
+                    {"product_price", res(2)(1)},
+                    {"product_cost", res(3)(1)}
                 }
 
                 Dim baseCommand As New BaseProduct(data)

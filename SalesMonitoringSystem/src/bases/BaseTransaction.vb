@@ -55,11 +55,11 @@ Public Class BaseTransaction
         Return cmd.ExecuteScalar()
     End Function
 
-    Public Shared Function Search(query As String) As DataTable
+    Public Shared Function Search(query As String) As sgsmsdb.viewtbltransactionsDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtbltransactions WHERE INVOICE_NO LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New DataTable
+        Dim dTable As New sgsmsdb.viewtbltransactionsDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

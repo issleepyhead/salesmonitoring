@@ -22,6 +22,12 @@ Public Class DeliveryDialog
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' Initialize all the necessary data of the dialog.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DeliveryDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ProductNameComboBox.ItemsSource = _tableAdapter.GetData().DefaultView
         ProductNameComboBox.DisplayMemberPath = "PRODUCT_NAME"
@@ -39,12 +45,15 @@ Public Class DeliveryDialog
         Dim controls As Object() = {CostPriceTextBox, QuantityTextBox}
         Dim types As DataInput() = {DataInput.STRING_INTEGER, DataInput.STRING_INTEGER}
 
+        ' Validate the inputs
         Dim res As New List(Of Object())
         For idx = 0 To controls.Count - 1
             res.Add(InputValidation.ValidateInputString(controls(idx), types(idx)))
         Next
+
         If Not res.Any(Function(item As Object()) Not item(0)) Then
             If _data Is Nothing Then
+
                 ' Temporarily adding the data to the datagrid
                 Dim is_existing As Boolean = False
                 For Each item As DataRow In _parent._itemSource.Rows
@@ -61,9 +70,9 @@ Public Class DeliveryDialog
                     _parent._itemSource.Rows.Add({
                         ID_NOT_SET, ProductNameComboBox.SelectedValue,
                         _parent.SupplierNameComboBox.SelectedValue,
-                        ProductNameComboBox.Text, QuantityTextBox.Text,
-                        SellingPriceTextBox.Text, CostPriceTextBox.Text,
-                        CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
+                        ProductNameComboBox.Text, res(1)(1),
+                        SellingPriceTextBox.Text, res(0)(1),
+                        CInt(res(0)(1)) * res(1)(1)
                     })
                 End If
             Else
@@ -71,8 +80,8 @@ Public Class DeliveryDialog
                 _data.Row.Item("PRODUCT_ID") = ProductNameComboBox.SelectedValue
                 _data.Item("PRODUCT_NAME") = ProductNameComboBox.Text
                 _data.Item("PRICE") = SellingPriceTextBox.Text
-                _data.Item("TOTAL") = CInt(QuantityTextBox.Text) * CostPriceTextBox.Text
-                _data.Item("QUANTITY") = CInt(QuantityTextBox.Text)
+                _data.Item("TOTAL") = CInt(res(0)(1)) * res(1)(1)
+                _data.Item("QUANTITY") = CInt(res(1)(1))
             End If
             _parent.UpdateVisual()
             CloseDialog(Closebtn)

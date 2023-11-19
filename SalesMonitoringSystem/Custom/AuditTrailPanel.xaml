@@ -22,6 +22,13 @@
                           Height="30"
                           VerticalAlignment="Center"
                           Style="{StaticResource SearchBarExtend}"/>
+            <hc:Pagination Name="Pagination"
+                           MaxPageCount="10"
+                           PageIndex="1"
+                           MaxPageInterval="3"
+                           DataCountPerPage="15"
+                           VerticalAlignment="Center"
+                           hc:BorderElement.CornerRadius="0"/>
         </hc:FlexPanel>
         <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"

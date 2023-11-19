@@ -18,7 +18,7 @@ Module Helpers
     ''' <summary>
     ''' Searches for button within a dialog then invoke the click command in it.
     ''' </summary>
-    ''' <param name="btn">A control inherited to button.</param>
+    ''' <param name="btn">A button control.</param>
     Public Sub CloseDialog(btn As Button)
         Dim peer As ButtonAutomationPeer = TryCast(UIElementAutomationPeer.CreatePeerForElement(btn), ButtonAutomationPeer)
         ' If the peer variable has found the button

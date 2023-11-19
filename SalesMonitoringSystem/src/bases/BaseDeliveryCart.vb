@@ -28,13 +28,15 @@ Public Class BaseDeliveryCart
         End If
     End Sub
 
-    ' Serves as delete to product cart
+    ''' <summary>
+    ''' Serves as remove to the delivery cart.
+    ''' </summary>
     Public Sub Delete() Implements ICommandPanel.Delete
         _sqlCommand = New SqlCommand("EXEC DeleteDeliveryCartProcedure @delivery_id, @user_id;", _sqlConnection)
         _sqlCommand.Parameters.AddWithValue("@delivery_id", _data.Item("delivery_id"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Product has been deleted from delivery cart!")
+            Growl.Info("Product has been removed from delivery cart!")
         End If
     End Sub
 
@@ -72,6 +74,16 @@ Public Class BaseDeliveryCart
         cmd.Parameters.AddWithValue("@ref_no", refNo)
         cmd.Parameters.AddWithValue("@delivery_date", delivery_date)
         Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+    Public Shared Function Search(query As String) As sgsmsdb.viewtbldeliveriesDataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT * FROM viewtbldeliveries WHERE REFERENCE_NUMBER LIKE CONCAT('%', @query, '%') OR SUPPLIER LIKE CONCAT('%', @query, '%')", conn)
+        cmd.Parameters.AddWithValue("@query", query)
+        Dim dTable As New sgsmsdb.viewtbldeliveriesDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

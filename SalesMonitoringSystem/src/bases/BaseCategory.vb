@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports HandyControl.Controls
 
 Public Class BaseCategory
     Inherits SqlBaseConnection
@@ -16,7 +17,9 @@ Public Class BaseCategory
         _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-            HandyControl.Controls.MessageBox.Info("DELETED SUCCESSFULLY!")
+            Growl.Info("Category has been deleted successfully!")
+        Else
+            Growl.Info("Failed deleting the category!")
         End If
     End Sub
 
@@ -28,7 +31,9 @@ Public Class BaseCategory
         _sqlCommand.Parameters.AddWithValue("@category_description", _data.Item("category_description"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-            HandyControl.Controls.MessageBox.Info("UPDATED SUCCESSFULLY!")
+            Growl.Info("Category has been updated successfully!")
+        Else
+            Growl.Info("Failed updating the category!")
         End If
     End Sub
 
@@ -39,7 +44,9 @@ Public Class BaseCategory
         _sqlCommand.Parameters.AddWithValue("@category_description", _data.Item("category_description"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-            HandyControl.Controls.MessageBox.Info("INSERTED SUCCESSFULLY!")
+            Growl.Info("Category has been added successfully!")
+        Else
+            Growl.Info("Failed adding the category!")
         End If
     End Sub
 
@@ -69,11 +76,11 @@ Public Class BaseCategory
         Return dTable
     End Function
 
-    Public Shared Function Search(query As String) As DataTable
+    Public Shared Function Search(query As String) As sgsmsdb.viewtblcategoriesDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtblcategories WHERE CATEGORY_NAME LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New DataTable
+        Dim dTable As New sgsmsdb.viewtblcategoriesDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

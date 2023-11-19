@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports HandyControl.Controls
 
 Public Class BaseProduct
     Inherits SqlBaseConnection
@@ -15,7 +16,9 @@ Public Class BaseProduct
         _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+            Growl.Info("Product has been deleted successfully!")
+        Else
+            Growl.Info("Failed deleting the product!")
         End If
     End Sub
 
@@ -28,19 +31,24 @@ Public Class BaseProduct
         _sqlCommand.Parameters.AddWithValue("@product_price", _data.Item("product_price"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+            Growl.Info("Product has been updated successfully!")
+        Else
+            Growl.Info("Failed updating the product!")
         End If
     End Sub
 
     Public Sub Add() Implements ICommandPanel.Add
-        _sqlCommand = New SqlCommand("EXEC InsertProductProcedure @category_id, @product_name, @product_description, @product_price, @user_id;", _sqlConnection)
+        _sqlCommand = New SqlCommand("EXEC InsertProductProcedure @category_id, @product_name, @product_description, @product_price, @product_cost, @user_id;", _sqlConnection)
         _sqlCommand.Parameters.AddWithValue("@category_id", _data.Item("category_id"))
         _sqlCommand.Parameters.AddWithValue("@product_name", _data.Item("product_name"))
         _sqlCommand.Parameters.AddWithValue("@product_description", _data.Item("product_description"))
         _sqlCommand.Parameters.AddWithValue("@product_price", _data.Item("product_price"))
+        _sqlCommand.Parameters.AddWithValue("@product_cost", _data.Item("product_cost"))
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
-
+            Growl.Info("Product has been added successfully!")
+        Else
+            Growl.Info("Failed adding the product")
         End If
     End Sub
 
@@ -68,11 +76,11 @@ Public Class BaseProduct
         Return cmd.ExecuteScalar()
     End Function
 
-    Public Shared Function Search(query As String) As DataTable
+    Public Shared Function Search(query As String) As sgsmsdb.viewtblproductsDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtblproducts WHERE PRODUCT_NAME LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New DataTable
+        Dim dTable As New sgsmsdb.viewtblproductsDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

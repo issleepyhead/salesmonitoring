@@ -17,6 +17,8 @@ Public Class BaseAccount
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() <= 0 Then
             Growl.Error("An error occured!")
+        Else
+            Growl.Info("Account has been deleted successfully!")
         End If
     End Sub
 
@@ -33,6 +35,8 @@ Public Class BaseAccount
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() <= 0 Then
             Growl.Error("An error occured!")
+        Else
+            Growl.Info("Account has been updated successfully!")
         End If
     End Sub
 
@@ -48,6 +52,8 @@ Public Class BaseAccount
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() <= 0 Then
             Growl.Error("An error occured")
+        Else
+            Growl.Info("Account has been added successfully!")
         End If
     End Sub
 
@@ -77,11 +83,11 @@ Public Class BaseAccount
         Return dTable
     End Function
 
-    Public Shared Function Search(query As String) As DataTable
+    Public Shared Function Search(query As String) As sgsmsdb.viewtblusersDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtblusers WHERE id <> 1 AND FULL_NAME LIKE CONCAT('%', @query, '%') OR USERNAME LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New DataTable
+        Dim dTable As New sgsmsdb.viewtblusersDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

@@ -36,7 +36,7 @@ Public Class TransactionDialog
     End Sub
 
     ''' <summary>
-    ''' Loaded is only used here to initialize all the controls and data.
+    ''' Loaded is only used here to initialize all the necessary data.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>

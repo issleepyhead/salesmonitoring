@@ -72,8 +72,7 @@
                         Height="35"
                         BorderThickness="0"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Command="hc:ControlCommands.Close">
+                        VerticalAlignment="Top">
                     <hc:ImageBlock x:Name="CloseIcon"
                                    Source="{StaticResource ic_closedark}"
                                    Height="14"
@@ -90,8 +89,7 @@
                             Margin="10"
                             hc:InfoElement.Placeholder="{StaticResource en_username}"
                             hc:BorderElement.CornerRadius="0"
-                            Padding="10"
-                            hc:InfoElement.Necessary="True"/>
+                            Padding="10"/>
                 <hc:PasswordBox x:Name="PasswordTextBox"
                                 Margin="10"
                                 hc:InfoElement.Placeholder="{StaticResource en_password}"

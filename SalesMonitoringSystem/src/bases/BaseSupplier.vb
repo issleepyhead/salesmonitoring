@@ -17,6 +17,8 @@ Public Class BaseSupplier
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
             Growl.Info("Supplier has been deleted successfully!")
+        Else
+            Growl.Info("Failed deleting the supplier!")
         End If
     End Sub
 
@@ -29,6 +31,8 @@ Public Class BaseSupplier
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
             Growl.Info("Supplier has been updated successfully!")
+        Else
+            Growl.Info("Failed updating the supplier!")
         End If
     End Sub
 
@@ -40,14 +44,16 @@ Public Class BaseSupplier
         _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
         If _sqlCommand.ExecuteNonQuery() > 0 Then
             Growl.Info("Supplier has been added successfully!")
+        Else
+            Growl.Info("Failed adding the supplier!")
         End If
     End Sub
 
-    Public Shared Function Search(query As String) As DataTable
+    Public Shared Function Search(query As String) As sgsmsdb.viewtblsuppliersDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtblsuppliers WHERE SUPPLIER_NAME LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New DataTable
+        Dim dTable As New sgsmsdb.viewtblsuppliersDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

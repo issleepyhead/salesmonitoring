@@ -6,6 +6,7 @@ Public Class SuppliersPanel
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtblsuppliersTableAdapter
     Private _dataTable As New sgsmsdb.viewtblsuppliersDataTable
     Private _subject As IObservablePanel
+    Private Const MAX_PAGE_COUNT As Integer = 30
 
     Public Sub New()
         InitializeComponent()
@@ -20,11 +21,31 @@ Public Class SuppliersPanel
 
     Public Sub Update() Implements IObserverPanel.Update
         _tableAdapter.Fill(_dataTable)
-        SuppliersDataGridView.ItemsSource = _dataTable.DefaultView
+        SuppliersDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+
+        PaginationConfig()
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As RoutedEventArgs) Handles AddButton.Click
         Dialog.Show(New SupplierDialog(subject:=_subject))
+    End Sub
+
+    ''' <summary>
+    ''' To configure the paginations pages
+    ''' </summary>
+    Private Sub PaginationConfig()
+        If _dataTable.Count <= MAX_PAGE_COUNT Then
+            Pagination.Visibility = Visibility.Collapsed
+            Return
+        Else
+            Pagination.Visibility = Visibility.Visible
+        End If
+
+        If MAX_PAGE_COUNT / _dataTable.Count < 0 Then
+            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
+        Else
+            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT
+        End If
     End Sub
 
     Private Sub SuppliersDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles SuppliersDataGridView.SelectionChanged
@@ -42,6 +63,9 @@ Public Class SuppliersPanel
     End Sub
 
     Private Sub SupplierSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles SupplierSearch.SearchStarted
-        SuppliersDataGridView.ItemsSource = BaseSupplier.Search(SupplierSearch.Text).DefaultView
+        _dataTable = BaseSupplier.Search(SupplierSearch.Text)
+        SuppliersDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+
+        PaginationConfig()
     End Sub
 End Class
