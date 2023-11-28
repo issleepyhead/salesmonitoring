@@ -23,6 +23,7 @@ Public Class LoginModule
             If BCrypt.Net.BCrypt.Verify(password, pwd) Then
                 My.Settings.userID = _dataSet.Rows(0).Item("id")
                 My.Settings.userRole = _dataSet.Rows(0).Item("role_id")
+                My.Settings.Save()
                 Return {True, "Login Success!"}
             Else
                 Return {False, "Incorrect username or password!"}

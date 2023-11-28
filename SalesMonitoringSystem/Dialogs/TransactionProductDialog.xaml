@@ -60,7 +60,7 @@
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
                 <TextBlock Padding="0 0 0 5"
-                           Text="Remaining Quantity: "
+                           Text="REMAING STOCKS: "
                            FontSize="18"
                            HorizontalAlignment="Left"
                            FontWeight="Bold"/>
@@ -80,7 +80,7 @@
                          Text="{Binding QUANTITY}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40"/>
+                         Height="40" InputScope="Number"/>
             </StackPanel>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">

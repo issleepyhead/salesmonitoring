@@ -52,7 +52,7 @@
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
                              hc:InfoElement.Necessary="True"
-                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)"/>
+                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)" InputScope="PersonalGivenName"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Margin="5 0 0 0">
@@ -67,7 +67,7 @@
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
                              hc:InfoElement.Necessary="True"
-                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)"/>
+                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)" InputScope="PersonalSurname"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="0 15 0 0">
@@ -97,7 +97,7 @@
                     <TextBox Name="ContactTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
-                             Height="40"/>
+                             Height="40" InputScope="TelephoneNumber"/>
                 </StackPanel>
             </Grid>
             <StackPanel Margin="0 15 0 0">
@@ -109,7 +109,7 @@
                 <TextBox Name="AddressTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40"/>
+                         Height="40" InputScope="AddressCity"/>
             </StackPanel>
             <Grid Margin="0 15 0 0">
                 <Grid.ColumnDefinitions>

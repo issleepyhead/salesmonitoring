@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Imports HandyControl.Controls
 
 Public Class BaseSupplier
@@ -12,41 +11,53 @@ Public Class BaseSupplier
     End Sub
 
     Public Sub Delete() Implements ICommandPanel.Delete
-        _sqlCommand = New SqlCommand("EXEC DeleteSupplierProcedure @id, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Supplier has been deleted successfully!")
-        Else
-            Growl.Info("Failed deleting the supplier!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC DeleteSupplierProcedure @id, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Supplier has been deleted successfully!")
+            Else
+                Growl.Error("Failed deleting the supplier!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Update() Implements ICommandPanel.Update
-        _sqlCommand = New SqlCommand("EXEC UpdateSupplierProcedure @id, @supplier_name, @supplier_address, @supplier_contact, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@supplier_name", _data.Item("supplier_name"))
-        _sqlCommand.Parameters.AddWithValue("@supplier_address", _data.Item("supplier_address"))
-        _sqlCommand.Parameters.AddWithValue("@supplier_contact", _data.Item("supplier_contact"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Supplier has been updated successfully!")
-        Else
-            Growl.Info("Failed updating the supplier!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC UpdateSupplierProcedure @id, @supplier_name, @supplier_address, @supplier_contact, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@supplier_name", _data.Item("supplier_name"))
+            _sqlCommand.Parameters.AddWithValue("@supplier_address", _data.Item("supplier_address"))
+            _sqlCommand.Parameters.AddWithValue("@supplier_contact", _data.Item("supplier_contact"))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Supplier has been updated successfully!")
+            Else
+                Growl.Error("Failed updating the supplier!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Add() Implements ICommandPanel.Add
-        _sqlCommand = New SqlCommand("EXEC InsertSupplierProcedure @supplier_name, @supplier_address, @supplier_contact, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@supplier_name", _data.Item("supplier_name"))
-        _sqlCommand.Parameters.AddWithValue("@supplier_address", _data.Item("supplier_address"))
-        _sqlCommand.Parameters.AddWithValue("@supplier_contact", _data.Item("supplier_contact"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Supplier has been added successfully!")
-        Else
-            Growl.Info("Failed adding the supplier!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC InsertSupplierProcedure @supplier_name, @supplier_address, @supplier_contact, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@supplier_name", _data.Item("supplier_name"))
+            _sqlCommand.Parameters.AddWithValue("@supplier_address", _data.Item("supplier_address"))
+            _sqlCommand.Parameters.AddWithValue("@supplier_contact", _data.Item("supplier_contact"))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Supplier has been added successfully!")
+            Else
+                Growl.Error("Failed adding the supplier!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Shared Function Search(query As String) As sgsmsdb.viewtblsuppliersDataTable

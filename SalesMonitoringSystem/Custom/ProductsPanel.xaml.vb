@@ -54,7 +54,7 @@ Public Class ProductsPanel
             Pagination.Visibility = Visibility.Visible
         End If
 
-        If MAX_PAGE_COUNT / _dataTable.Count < 0 Then
+        If MAX_PAGE_COUNT / _dataTable.Count > 0 Then
             Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
         Else
             Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT

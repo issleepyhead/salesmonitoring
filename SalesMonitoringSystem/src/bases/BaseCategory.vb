@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports HandyControl.Controls
+Imports SalesMonitoringSystem.sgsmsdb
 
 Public Class BaseCategory
     Inherits SqlBaseConnection
@@ -13,54 +14,99 @@ Public Class BaseCategory
     End Sub
 
     Public Sub Delete() Implements ICommandPanel.Delete
-        _sqlCommand = New SqlCommand("EXEC DeleteCategoryProcedure @id, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Category has been deleted successfully!")
-        Else
-            Growl.Info("Failed deleting the category!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC DeleteCategoryProcedure @id, @user_id, @is_subcategory;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            _sqlCommand.Parameters.AddWithValue("@is_subcategory", If(String.IsNullOrEmpty(_data.Item("is_subcategory")), DBNull.Value, 1))
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Category has been deleted successfully!")
+            Else
+                Growl.Error("Failed deleting the category!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Update() Implements ICommandPanel.Update
-        _sqlCommand = New SqlCommand("EXEC UpdateCategoryProcedure @id, @parent_id, @category_name, @category_description, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@parent_id", If(_data.Item("parent_id") = "NULL", DBNull.Value, _data.Item("parent_id")))
-        _sqlCommand.Parameters.AddWithValue("@category_name", _data.Item("category_name"))
-        _sqlCommand.Parameters.AddWithValue("@category_description", _data.Item("category_description"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Category has been updated successfully!")
-        Else
-            Growl.Info("Failed updating the category!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC UpdateCategoryProcedure @id, @category_name, @category_description, @parent_id, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@category_name", _data.Item("category_name"))
+            _sqlCommand.Parameters.AddWithValue("@category_description", _data.Item("category_description"))
+            _sqlCommand.Parameters.AddWithValue("@parent_id", If(String.IsNullOrEmpty(_data.Item("parent_id")), DBNull.Value, _data.Item("parent_id")))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Category has been updated successfully!")
+            Else
+                Growl.Error("Failed updating the category!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Add() Implements ICommandPanel.Add
-        _sqlCommand = New SqlCommand("EXEC InsertCategoryProcedure @parent_id, @category_name, @category_description, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@parent_id", If(_data.Item("parent_id") = "NULL", DBNull.Value, _data.Item("parent_id")))
-        _sqlCommand.Parameters.AddWithValue("@category_name", _data.Item("category_name"))
-        _sqlCommand.Parameters.AddWithValue("@category_description", _data.Item("category_description"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() > 0 Then
-            Growl.Info("Category has been added successfully!")
-        Else
-            Growl.Info("Failed adding the category!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC InsertCategoryProcedure @category_name, @category_description, @parent_id, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@category_name", _data.Item("category_name"))
+            _sqlCommand.Parameters.AddWithValue("@category_description", If(String.IsNullOrEmpty(_data.Item("category_description")), DBNull.Value, _data.Item("category_description")))
+            _sqlCommand.Parameters.AddWithValue("@parent_id", If(String.IsNullOrEmpty(_data.Item("parent_id")), DBNull.Value, _data.Item("parent_id")))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() > 0 Then
+                Growl.Success("Category has been added successfully!")
+            Else
+                Growl.Error("Failed adding the category!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
-    Public Shared Function ScalarCategoryParentID(id As String) As Integer
+    Public Shared Function FillByParent() As viewtblcategoriesDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT CASE WHEN parent_category IS NULL THEN -1 ELSE parent_category END AS parent_category FROM tblcategories WHERE id = @id", conn)
-        cmd.Parameters.AddWithValue("@id", id)
+        Dim cmd As New SqlCommand("EXEC FillParentCategoriesProcedure", conn)
+        Dim dTable As New viewtblcategoriesDataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
 
-        Return cmd.ExecuteScalar()
+    Public Shared Function FillByFilterParent(id As String) As viewtblcategoriesDataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("EXEC FilterCategoryProcedure @parent_id", conn)
+        cmd.Parameters.AddWithValue("@parent_id", id)
+        Dim dTable As New viewtblcategoriesDataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
+    End Function
+
+    Public Shared Function IsParent(id As String) As Boolean
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT CASE WHEN COUNT(*) IS NULL THEN 0 ELSE COUNT(*) END AS s FROM tblcategories WHERE id = @id AND id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
+        cmd.Parameters.AddWithValue("@id", id)
+        If cmd.ExecuteScalar() > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Shared Function GetParent(id As String) As DataTable
+        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+        Dim cmd As New SqlCommand("SELECT parent_id FROM tblsubcategories WHERE category_id = @id", conn)
+        cmd.Parameters.AddWithValue("@id", id)
+        Dim dTable As New DataTable
+        Dim adapter As New SqlDataAdapter(cmd)
+        adapter.Fill(dTable)
+        Return dTable
     End Function
 
     Public Shared Function Exists(data As String) As Integer
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblcategories WHERE LOWER(CATEGORY_NAME) = LOWER(@data)", conn)
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblcategories WHERE LOWER(category_name) = @data", conn)
         cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
 
         Return cmd.ExecuteScalar()
@@ -68,7 +114,7 @@ Public Class BaseCategory
 
     Public Shared Function FillByParentCategory() As DataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT id, category_name FROM tblcategories WHERE parent_category IS NULL", conn)
+        Dim cmd As New SqlCommand("SELECT id, category_name FROM tblcategories WHERE id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
 
         Dim dTable As New DataTable
         Dim adapter As New SqlDataAdapter(cmd)
@@ -76,11 +122,11 @@ Public Class BaseCategory
         Return dTable
     End Function
 
-    Public Shared Function Search(query As String) As sgsmsdb.viewtblcategoriesDataTable
+    Public Shared Function Search(query As String) As viewtblcategoriesDataTable
         Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
         Dim cmd As New SqlCommand("SELECT * FROM viewtblcategories WHERE CATEGORY_NAME LIKE CONCAT('%', @query, '%')", conn)
         cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New sgsmsdb.viewtblcategoriesDataTable
+        Dim dTable As New viewtblcategoriesDataTable
         Dim adapter As New SqlDataAdapter(cmd)
         adapter.Fill(dTable)
         Return dTable

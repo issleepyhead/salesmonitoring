@@ -28,6 +28,7 @@
                     Command="hc:ControlCommands.Close"
                     Margin="0 0 30 0"
                     Padding="0"
+                    IsEnabled="True"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"/>
         </hc:SimplePanel>
@@ -35,47 +36,29 @@
                     Grid.Row="1"
                     Margin="30 8"
                     VerticalAlignment="Center">
-            <StackPanel>
-                <StackPanel Margin="0 8 0 0">
-                    <TextBlock HorizontalAlignment="Left"
+            <StackPanel Margin="0 8 0 0">
+                <TextBlock HorizontalAlignment="Left"
                            Text="CATEGORY NAME: "
                            FontSize="18"
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
-                    <TextBox Name="CategoryNameTextBox"
+                <TextBox Name="CategoryNameTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"/>
-                </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <StackPanel Margin="0 8 0 0">
-                    <TextBlock HorizontalAlignment="Left"
+            <StackPanel Margin="0 8 0 0">
+                <TextBlock HorizontalAlignment="Left"
                                Text="CATEGORY DESCRIPTION: "
                                FontSize="18"
                                Padding="0 0 0 5"
                                FontWeight="Bold"/>
-                    <TextBox Name="CategoryDescriptionTextBox"
+                <TextBox Name="CategoryDescriptionTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              MinHeight="40"
                              Height="Auto"
                              AcceptsReturn="True"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel>
-                <StackPanel Margin="0 8 0 0">
-                    <TextBlock HorizontalAlignment="Left"
-                               Text="PARENT CATEGORY: "
-                               FontSize="18"
-                               Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                    <ComboBox Name="CategoryParentComboBox"
-                             HorizontalAlignment="Stretch"
-                             hc:BorderElement.CornerRadius="0"
-                             MinHeight="40"
-                             Height="Auto"/>
-                </StackPanel>
             </StackPanel>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">

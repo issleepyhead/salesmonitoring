@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports HandyControl.Controls
+Imports HandyControl.Data
 Imports HandyControl.Tools.Extension
 Imports SalesMonitoringSystem.sgsmsdbTableAdapters
 
@@ -26,8 +27,10 @@ Public Class InventoryPanel
     Public Sub Update() Implements IObserverPanel.Update
         _tableAdapterTransactions.Fill(_dataTableTransactions)
         _tableAdapterTransactionsRecords.Fill(_dataTableTransactionsRecords)
-        InventoryTransactionsDataGrid.ItemsSource = _dataTableTransactions.DefaultView
-        InventoryRecordsDataGrid.ItemsSource = _dataTableTransactionsRecords
+        InventoryTransactionsDataGrid.ItemsSource = _dataTableTransactions.Take(MAX_PAGE_COUNT)
+        InventoryRecordsDataGrid.ItemsSource = _dataTableTransactionsRecords.Take(MAX_PAGE_COUNT)
+
+        PaginationConfig()
     End Sub
 
     ''' <summary>
@@ -36,22 +39,42 @@ Public Class InventoryPanel
     Private Sub PaginationConfig()
         If _dataTableTransactions.Count <= MAX_PAGE_COUNT Then
             PaginationTransactions.Visibility = Visibility.Collapsed
-            Return
         Else
             PaginationTransactions.Visibility = Visibility.Visible
         End If
 
-        If MAX_PAGE_COUNT / _dataTableTransactions.Count < 0 Then
+        If _dataTableTransactionsRecords.Count <= MAX_PAGE_COUNT Then
+            PaginationRecords.Visibility = Visibility.Collapsed
+            Return
+        Else
+            PaginationRecords.Visibility = Visibility.Visible
+        End If
+
+        If MAX_PAGE_COUNT / _dataTableTransactions.Count > 0 Then
             PaginationTransactions.MaxPageCount = _dataTableTransactions.Count / MAX_PAGE_COUNT + 1
         Else
             PaginationTransactions.MaxPageCount = _dataTableTransactions.Count / MAX_PAGE_COUNT
+        End If
+
+        If MAX_PAGE_COUNT / _dataTableTransactionsRecords.Count > 0 Then
+            PaginationRecords.MaxPageCount = _dataTableTransactions.Count / MAX_PAGE_COUNT + 1
+        Else
+            PaginationRecords.MaxPageCount = _dataTableTransactions.Count / MAX_PAGE_COUNT
         End If
     End Sub
 
     Private Sub InventoryRecordsDataGrid_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles InventoryTransactionsDataGrid.SelectionChanged
         If InventoryTransactionsDataGrid.SelectedItems.Count > 0 Then
-            Dialog.Show(New InventoryDialog(data:=InventoryTransactionsDataGrid.SelectedItems(0)))
+            Dialog.Show(New InventoryDialog(data:=InventoryTransactionsDataGrid.SelectedItems.Item(0)))
             InventoryTransactionsDataGrid.SelectedIndex = -1
         End If
+    End Sub
+
+    Private Sub PaginationRecords_PageUpdated(sender As Object, e As FunctionEventArgs(Of Integer)) Handles PaginationRecords.PageUpdated
+        InventoryRecordsDataGrid.ItemsSource = _dataTableTransactionsRecords.Skip((e.Info - 1) * MAX_PAGE_COUNT).Take(MAX_PAGE_COUNT)
+    End Sub
+
+    Private Sub PaginationTransactions_PageUpdated(sender As Object, e As FunctionEventArgs(Of Integer)) Handles PaginationTransactions.PageUpdated
+        InventoryTransactionsDataGrid.ItemsSource = _dataTableTransactions.Skip((e.Info - 1) * MAX_PAGE_COUNT).Take(MAX_PAGE_COUNT)
     End Sub
 End Class

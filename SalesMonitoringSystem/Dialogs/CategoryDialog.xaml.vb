@@ -15,22 +15,15 @@ Public Class CategoryDialog
     End Sub
 
     Private Sub CategoryDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        CategoryParentComboBox.ItemsSource = BaseCategory.FillByParentCategory().DefaultView
-        CategoryParentComboBox.DisplayMemberPath = "category_name"
-        CategoryParentComboBox.SelectedValuePath = "id"
-
         If _data IsNot Nothing Then
             CategoryNameTextBox.Text = _data.Item("category_name")
             CategoryDescriptionTextBox.Text = _data.Item("category_description")
-            CategoryParentComboBox.SelectedValue = _data.Item("parent_id")
-        Else
-
         End If
     End Sub
 
 
     Private Sub SaveCategoryButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveCategoryButton.Click
-        Dim controls As Object() = {CategoryDescriptionTextBox, CategoryNameTextBox}
+        Dim controls As Object() = {CategoryNameTextBox}
         Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_STRING}
 
         Dim result As New List(Of Object())
@@ -38,30 +31,29 @@ Public Class CategoryDialog
             result.Add(InputValidation.ValidateInputString(controls(i), types(i)))
         Next
 
+        Dim baseCommand As BaseCategory = Nothing
+        Dim invoker As ICommandInvoker = Nothing
         If Not result.Any(Function(item As Object()) Not item(0)) Then
-            If BaseCategory.Exists(result(1)(1)) = 0 Then
-                Dim data As New Dictionary(Of String, String) From {
-                    {"id", _data?.Item("id")},
-                    {"parent_id", If(CategoryParentComboBox.SelectedIndex = -1, "NULL", CategoryParentComboBox.SelectedValue)},
-                    {"category_name", result(1)(1)},
-                    {"category_description", result(0)(1)}
-                }
+            Dim data As New Dictionary(Of String, String) From {
+                {"id", _data?.Item("id")},
+                {"category_name", result(0)(1)},
+                {"category_description", If(String.IsNullOrEmpty(CategoryDescriptionTextBox.Text), "", CategoryDescriptionTextBox.Text)},
+                {"parent_id", ""}
+            }
 
-                Dim baseCommand As New BaseCategory(data)
-                Dim invoker As ICommandInvoker
-                If _data Is Nothing Then
-                    invoker = New AddCommand(baseCommand)
-                Else
-                    invoker = New UpdateCommand(baseCommand)
-                End If
-
-                invoker.Execute()
-                _subject.NotifyObserver()
-                CloseDialog(Closebtn)
+            If BaseCategory.Exists(result(0)(1)) = 0 AndAlso _data Is Nothing Then
+                baseCommand = New BaseCategory(data)
+                invoker = New AddCommand(baseCommand)
+            ElseIf _data IsNot Nothing Then
+                baseCommand = New BaseCategory(Data)
+                invoker = New UpdateCommand(baseCommand)
             Else
                 Growl.Info("Category exists!")
             End If
 
+            invoker?.Execute()
+            _subject.NotifyObserver()
+            CloseDialog(Closebtn)
         End If
     End Sub
 

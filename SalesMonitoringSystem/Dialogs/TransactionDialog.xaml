@@ -65,7 +65,7 @@
             </StackPanel>
         </hc:SimplePanel>
         <hc:SimplePanel Grid.Row="2">
-            <hc:FlexPanel JustifyContent="FlexEnd"
+            <hc:FlexPanel Name="FlexPanel1" JustifyContent="FlexEnd"
                           Margin="30 0">
                 <StackPanel Orientation="Horizontal">
                     <Button Name="AddItemButton"
@@ -113,7 +113,7 @@
             </DataGrid>
         </Grid>
         <hc:SimplePanel Grid.Row="4">
-            <hc:FlexPanel JustifyContent="FlexEnd">
+            <hc:FlexPanel Name="FlexPanel2" JustifyContent="FlexEnd">
                 <Button Name="SaveButton"
                         Margin="0 0 30 0"
                         Foreground="#fff"

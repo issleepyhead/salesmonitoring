@@ -74,6 +74,16 @@ StackNotificationControl
 InitializeComponent
 </summary>
 </member>
+<member name="T:SalesMonitoringSystem.TutorialPanel">
+<summary>
+TutorialPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TutorialPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:SalesMonitoringSystem.AboutDialog">
 <summary>
 AboutDialog
@@ -90,6 +100,16 @@ InventoryDialog
 </summary>
 </member>
 <member name="M:SalesMonitoringSystem.InventoryDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.SubCategoryDialog">
+<summary>
+SubCategoryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.SubCategoryDialog.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
@@ -146,11 +166,6 @@ InitializeComponent
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -191,9 +206,9 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRow">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesDataTable">
 <summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRow">
@@ -236,9 +251,9 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRowChangeEvent">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRow">
 <summary>
-Row event argument class
+Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRowChangeEvent">
@@ -281,9 +296,9 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblcategoriesTableAdapter">
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRowChangeEvent">
 <summary>
-Represents the connection and commands used to retrieve and save data.
+Row event argument class
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbldeliveriesTableAdapter">
@@ -322,6 +337,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblproductsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblcategoriesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -371,7 +391,62 @@ Used to sort self-referenced table's rows
  Serves as remove to the delivery cart.
  </summary>
 </member>
-<member name="M:SalesMonitoringSystem.Helpers.GenInvoiceNumber">
+<member name="M:SalesMonitoringSystem.BaseTransaction.ScalarSales">
+ <summary>
+ Gets the total sales of the current date.
+ </summary>
+ <returns>An integer sum of the sales in the current date.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.ScalarTransactions">
+ <summary>
+ Gets the total rows of the transactions
+ </summary>
+ <returns>An integer of the total rows of transaction table</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.Search(System.String)">
+ <summary>
+ Search query for the transactions.
+ </summary>
+ <param name="query">A string query for invoice.</param>
+ <returns>A list of the result from the query.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FetchLatestTransactions">
+ <summary>
+ Fetches the fifteen latest transactions in the transactions table.
+ </summary>
+ <returns>Returns a list of transactions.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.InputValidation.ValidateInputString(System.Object,SalesMonitoringSystem.DataInput)">
+ <summary>
+ Use to validate the control's text
+ </summary>
+ <param name="control">Control to be validated</param>
+ <param name="type">Type of string validation</param>
+ <returns></returns>
+</member>
+<member name="T:SalesMonitoringSystem.SqlBaseConnection">
+ <summary>
+ A base class for the commands to inherit.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.SqlConnectionSingleton.#ctor">
+ <summary>
+ Sets the constructor as private to ensure that the instance will not be
+ instantiated again.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.SqlConnectionSingleton.GetInstance">
+ <summary>
+ A single instance of the connection for all the operations
+ </summary>
+ <returns>An open instancne of the connection.</returns>
+</member>
+<member name="T:SalesMonitoringSystem.Helpers">
+ <summary>
+ Collection of functions that will be generally used in forms.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.Helpers.GenInvoiceNumber(SalesMonitoringSystem.Helpers.InvoiceType)">
  <summary>
  An invoice generator function that returns a string with a format of SGMS-{DATE}-{8_DIGIT_SINCE_FIRST_EPOCH_UNIX_TIME}
  </summary>
@@ -382,6 +457,11 @@ Used to sort self-referenced table's rows
  Searches for button within a dialog then invoke the click command in it.
  </summary>
  <param name="btn">A button control.</param>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandInvoker.Execute">
+ <summary>
+ Invokes the command passed to the command class.
+ </summary>
 </member>
 <member name="M:SalesMonitoringSystem.ICommandPanel.Delete">
  <summary>
@@ -396,6 +476,32 @@ Used to sort self-referenced table's rows
 <member name="M:SalesMonitoringSystem.ICommandPanel.Add">
  <summary>
  Serves as an add command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IDeliveryCommandPanel.Receive">
+ <summary>
+ Receive command for the delivery panel.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IDeliveryCommandPanel.Cancel">
+ <summary>
+ Cancel command for the delivery panel.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IObservablePanel.RegisterObserver(SalesMonitoringSystem.IObserverPanel)">
+ <summary>
+ Register the observer to the observable.
+ </summary>
+ <param name="o">An IObserverPanel to register in the observable.</param>
+</member>
+<member name="M:SalesMonitoringSystem.IObservablePanel.NotifyObserver">
+ <summary>
+ Notifies all the observes that are listed in observable.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IObserverPanel.Update">
+ <summary>
+ Updates the data of the panel.
  </summary>
 </member>
 <member name="T:SalesMonitoringSystem.AccountDialog">
@@ -559,6 +665,11 @@ DeliveryCartDialog
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryCartDialog.UpdateVisual">
+ <summary>
+ To update the total and datagrid data
+ </summary>
 </member>
 <member name="M:SalesMonitoringSystem.DeliveryCartDialog.InitializeComponent">
 <summary>

@@ -1,4 +1,11 @@
 ﻿Public Interface IDeliveryCommandPanel
-    Sub Recieve()
+    ''' <summary>
+    ''' Receive command for the delivery panel.
+    ''' </summary>
+    Sub Receive()
+
+    ''' <summary>
+    ''' Cancel command for the delivery panel.
+    ''' </summary>
     Sub Cancel()
 End Interface

@@ -1,4 +1,6 @@
-﻿Public Class AuditTrailPanel
+﻿Imports HandyControl.Data
+
+Public Class AuditTrailPanel
     Implements IObserverPanel
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtbllogsTableAdapter
     Private _dataTable As New sgsmsdb.viewtbllogsDataTable
@@ -21,18 +23,21 @@
         TransactionsDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
 
         If _dataTable.Count <= MAX_PAGE_COUNT Then
-            Pagination.Visibility = Visibility.Collapsed
+            PaginationLog.Visibility = Visibility.Collapsed
             Return
         End If
 
-        If MAX_PAGE_COUNT / _dataTable.Count < 0 Then
-            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
-        Else
-            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT
-        End If
+        PaginationConfig(_dataTable, PaginationLog)
     End Sub
 
-    Private Sub Pagination_PageUpdated(sender As Object, e As HandyControl.Data.FunctionEventArgs(Of Integer)) Handles Pagination.PageUpdated
+    Private Sub Pagination_PageUpdated(sender As Object, e As HandyControl.Data.FunctionEventArgs(Of Integer)) Handles PaginationLog.PageUpdated
         TransactionsDataGridView.ItemsSource = _dataTable.Skip((e.Info - 1) * MAX_PAGE_COUNT).Take(MAX_PAGE_COUNT)
+    End Sub
+
+    Private Sub LogSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles LogSearch.SearchStarted
+        _dataTable = BaseAudit.Search(LogSearch.Text)
+        TransactionsDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+
+        PaginationConfig(_dataTable, PaginationLog)
     End Sub
 End Class

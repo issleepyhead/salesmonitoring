@@ -37,21 +37,20 @@ Public Class DeliveryDialog
             ProductNameComboBox.SelectedValue = _data.Item("PRODUCT_ID")
         Else
             ProductNameComboBox.SelectedIndex = 0
-            ProductNameComboBox_SelectionChanged(ProductNameComboBox, Nothing)
         End If
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
-        Dim controls As Object() = {CostPriceTextBox, QuantityTextBox}
-        Dim types As DataInput() = {DataInput.STRING_INTEGER, DataInput.STRING_INTEGER}
+        'Dim controls As Object() = {QuantityTextBox}
+        'Dim types As DataInput() = {DataInput.STRING_INTEGER, DataInput.STRING_INTEGER}
 
-        ' Validate the inputs
-        Dim res As New List(Of Object())
-        For idx = 0 To controls.Count - 1
-            res.Add(InputValidation.ValidateInputString(controls(idx), types(idx)))
-        Next
-
-        If Not res.Any(Function(item As Object()) Not item(0)) Then
+        '' Validate the inputs
+        'Dim res As New List(Of Object())
+        'For idx = 0 To controls.Count - 1
+        '    res.Add(InputValidation.ValidateInputString(controls(idx), types(idx)))
+        'Next
+        Dim res As Object() = InputValidation.ValidateInputString(QuantityTextBox, DataInput.STRING_INTEGER)
+        If res(0) Then
             If _data Is Nothing Then
 
                 ' Temporarily adding the data to the datagrid
@@ -70,9 +69,9 @@ Public Class DeliveryDialog
                     _parent._itemSource.Rows.Add({
                         ID_NOT_SET, ProductNameComboBox.SelectedValue,
                         _parent.SupplierNameComboBox.SelectedValue,
-                        ProductNameComboBox.Text, res(1)(1),
-                        SellingPriceTextBox.Text, res(0)(1),
-                        CInt(res(0)(1)) * res(1)(1)
+                        ProductNameComboBox.Text, QuantityTextBox.Text,
+                        SellingPriceTextBox.Text, CostPriceTextBox.Text,
+                        CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
                     })
                 End If
             Else
@@ -80,8 +79,8 @@ Public Class DeliveryDialog
                 _data.Row.Item("PRODUCT_ID") = ProductNameComboBox.SelectedValue
                 _data.Item("PRODUCT_NAME") = ProductNameComboBox.Text
                 _data.Item("PRICE") = SellingPriceTextBox.Text
-                _data.Item("TOTAL") = CInt(res(0)(1)) * res(1)(1)
-                _data.Item("QUANTITY") = CInt(res(1)(1))
+                _data.Item("TOTAL") = CInt(CostPriceTextBox.Text) * QuantityTextBox.Text
+                _data.Item("QUANTITY") = CInt(QuantityTextBox.Text)
             End If
             _parent.UpdateVisual()
             CloseDialog(Closebtn)
@@ -90,7 +89,11 @@ Public Class DeliveryDialog
     End Sub
 
     Private Sub ProductNameComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ProductNameComboBox.SelectionChanged
-        SellingPriceTextBox.Text = CStr(BaseProduct.ScalarPrice(ProductNameComboBox.SelectedValue))
+        If ProductNameComboBox.SelectedIndex <> -1 Then
+            Dim product_info As DataTable = BaseProduct.ProductInfo(ProductNameComboBox.SelectedValue)
+            SellingPriceTextBox.Text = product_info.Rows.Item(0).Item("PRICE").ToString
+            CostPriceTextBox.Text = product_info.Rows.Item(0).Item("COST_PRICE").ToString
+        End If
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As RoutedEventArgs) Handles DeleteButton.Click

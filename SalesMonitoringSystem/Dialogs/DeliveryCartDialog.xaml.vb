@@ -1,14 +1,15 @@
 ﻿Imports System.Data
 Imports HandyControl.Controls
+Imports SalesMonitoringSystem.sgsmsdb
 
 Public Class DeliveryCartDialog
     Private _tableAdapter As New sgsmsdbTableAdapters.viewtblsuppliersTableAdapter
-    Private _data As DataRowView
+    Private _data As viewtbldeliveriesRow
     Private _subject As IObservablePanel
     Private Const ID_NOT_SET As Integer = -1
     Public _itemSource As DataTable
     Public Sub New(
-        Optional data As DataRowView = Nothing,
+        Optional data As viewtbldeliveriesRow = Nothing,
         Optional subject As IObservablePanel = Nothing
     )
         InitializeComponent()
@@ -34,7 +35,10 @@ Public Class DeliveryCartDialog
         Else
             Dim values As String() = _data.Item("DELIVERY_DATE").Split("/")
             DeliveryDate.SelectedDate = New Date(values(2), values(0), values(1))
-            SaveButton.Content = "Update"
+            DeliveryDate.IsEnabled = False
+            SupplierNameComboBox.IsEnabled = False
+            SaveButton.Visibility = Visibility.Collapsed
+            RecievedButton.Margin = New Thickness(0, 0, 30, 0)
         End If
     End Sub
 
@@ -58,11 +62,14 @@ Public Class DeliveryCartDialog
             SupplierNameComboBox.SelectedValue = _itemSource.Rows(0).Item("SUPPLIER_ID")
             UpdateVisual()
         Else
-            ReferenceNumberLabel.Text = GenInvoiceNumber()
+            ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Delivery)
             SupplierNameComboBox.SelectedIndex = 0
         End If
     End Sub
 
+    ''' <summary>
+    ''' To update the total and datagrid data
+    ''' </summary>
     Public Sub UpdateVisual()
         ItemsDataGridView.ItemsSource = _itemSource.DefaultView
         Dim total As Integer = 0

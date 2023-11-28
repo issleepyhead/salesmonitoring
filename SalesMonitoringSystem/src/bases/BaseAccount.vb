@@ -12,49 +12,61 @@ Public Class BaseAccount
     End Sub
 
     Public Sub Delete() Implements ICommandPanel.Delete
-        _sqlCommand = New SqlCommand("EXEC DeleteAccountProcedure @id, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() <= 0 Then
-            Growl.Error("An error occured!")
-        Else
-            Growl.Info("Account has been deleted successfully!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC DeleteAccountProcedure @id, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() <= 0 Then
+                Growl.Error("An error occured!")
+            Else
+                Growl.Success("Account has been deleted successfully!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Update() Implements ICommandPanel.Update
-        _sqlCommand = New SqlCommand("EXEC UpdateAccountProcedure @id, @role_id, @first_name, @last_name, @address, @contact, @username, @password, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
-        _sqlCommand.Parameters.AddWithValue("@role_id", _data.Item("role_id"))
-        _sqlCommand.Parameters.AddWithValue("@first_name", _data.Item("first_name"))
-        _sqlCommand.Parameters.AddWithValue("@last_name", _data.Item("last_name"))
-        _sqlCommand.Parameters.AddWithValue("@address", _data.Item("address"))
-        _sqlCommand.Parameters.AddWithValue("@contact", _data.Item("contact"))
-        _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
-        _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() <= 0 Then
-            Growl.Error("An error occured!")
-        Else
-            Growl.Info("Account has been updated successfully!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC UpdateAccountProcedure @id, @role_id, @first_name, @last_name, @address, @contact, @username, @password, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
+            _sqlCommand.Parameters.AddWithValue("@role_id", _data.Item("role_id"))
+            _sqlCommand.Parameters.AddWithValue("@first_name", _data.Item("first_name"))
+            _sqlCommand.Parameters.AddWithValue("@last_name", _data.Item("last_name"))
+            _sqlCommand.Parameters.AddWithValue("@address", _data.Item("address"))
+            _sqlCommand.Parameters.AddWithValue("@contact", _data.Item("contact"))
+            _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
+            _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() <= 0 Then
+                Growl.Error("An error occured!")
+            Else
+                Growl.Success("Account has been updated successfully!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub Add() Implements ICommandPanel.Add
-        _sqlCommand = New SqlCommand("EXEC InsertAccountProcedure @role_id, @first_name, @last_name, @address, @contact, @username, @password, @user_id;", _sqlConnection)
-        _sqlCommand.Parameters.AddWithValue("@role_id", _data.Item("role_id"))
-        _sqlCommand.Parameters.AddWithValue("@first_name", _data.Item("first_name"))
-        _sqlCommand.Parameters.AddWithValue("@last_name", _data.Item("last_name"))
-        _sqlCommand.Parameters.AddWithValue("@address", _data.Item("address"))
-        _sqlCommand.Parameters.AddWithValue("@contact", _data.Item("contact"))
-        _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
-        _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
-        _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-        If _sqlCommand.ExecuteNonQuery() <= 0 Then
-            Growl.Error("An error occured")
-        Else
-            Growl.Info("Account has been added successfully!")
-        End If
+        Try
+            _sqlCommand = New SqlCommand("EXEC InsertAccountProcedure @role_id, @first_name, @last_name, @address, @contact, @username, @password, @user_id;", _sqlConnection)
+            _sqlCommand.Parameters.AddWithValue("@role_id", _data.Item("role_id"))
+            _sqlCommand.Parameters.AddWithValue("@first_name", _data.Item("first_name"))
+            _sqlCommand.Parameters.AddWithValue("@last_name", _data.Item("last_name"))
+            _sqlCommand.Parameters.AddWithValue("@address", _data.Item("address"))
+            _sqlCommand.Parameters.AddWithValue("@contact", _data.Item("contact"))
+            _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
+            _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
+            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
+            If _sqlCommand.ExecuteNonQuery() <= 0 Then
+                Growl.Error("An error occured")
+            Else
+                Growl.Success("Account has been added successfully!")
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Shared Function ScalarRoleName(rolename As String) As Integer

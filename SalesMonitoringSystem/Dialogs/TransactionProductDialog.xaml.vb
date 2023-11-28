@@ -15,13 +15,11 @@ Public Class TransactionProductDialog
         _parent = parent
         If _data IsNot Nothing Then
             DataContext = _data
-            SaveButton.Content = "ITEM INFO"
-            SaveButton.Visibility = Visibility.Collapsed
         End If
     End Sub
 
     Private Sub TransactionProductDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        ProductNameComboBox.ItemsSource = _tableAdapter.GetData().DefaultView
+        ProductNameComboBox.ItemsSource = _tableAdapter.GetData()
         ProductNameComboBox.SelectedValuePath = "ID"
         ProductNameComboBox.DisplayMemberPath = "PRODUCT_NAME"
 
@@ -29,7 +27,6 @@ Public Class TransactionProductDialog
             ProductNameComboBox.SelectedValue = _data.Item("PRODUCT_ID")
         Else
             ProductNameComboBox.SelectedIndex = 0
-            ProductNameComboBox_SelectionChanged(ProductNameComboBox, Nothing)
         End If
     End Sub
 
@@ -39,8 +36,8 @@ Public Class TransactionProductDialog
                 Dim is_existing As Boolean = False
                 For Each item As DataRow In _parent._itemSource.Rows
                     If item.Item("PRODUCT_NAME") = ProductNameComboBox.Text Then
-                        item.Item("QUANTITY") += CInt(QuantityTextBox.Text)
-                        item.Item("TOTAL") += CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
+                        item.Item("QUANTITY") = CInt(QuantityTextBox.Text)
+                        item.Item("TOTAL") = CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
                         is_existing = True
                         Exit For
                     End If
@@ -64,7 +61,8 @@ Public Class TransactionProductDialog
     End Sub
 
     Private Sub ProductNameComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ProductNameComboBox.SelectionChanged
-        SellingPriceTextBox.Text = CStr(BaseProduct.ScalarPrice(ProductNameComboBox.SelectedValue))
-        QuantityAvailable.Text = CStr(BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue))
+        Dim info As DataTable = BaseProduct.ProductInfo(ProductNameComboBox.SelectedValue)
+        SellingPriceTextBox.Text = info.Rows(0).Item("PRICE").ToString
+        QuantityAvailable.Text = BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue).ToString
     End Sub
 End Class

@@ -1,9 +1,10 @@
 ﻿Imports System.Data
+Imports SalesMonitoringSystem.sgsmsdb
 
 Public Class InventoryDialog
-    Private _data As DataRowView
+    Private _data As viewtblinventoryRow
     Private _itemSource As DataTable
-    Public Sub New(Optional data As DataRowView = Nothing)
+    Public Sub New(Optional data As viewtblinventoryRow = Nothing)
         InitializeComponent()
         _data = data
         DataContext = _data

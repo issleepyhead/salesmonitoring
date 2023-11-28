@@ -44,7 +44,8 @@
                 <hc:ComboBox Name="CategoryComboBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40"/>
+                         Height="40"
+                         IsEditable="True"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
                 <TextBlock HorizontalAlignment="Left"
@@ -76,11 +77,11 @@
                            FontSize="18"
                            Padding="0 0 0 5"
                            FontWeight="Bold"/>
-                <TextBox Name="ProductPriceTextBox"
+                <hc:TextBox Name="ProductPriceTextBox"
                          Text="{Binding PRICE}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40"/>
+                         Height="40" InputScope="Number"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
                 <TextBlock HorizontalAlignment="Left"
@@ -92,7 +93,7 @@
                          Text="{Binding COST_PRICE}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40"/>
+                         Height="40" InputScope="Number"/>
             </StackPanel>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">

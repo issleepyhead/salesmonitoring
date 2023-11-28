@@ -1,6 +1,13 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class InputValidation
+
+    ''' <summary>
+    ''' Use to validate the control's text
+    ''' </summary>
+    ''' <param name="control">Control to be validated</param>
+    ''' <param name="type">Type of string validation</param>
+    ''' <returns></returns>
     Public Shared Function ValidateInputString(control As Object, type As DataInput) As Object()
         Dim stringInput As String = Nothing
 
@@ -17,7 +24,8 @@ Public Class InputValidation
         End Select
 
         stringInput = stringInput.Trim()
-        stringInput = stringInput.Trim("0")
+        Dim start_trim_o As String = stringInput
+        stringInput = stringInput.TrimStart("0")
         If String.IsNullOrEmpty(stringInput) OrElse String.IsNullOrWhiteSpace(stringInput) Then
             control.BorderBrush = Brushes.Red
             Return {False, stringInput}
@@ -50,15 +58,16 @@ Public Class InputValidation
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_PHONE
-                If Regex.IsMatch(stringInput, "^(09|\+639)(\d{2}|\d)?[-\s]?\d{3}[-\s]?\d{4}$") Then
-                    Return {True, stringInput}
+
+                If Regex.IsMatch(start_trim_o, "^(\+639|09)\d{2}[-\s]?\d{3}[-\s]?\d{4}$") Then
+                    Return {True, start_trim_o}
                 End If
             Case DataInput.STRING_USERNAME
                 If stringInput.Count > 6 Then
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_INTEGER
-                If Regex.IsMatch(stringInput, "^(\d)$") OrElse Not stringInput = "0" Then
+                If Regex.IsMatch(stringInput, "^\d+$") AndAlso Not stringInput = "0" Then
                     Return {True, stringInput}
                 End If
         End Select

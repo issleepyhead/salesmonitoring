@@ -24,7 +24,7 @@
                                   Margin="15 0">
                         <hc:SearchBar x:Name="SearchInventoryTransactions"
                                       IsRealTime="True"
-                                      hc:InfoElement.Placeholder="Search Category"
+                                      hc:InfoElement.Placeholder="Search Item"
                                       Width="280"
                                       Height="30"
                                       VerticalAlignment="Center"
@@ -85,7 +85,7 @@
                                   Margin="15 0">
                         <hc:SearchBar x:Name="SearchInventoryRecords"
                                       IsRealTime="True"
-                                      hc:InfoElement.Placeholder="Search Category"
+                                      hc:InfoElement.Placeholder="Search Item"
                                       Width="280"
                                       Height="30"
                                       VerticalAlignment="Center"

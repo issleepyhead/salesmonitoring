@@ -23,11 +23,46 @@ Class Dashboard
         Next
     End Sub
 
+    Public Sub Update() Implements IObserverPanel.Update
+        StackNotifContainer.Children.Clear()
+        LabelTotalProducts.Text = BaseProduct.ScalarProducts()
+        LabelTotalSales.Text = BaseTransaction.ScalarSales()
+        LabelTotalTransactions.Text = BaseTransaction.ScalarTransactions()
+
+        Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
+        For Each item As DataRow In _itemSource.Rows
+            Dim stackpan As New StackNotificationControl
+            stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
+            stackpan.LabelStackHeading.Text = item.Item("invoice_number")
+            If item.Item("status_id") = &H2 Then
+                stackpan.ActiveIndicator.Background = Brushes.Transparent
+            Else
+                stackpan.ActiveIndicator.Background = Brushes.Red
+                stackpan.Background = New BrushConverter().ConvertFromString("#E1F1FD")
+            End If
+            StackNotifContainer.Children.Add(stackpan)
+            stackpan.Show
+        Next
+    End Sub
+
 #Region "SwithPanelEvents"
     ' Use for panel switching
     Public Sub SwitchPanelEvents(sender As Object, e As EventArgs) Handles BottomContainerDashboardButton.Click,
         BottomContainerProductsButton.Click, BottomContainerTransactionsButton.Click, BottomContainerLogoutButton.Click,
         BottomContainerMaintenaceButton.Click, BottomContainerInventoryButton.Click, BottomContainerLogsButton.Click
+
+        If sender.Equals(BottomContainerLogoutButton) Then
+            Dim res As MessageBoxResult = MessageBox.Ask("Do you want to log out?")
+            If res = MessageBoxResult.OK Then
+                My.Settings.userID = -1
+                My.Settings.userRole = "None"
+                My.Settings.Save()
+                Dim ln As New Login
+                ln.Show()
+                Close()
+            End If
+            Return
+        End If
 
         Dim panels As Object() = {
             DashboardPanel, ProductsPanel, TransactionsPanel, MaintenancePanel, InventoryPanel,
@@ -97,30 +132,13 @@ Class Dashboard
         End If
     End Sub
 
-    Public Sub Update() Implements IObserverPanel.Update
-        StackNotifContainer.Children.Clear()
-        LabelTotalProducts.Text = BaseProduct.ScalarProducts()
-        LabelTotalSales.Text = BaseTransaction.ScalarSales()
-        LabelTotalTransactions.Text = BaseTransaction.ScalarTransactions()
-
-        Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
-        For Each item As DataRow In _itemSource.Rows
-            Dim stackpan As New StackNotificationControl
-            stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
-            stackpan.LabelStackDescription.Text = item.Item("product_description")
-            stackpan.LabelStackHeading.Text = item.Item("product_name")
-            If CDate(item.Item("date_added")).ToShortDateString <> Date.Now.ToShortDateString Then
-                stackpan.ActiveIndicator.Background = Brushes.LightGray
-            Else
-                stackpan.ActiveIndicator.Background = Brushes.Red
-                stackpan.Background = New BrushConverter().ConvertFromString("#E1F1FD")
-            End If
-            StackNotifContainer.Children.Add(stackpan)
-            stackpan.Show
-        Next
-    End Sub
-
     Private Sub AboutButtonItem_Click(sender As Object, e As RoutedEventArgs) Handles AboutButtonItem.Click
         Dialog.Show(New AboutDialog)
+    End Sub
+
+    Private Sub Dashboard_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        If My.Settings.demoMode Then
+            Dialog.Show(New WelcomeDialog())
+        End If
     End Sub
 End Class

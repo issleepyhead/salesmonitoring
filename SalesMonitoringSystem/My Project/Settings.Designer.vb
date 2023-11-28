@@ -56,10 +56,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property userID() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("-1")>  _
+        Public Property userID() As Integer
             Get
-                Return CType(Me("userID"),String)
+                Return CType(Me("userID"),Integer)
             End Get
             Set
                 Me("userID") = value
@@ -77,17 +77,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\sgsmsdb.mdf;I"& _ 
-            "ntegrated Security=True")>  _
-        Public ReadOnly Property sgsmsdbConnectionString1() As String
-            Get
-                Return CType(Me("sgsmsdbConnectionString1"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("-1")>  _
@@ -97,6 +86,18 @@ Namespace My
             End Get
             Set
                 Me("userRole") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property demoMode() As Boolean
+            Get
+                Return CType(Me("demoMode"),Boolean)
+            End Get
+            Set
+                Me("demoMode") = value
             End Set
         End Property
     End Class

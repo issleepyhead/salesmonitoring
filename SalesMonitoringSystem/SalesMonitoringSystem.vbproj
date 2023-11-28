@@ -127,11 +127,17 @@
     <Compile Include="Custom\StackNotificationControl.xaml.vb">
       <DependentUpon>StackNotificationControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom\TutorialPanel.xaml.vb">
+      <DependentUpon>TutorialPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\AboutDialog.xaml.vb">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\InventoryDialog.xaml.vb">
       <DependentUpon>InventoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SubCategoryDialog.xaml.vb">
+      <DependentUpon>SubCategoryDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\TransactionDialog.xaml.vb">
       <DependentUpon>TransactionDialog.xaml</DependentUpon>
@@ -151,6 +157,7 @@
       <DependentUpon>sgsmsdb.xsd</DependentUpon>
     </Compile>
     <Compile Include="src\bases\BaseAccount.vb" />
+    <Compile Include="src\bases\BaseAudit.vb" />
     <Compile Include="src\bases\BaseCategory.vb" />
     <Compile Include="src\bases\BaseDeliveryCart.vb" />
     <Compile Include="src\bases\BaseInventory.vb" />
@@ -177,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Custom\StackNotificationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom\TutorialPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ProductDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SubCategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

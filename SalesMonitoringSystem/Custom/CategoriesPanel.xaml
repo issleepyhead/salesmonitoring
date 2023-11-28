@@ -7,7 +7,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
              d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignWidth="1000">
     <Grid Background="{StaticResource ApplicationLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -24,28 +24,49 @@
                           VerticalAlignment="Center"
                           Style="{StaticResource SearchBarExtend}"/>
             <StackPanel Orientation="Horizontal">
+                <hc:ComboBox Height="30"
+                             Width="140"
+                             Margin="0 0 8 0"
+                             Name="ComboboxParentFilter"/>
+                <hc:ComboBox Height="30"
+                             Width="140"
+                             Margin="0 0 8 0"
+                             Name="ComboboxCategoryFilter"/>
                 <hc:Pagination Name="Pagination"
-                           MaxPageCount="10"
+                           MaxPageCount="5"
                            PageIndex="1"
                            MaxPageInterval="3"
-                           DataCountPerPage="15"
+                           DataCountPerPage="30"
                            VerticalAlignment="Center"
                            Margin="0 0 10 0"
                            hc:BorderElement.CornerRadius="0"/>
                 <Button x:Name="AddButton" Foreground="{StaticResource ApplicationLight}" FontSize="9"
                         hc:BorderElement.CornerRadius="0"
-                        Content="Add"
+                        Content="New Category"
                         hc:IconElement.Geometry="{StaticResource ic_add}"
                         hc:IconElement.Height="12"
                         hc:IconElement.Width="12"
                         Height="30"
-                        Width="140"
+                        Width="110"
                         Padding="0"
                         BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"
                         VerticalAlignment="Center"
                         Grid.Column="1"/>
-
+                <Button x:Name="AddSubButton" Foreground="{StaticResource ApplicationLight}" FontSize="9"
+                        hc:BorderElement.CornerRadius="0"
+                        Content="New Sub Category"
+                        hc:IconElement.Geometry="{StaticResource ic_add}"
+                        hc:IconElement.Height="12"
+                        hc:IconElement.Width="12"
+                        Height="30"
+                        Width="110"
+                        Padding="0"
+                        BorderThickness="0"
+                        Background="{StaticResource ApplicationPrimaryDark}"
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                        Margin="8 0 0 0"/>
             </StackPanel>
         </hc:FlexPanel>
         <DataGrid x:Name="CategoriesDataGridView"
@@ -70,9 +91,6 @@
                 <DataGridTextColumn FontSize="13"
                                     Header="DESCRIPTION"
                                     Binding="{Binding DESCRIPTION}"/>
-                <DataGridTextColumn FontSize="13"
-                                    Header="PARENT CATEGORY"
-                                    Binding="{Binding PARENT}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

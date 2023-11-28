@@ -2,6 +2,7 @@
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Application.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\AuditTrailPanel.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\StackNotificationControl.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\TutorialPanel.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\AboutDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\AccountDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Custom\CategoriesPanel.xaml;;
@@ -17,6 +18,7 @@ FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\DeliveryCar
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\DeliveryDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\InventoryDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\ProductDialog.xaml;;
+FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\SubCategoryDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\SupplierDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\TransactionDialog.xaml;;
 FD:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\Dialogs\TransactionProductDialog.xaml;;

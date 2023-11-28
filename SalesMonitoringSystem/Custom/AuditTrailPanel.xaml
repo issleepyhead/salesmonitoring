@@ -22,11 +22,11 @@
                           Height="30"
                           VerticalAlignment="Center"
                           Style="{StaticResource SearchBarExtend}"/>
-            <hc:Pagination Name="Pagination"
-                           MaxPageCount="10"
+            <hc:Pagination Name="PaginationLog"
+                           MaxPageCount="5"
                            PageIndex="1"
                            MaxPageInterval="3"
-                           DataCountPerPage="15"
+                           DataCountPerPage="30"
                            VerticalAlignment="Center"
                            hc:BorderElement.CornerRadius="0"/>
         </hc:FlexPanel>
@@ -52,10 +52,10 @@
                                     Header="ACTION"
                                     Binding="{Binding ACTION}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="CATEGORY"
+                                    Header="FIELD"
                                     Binding="{Binding CATEGORY}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="FIELD"
+                                    Header="ITEM"
                                     Binding="{Binding NAME}"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="TIME"

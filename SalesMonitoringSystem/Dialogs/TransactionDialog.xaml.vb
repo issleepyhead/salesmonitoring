@@ -46,7 +46,7 @@ Public Class TransactionDialog
             _itemSource = BaseTransaction.FillByProductTransaction(ReferenceNumberLabel.Text)
             UpdateVisual()
         Else
-            ReferenceNumberLabel.Text = GenInvoiceNumber()
+            ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Transaction)
         End If
     End Sub
 
@@ -60,8 +60,12 @@ Public Class TransactionDialog
     End Sub
 
     Private Sub ItemsDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ItemsDataGridView.SelectionChanged
-        If ItemsDataGridView.SelectedItems.Count > 0 Then
-            ItemsDataGridView.SelectedIndex = -1
+        If _data Is Nothing Then
+            If ItemsDataGridView.SelectedItems.Count > 0 Then
+                Dim data As DataRowView = ItemsDataGridView.SelectedItems(0)
+                Dialog.Show(New TransactionProductDialog(Me, data))
+                ItemsDataGridView.SelectedIndex = -1
+            End If
         End If
     End Sub
 
@@ -89,5 +93,4 @@ Public Class TransactionDialog
         _subject.NotifyObserver()
         CloseDialog(Closebtn)
     End Sub
-
 End Class

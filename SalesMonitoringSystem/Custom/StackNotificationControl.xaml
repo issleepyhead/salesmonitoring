@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              HorizontalAlignment="Stretch">
     <Grid HorizontalAlignment="Stretch">
-        <Border BorderBrush="{StaticResource ApplicationDark}" BorderThickness="0 0 0 .2"/>
+        <Border BorderBrush="{StaticResource ApplicationDark}" BorderThickness="0 .2 0 0"/>
         <StackPanel Margin="5"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center">
@@ -17,7 +17,7 @@
                     <TextBlock Text="SOLD"
                                Padding="0 2"
                                VerticalAlignment="Center"
-                               FontSize="13"
+                               FontSize="10"
                                Name="LabelStackHeading"/>
                     <Border Height="8"
                             Width="8"
@@ -34,12 +34,6 @@
                            VerticalAlignment="Center"
                            Name="LabelDateAdded"/>
             </hc:FlexPanel>
-            <TextBlock Text="Lenses were delivered at Angeles City"
-                       FontSize="10"
-                       Padding="0 1 1 1"
-                       VerticalAlignment="Top"
-                       TextWrapping="WrapWithOverflow"
-                       Name="LabelStackDescription"/>
         </StackPanel>
 
     </Grid>
