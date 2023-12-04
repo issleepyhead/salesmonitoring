@@ -66,35 +66,55 @@ Public Class BaseProduct
     End Sub
 
     Public Shared Function ProductInfo(id As String) As DataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT PRICE, COST_PRICE FROM viewtblproducts WHERE id = @id", conn)
-        cmd.Parameters.AddWithValue("@id", id)
-        Dim dTable As New DataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT PRICE, COST_PRICE FROM viewtblproducts WHERE id = @id", conn)
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim dTable As New DataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New DataTable
+        End Try
     End Function
 
     Public Shared Function ScalarProducts() As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblproducts", conn)
-        Return cmd.ExecuteScalar()
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblproducts", conn)
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 
     Public Shared Function Exists(name As String) As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblproducts WHERE LOWER(PRODUCT_NAME) = LOWER(@name)", conn)
-        cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
-        Return cmd.ExecuteScalar()
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblproducts WHERE LOWER(PRODUCT_NAME) = LOWER(@name)", conn)
+            cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 
     Public Shared Function Search(query As String) As sgsmsdb.viewtblproductsDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT * FROM viewtblproducts WHERE PRODUCT_NAME LIKE CONCAT('%', @query, '%')", conn)
-        cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New sgsmsdb.viewtblproductsDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT * FROM viewtblproducts WHERE PRODUCT_NAME LIKE CONCAT('%', @query, '%')", conn)
+            cmd.Parameters.AddWithValue("@query", query)
+            Dim dTable As New sgsmsdb.viewtblproductsDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New sgsmsdb.viewtblproductsDataTable
+        End Try
     End Function
 End Class

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -15,97 +16,84 @@
         </Grid.RowDefinitions>
         <hc:FlexPanel Grid.Row="0"
                       JustifyContent="SpaceBetween"
-                      Margin="5 5 5 0">
-            <hc:SearchBar x:Name="SalesSearch"
-                          IsRealTime="True"
-                          hc:InfoElement.Placeholder="Search Record"
-                          Width="280"
-                          Height="30"
-                          VerticalAlignment="Center"
-                          Style="{StaticResource SearchBarExtend}"/>
-            <Grid>
+                      Margin="10 5 10 0">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 10 0">
+                <TextBlock Text="TOTAL REVENUE:"
+                            VerticalAlignment="Center"
+                            Grid.Column="0"
+                            FontWeight="Medium"
+                            Margin="0 0 8 0"/>
+                <TextBlock Text="0"
+                            VerticalAlignment="Center"
+                            Grid.Column="0"
+                            FontWeight="ExtraBold"
+                            x:Name="TextBoxRevenue"/>
+            </StackPanel>
+            <Grid Width="400">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="150"/>
+                    
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal"
-                            Margin="0 0 10 0">
-                    <TextBlock Text="TOTAL RECORDS:"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               FontWeight="Medium"
-                               Margin="0 0 8 0"/>
-                    <TextBlock Text="0"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               FontWeight="ExtraBold"/>
-                </StackPanel>
-                <!--<Button x:Name="RefreshButton"
-                        Foreground="{StaticResource ApplicationLight}" FontSize="9"
-                        hc:BorderElement.CornerRadius="0"
-                        Content="Refresh"
-                        hc:IconElement.Geometry="{StaticResource ic_refresh}"
-                        hc:IconElement.Height="12"
-                        hc:IconElement.Width="12"
-                        Height="28"
-                        Width="80"
-                        Padding="0"
-                        BorderThickness="0"
-                        Background="{StaticResource ApplicationPrimaryBlue}"
-                        VerticalAlignment="Center"
-                        Grid.Column="1"
-                        Margin="10 0"/>-->
+                <DatePicker SelectedDate="{x:Static system:DateTime.Now}"
+                            Width="100"
+                            Height="30"
+                            Name="DatePickerFirstDate"
+                            hc:BorderElement.CornerRadius="0"
+                            Grid.Column="0"/>
+                <TextBlock Text="TO"
+                           TextAlignment="Center"
+                           FontSize="15"
+                           Height="30"
+                           Width="30"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                <DatePicker SelectedDate="{x:Static system:DateTime.Now}"
+                            Width="100"
+                            Height="30"
+                            Name="DatePickerSecondDate"
+                            hc:BorderElement.CornerRadius="0"
+                            Grid.Column="2"/>
+                <hc:ComboBox Name="ComboBoxFilter"
+                             hc:BorderElement.CornerRadius="0"
+                             Height="30"
+                             Width="130"
+                             HorizontalAlignment="Center"
+                             Grid.Column="4" SelectedIndex="0"/>
             </Grid>
         </hc:FlexPanel>
         <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                   CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                  x:Name="CategoriesDataGridView"
-                  Style="{DynamicResource CustomDataGridStyle}"
+                  x:Name="ReportsDataGridView"
+                  hc:Empty.ShowEmpty="True"
+                  Padding="0"
                   IsReadOnly="True"
                   CanUserResizeColumns="False"
                   AutoGenerateColumns="False"
-                  Grid.Row="1">
+                  Grid.Row="1"
+                  Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="SUPPLIER NAME"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="NUMBER OF RECORDS"
+                                    Width="*"
+                                    Binding="{Binding NUMBER_RECORDS}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="PRODUCT NAME"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="TOTAL REVENUE"
+                                    Width="*"
+                                    Binding="{Binding TOTAL_REVENUE}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="STOCK IN"
-                                    Binding="{Binding CategoryName}"/>
+                                    Header="START DATE"
+                                    Width="*"
+                                    Binding="{Binding START_DATE}"/>
                 <DataGridTextColumn FontSize="13"
-                                    Header="DATE"
-                                    Binding="{Binding CategoryName}"/>
-
-                <DataGridTemplateColumn Width="80">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="ACTIONS"
-                                   FontSize="13"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <hc:FlexPanel JustifyContent="SpaceAround">
-                                <Button Margin="5"
-                                        Foreground="{StaticResource ApplicationLight}"
-                                        FontSize="9"
-                                        hc:BorderElement.CornerRadius="0"
-                                        hc:IconElement.Geometry="{StaticResource ic_eye}"
-                                        hc:IconElement.Height="12"
-                                        hc:IconElement.Width="12"
-                                        Height="24"
-                                        Width="24"
-                                        Padding="0"
-                                        BorderThickness="0"
-                                        Background="{StaticResource ApplicationPrimaryBlue}"
-                                        VerticalAlignment="Center"/>
-                            </hc:FlexPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                    Header="END DATE"
+                                    Width="*"
+                                    Binding="{Binding END_DATE}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

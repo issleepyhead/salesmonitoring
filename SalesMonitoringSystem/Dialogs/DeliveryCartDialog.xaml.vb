@@ -39,6 +39,8 @@ Public Class DeliveryCartDialog
             SupplierNameComboBox.IsEnabled = False
             SaveButton.Visibility = Visibility.Collapsed
             RecievedButton.Margin = New Thickness(0, 0, 30, 0)
+            AddItemButton.Visibility = Visibility.Collapsed
+
         End If
     End Sub
 
@@ -52,18 +54,22 @@ Public Class DeliveryCartDialog
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub DeliveryCartDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        SupplierNameComboBox.ItemsSource = _tableAdapter.GetData().DefaultView
+        Dim supplier_data As viewtblsuppliersDataTable = _tableAdapter.GetData()
+        supplier_data.Rows.Add({-1, "None", "", "", ""})
+        SupplierNameComboBox.ItemsSource = supplier_data
         SupplierNameComboBox.DisplayMemberPath = "SUPPLIER_NAME"
         SupplierNameComboBox.SelectedValuePath = "ID"
 
         If _data IsNot Nothing Then
-            _itemSource = BaseDeliveryCart.FillByProductDelivery(_data.Item("REFERENCE_NUMBER"), _data.Item("DELIVERY_DATE"))
+            _itemSource = BaseDeliveryCart.FillByProductDelivery(_data.Item("REFERENCE_NUMBER"))
             ItemsDataGridView.ItemsSource = _itemSource.DefaultView
-            SupplierNameComboBox.SelectedValue = _itemSource.Rows(0).Item("SUPPLIER_ID")
+            If _itemSource.Rows.Count > 0 Then
+                SupplierNameComboBox.SelectedValue = _itemSource.Rows(0).Item("SUPPLIER_ID")
+            End If
             UpdateVisual()
         Else
             ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Delivery)
-            SupplierNameComboBox.SelectedIndex = 0
+            SupplierNameComboBox.SelectedValue = -1
         End If
     End Sub
 
@@ -92,7 +98,12 @@ Public Class DeliveryCartDialog
         If _itemSource.Rows.Count <> 0 Then
             ' Check if the created delivery date is valid
             If CDate(DeliveryDate.SelectedDate.Value) < Date.Now.AddDays(-1) Then
-                Growl.Warning("Invalid delivery date.")
+                Growl.Info("Invalid delivery date.")
+                Return
+            End If
+
+            If SupplierNameComboBox.SelectedValue = -1 OrElse SupplierNameComboBox.SelectedIndex = -1 Then
+                Growl.Info("Please select a supplier")
                 Return
             End If
 
@@ -122,9 +133,9 @@ Public Class DeliveryCartDialog
         End If
 
         If _data Is Nothing Then
-            Growl.Info("Delivery has been added successfully!")
+            Growl.Success("Delivery has been added successfully!")
         Else
-            Growl.Info("Delivery has been updated successfully!")
+            Growl.Success("Delivery has been updated successfully!")
         End If
         _subject.NotifyObserver()
         CloseDialog(Closebtn)

@@ -77,4 +77,12 @@ Public Class InventoryPanel
     Private Sub PaginationTransactions_PageUpdated(sender As Object, e As FunctionEventArgs(Of Integer)) Handles PaginationTransactions.PageUpdated
         InventoryTransactionsDataGrid.ItemsSource = _dataTableTransactions.Skip((e.Info - 1) * MAX_PAGE_COUNT).Take(MAX_PAGE_COUNT)
     End Sub
+
+    Private Sub SearchInventoryRecords_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles SearchInventoryRecords.SearchStarted
+        InventoryRecordsDataGrid.ItemsSource = BaseInventory.SearchInventoryRecords(sender.Text)
+    End Sub
+
+    Private Sub SearchInventoryTransactions_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles SearchInventoryTransactions.SearchStarted
+        InventoryTransactionsDataGrid.ItemsSource = BaseInventory.SearchInventoryTransactions(sender.Text)
+    End Sub
 End Class

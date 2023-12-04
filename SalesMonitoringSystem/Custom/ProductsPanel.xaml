@@ -52,16 +52,17 @@
                     </StackPanel>
                 </hc:FlexPanel>
             </Grid>
-            <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
-                  ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
-                  CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                  x:Name="ProductDataGridView"
-                  Style="{DynamicResource CustomDataGridStyle}"
-                  IsReadOnly="True"
-                  CanUserResizeColumns="False"
-                  AutoGenerateColumns="False"
-                  Grid.Row="1"
-                  Margin="10 5 10 0">
+            <DataGrid x:Name="ProductDataGridView"
+                      RowStyle="{DynamicResource CustomDataGridRowStyle}"
+                      ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                      CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                      IsReadOnly="True"
+                      CanUserResizeColumns="False"
+                      AutoGenerateColumns="False"
+                      Grid.Row="1"
+                      Margin="10 5 10 10"
+                      hc:Empty.ShowEmpty="True"
+                      Padding="0" RowHeight="30">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="13"
                                     Header="ID"
@@ -69,19 +70,24 @@
                                     Width="60"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="PRODUCT NAME"
-                                    Binding="{Binding PRODUCT_NAME}"/>
+                                    Binding="{Binding PRODUCT_NAME}"
+                                    Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="CATEGORY"
-                                    Binding="{Binding CATEGORY}"/>
+                                    Binding="{Binding CATEGORY}"
+                                    Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="PRICE"
-                                    Binding="{Binding PRICE}"/>
+                                    Binding="{Binding PRICE}"
+                                    Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="COST PRICE"
-                                    Binding="{Binding COST_PRICE}"/>
+                                    Binding="{Binding COST_PRICE}"
+                                    Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                     Header="DATE ADDED"
-                                    Binding="{Binding DATE_ADDED}"/>
+                                    Binding="{Binding DATE_ADDED}"
+                                    Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -73,13 +73,14 @@
                   RowStyle="{DynamicResource CustomDataGridRowStyle}"
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                   CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                  Style="{DynamicResource CustomDataGridStyle}"
+                  hc:Empty.ShowEmpty="True"
+                  Padding="0"
                   IsReadOnly="True"
                   CanUserResizeColumns="False"
                   AutoGenerateColumns="False"
                   Grid.ColumnSpan="2"
                   Grid.Row="1"
-                  Margin="10 0">
+                  Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
                                     Header="ID"
@@ -87,10 +88,12 @@
                                     Width="60"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="CATEGORY NAME"
-                                    Binding="{Binding CATEGORY_NAME}"/>
+                                    Binding="{Binding CATEGORY_NAME}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="DESCRIPTION"
-                                    Binding="{Binding DESCRIPTION}"/>
+                                    Binding="{Binding DESCRIPTION}"
+                                    Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

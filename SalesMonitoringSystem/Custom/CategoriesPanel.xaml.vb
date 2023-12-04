@@ -42,7 +42,7 @@ Public Class CategoriesPanel
         ComboboxParentFilter.DisplayMemberPath = "category_name"
         ComboboxParentFilter.SelectedValuePath = "id"
         ComboboxParentFilter.SelectedValue = -2
-        PaginationConfig()
+        PaginationConfig(_dataTable, Pagination)
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As RoutedEventArgs) Handles AddButton.Click, AddSubButton.Click
@@ -76,28 +76,28 @@ Public Class CategoriesPanel
         End If
     End Sub
 
-    ''' <summary>
-    ''' To configure the paginations pages
-    ''' </summary>
-    Private Sub PaginationConfig()
-        If _dataTable.Count <= MAX_PAGE_COUNT Then
-            Pagination.Visibility = Visibility.Collapsed
-            Return
-        Else
-            Pagination.Visibility = Visibility.Visible
-        End If
+    '''' <summary>
+    '''' To configure the paginations pages
+    '''' </summary>
+    'Private Sub PaginationConfig()
+    '    If _dataTable.Count <= MAX_PAGE_COUNT Then
+    '        Pagination.Visibility = Visibility.Collapsed
+    '        Return
+    '    Else
+    '        Pagination.Visibility = Visibility.Visible
+    '    End If
 
-        If MAX_PAGE_COUNT / _dataTable.Count > 0 Then
-            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
-        Else
-            Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT
-        End If
-    End Sub
+    '    If MAX_PAGE_COUNT / _dataTable.Count > 0 Then
+    '        Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT + 1
+    '    Else
+    '        Pagination.MaxPageCount = _dataTable.Count / MAX_PAGE_COUNT
+    '    End If
+    'End Sub
 
     Private Sub CategorySearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles CategorySearch.SearchStarted
         _dataTable = BaseCategory.Search(CategorySearch.Text)
         CategoriesDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
-        PaginationConfig()
+        PaginationConfig(_dataTable, Pagination)
     End Sub
 
     Private Sub Pagination_PageUpdated(sender As Object, e As FunctionEventArgs(Of Integer)) Handles Pagination.PageUpdated

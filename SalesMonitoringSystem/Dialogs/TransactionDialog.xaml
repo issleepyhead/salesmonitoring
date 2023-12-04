@@ -7,7 +7,8 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d"
              Height="550" Width="800">
-    <Grid Background="{StaticResource ApplicationPrimaryLight}">
+    <Grid Background="{StaticResource ApplicationPrimaryLight}"
+          x:Name="ParentPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="50" />
@@ -64,8 +65,8 @@
                            Margin="4 0 30 0"/>
             </StackPanel>
         </hc:SimplePanel>
-        <hc:SimplePanel Grid.Row="2">
-            <hc:FlexPanel Name="FlexPanel1" JustifyContent="FlexEnd"
+        <Grid Grid.Row="2" Name="FlexPanel1">
+            <hc:FlexPanel  JustifyContent="FlexEnd"
                           Margin="30 0">
                 <StackPanel Orientation="Horizontal">
                     <Button Name="AddItemButton"
@@ -82,38 +83,46 @@
                             Background="{StaticResource ApplicationPrimaryDark}"/>
                 </StackPanel>
             </hc:FlexPanel>
-        </hc:SimplePanel>
+        </Grid>
         <Grid Grid.Row="3"
-              Margin="0 0 0 8">
+              Margin="0 0 0 10"
+              x:Name="ThirdPanel">
             <DataGrid Name="ItemsDataGridView"
                       RowStyle="{DynamicResource CustomDataGridRowStyle}"
                       ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                       CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                      Style="{DynamicResource CustomDataGridStyle}"
+                      hc:Empty.ShowEmpty="True"
+                      hc:DataGridAttach.ApplyDefaultStyle="False"
+                      Padding="0"
                       IsReadOnly="True"
                       CanUserResizeColumns="False"
                       AutoGenerateColumns="False"
                       Margin="30,0,30,0"
                       Grid.ColumnSpan="2"
-                      Background="White">
+                      Background="White" RowHeight="30">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRODUCT NAME"
-                                        Binding="{Binding PRODUCT_NAME}"/>
+                                        Binding="{Binding PRODUCT_NAME}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="QUANTITY"
-                                        Binding="{Binding QUANTITY}"/>
+                                        Binding="{Binding QUANTITY}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRICE"
-                                        Binding="{Binding PRICE}"/>
+                                        Binding="{Binding PRICE}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="TOTAL"
-                                        Binding="{Binding TOTAL}"/>
+                                        Binding="{Binding TOTAL}"
+                                        Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <hc:SimplePanel Grid.Row="4">
-            <hc:FlexPanel Name="FlexPanel2" JustifyContent="FlexEnd">
+        <Grid Grid.Row="4"
+              x:Name="FlexPanel2">
+            <hc:FlexPanel  JustifyContent="FlexEnd">
                 <Button Name="SaveButton"
                         Margin="0 0 30 0"
                         Foreground="#fff"
@@ -125,6 +134,6 @@
                         BorderThickness="0"
                         Background="{StaticResource ApplicationPrimaryDark}"/>
             </hc:FlexPanel>
-        </hc:SimplePanel>
+        </Grid>
     </Grid>
 </UserControl>

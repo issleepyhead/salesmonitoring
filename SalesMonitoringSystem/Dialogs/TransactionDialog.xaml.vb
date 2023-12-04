@@ -7,6 +7,7 @@ Public Class TransactionDialog
     Private _subject As IObservablePanel
     Private Const ID_NOT_SET As Integer = -1
     Public _itemSource As DataTable
+    Public _is_from_notif As Boolean = False
     Public Sub New(
         Optional data As DataRowView = Nothing,
         Optional subject As IObservablePanel = Nothing
@@ -28,6 +29,8 @@ Public Class TransactionDialog
         Else
             SaveButton.Visibility = Visibility.Collapsed
             AddItemButton.Visibility = Visibility.Collapsed
+            ParentPanel.RowDefinitions.Item(2).Height = New GridLength(0)
+            ParentPanel.RowDefinitions.Item(4).Height = New GridLength(0)
         End If
     End Sub
 
@@ -42,25 +45,29 @@ Public Class TransactionDialog
     ''' <param name="e"></param>
     Private Sub DeliveryCartDialog_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
 
-        If _data IsNot Nothing Then
+        If _data IsNot Nothing OrElse _is_from_notif Then
+            SaveButton.Visibility = Visibility.Collapsed
+            AddItemButton.Visibility = Visibility.Collapsed
+            ParentPanel.RowDefinitions.Item(2).Height = New GridLength(0)
+            ParentPanel.RowDefinitions.Item(ParentPanel.RowDefinitions.Count - 1).Height = New GridLength(0)
             _itemSource = BaseTransaction.FillByProductTransaction(ReferenceNumberLabel.Text)
-            UpdateVisual()
+            UpdateVisualData()
         Else
             ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Transaction)
         End If
     End Sub
 
-    Public Sub UpdateVisual()
-        ItemsDataGridView.ItemsSource = _itemSource.DefaultView
+    Public Sub UpdateVisualData()
+        ItemsDataGridView.ItemsSource = _itemSource?.DefaultView
         Dim total As Integer = 0
-        For i = 0 To _itemSource.Rows.Count - 1
+        For i = 0 To _itemSource?.Rows.Count - 1
             total += _itemSource.Rows(i).Item("TOTAL")
         Next
         TotalPrice.Text = total
     End Sub
 
     Private Sub ItemsDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ItemsDataGridView.SelectionChanged
-        If _data Is Nothing Then
+        If _data Is Nothing AndAlso Not _is_from_notif Then
             If ItemsDataGridView.SelectedItems.Count > 0 Then
                 Dim data As DataRowView = ItemsDataGridView.SelectedItems(0)
                 Dialog.Show(New TransactionProductDialog(Me, data))

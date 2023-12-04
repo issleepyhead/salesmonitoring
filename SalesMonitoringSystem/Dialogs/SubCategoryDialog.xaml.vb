@@ -42,34 +42,36 @@ Public Class SubCategoryDialog
             result.Add(InputValidation.ValidateInputString(controls(i), types(i)))
         Next
 
+        Dim invoker As ICommandInvoker
         If Not result.Any(Function(item As Object()) Not item(0)) Then
-            If BaseCategory.Exists(result(0)(1)) = 0 Then
-                Dim parent_ids As String = ""
-                For Each item In ParentCategoryCheckCombobox.SelectedItems
-                    parent_ids &= item.Item(0).ToString & ","
-                Next
-                parent_ids = parent_ids.TrimEnd(",")
-                Dim data As New Dictionary(Of String, String) From {
+            If ParentCategoryCheckCombobox.SelectedItems.Count = 0 Then
+                Growl.Info("Please select a parent category.")
+                Return
+            End If
+
+            Dim parent_ids As String = ""
+            For Each item In ParentCategoryCheckCombobox.SelectedItems
+                parent_ids &= item.Item(0).ToString & ","
+            Next
+            parent_ids = parent_ids.TrimEnd(",")
+            Dim data As New Dictionary(Of String, String) From {
                     {"id", _data?.Item("id")},
                     {"category_name", result(0)(1)},
                     {"category_description", If(String.IsNullOrEmpty(SubCategoryDescriptionTextBox.Text), "", SubCategoryDescriptionTextBox.Text)},
                     {"parent_id", parent_ids}
-                }
-
-                Dim baseCommand As New BaseCategory(data)
-                Dim invoker As ICommandInvoker
-                If _data Is Nothing Then
-                    invoker = New AddCommand(baseCommand)
-                Else
-                    invoker = New UpdateCommand(baseCommand)
-                End If
-
-                invoker.Execute()
-                _subject.NotifyObserver()
-                CloseDialog(Closebtn)
+            }
+            Dim baseCommand As ICommandPanel = New BaseCategory(data)
+            If BaseCategory.Exists(result(0)(1)) = 0 AndAlso _data Is Nothing Then
+                invoker = New AddCommand(baseCommand)
+            ElseIf _data IsNot Nothing Then
+                invoker = New UpdateCommand(baseCommand)
             Else
                 Growl.Info("Category exists!")
+                Return
             End If
+            invoker?.Execute()
+            _subject?.NotifyObserver()
+            CloseDialog(Closebtn)
         End If
     End Sub
 

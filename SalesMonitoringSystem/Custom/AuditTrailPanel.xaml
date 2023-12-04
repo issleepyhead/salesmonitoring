@@ -34,12 +34,13 @@
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                   CellStyle="{DynamicResource CustomDataGridCellStyle}"
                   x:Name="TransactionsDataGridView"
-                  Style="{DynamicResource CustomDataGridStyle}"
+                  hc:Empty.ShowEmpty="True"
+                  Padding="0"
                   IsReadOnly="True"
                   CanUserResizeColumns="False"
                   AutoGenerateColumns="False"
                   Grid.Row="1"
-                  Margin="10 0">
+                  Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
                                     Header="ID"
@@ -47,24 +48,28 @@
                                     Width="60"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="FULL_NAME"
-                                    Binding="{Binding FULL_NAME}"/>
+                                    Binding="{Binding FULL_NAME}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="ACTION"
-                                    Binding="{Binding ACTION}"/>
+                                    Binding="{Binding ACTION}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="FIELD"
-                                    Binding="{Binding CATEGORY}"/>
+                                    Binding="{Binding CATEGORY}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="ITEM"
-                                    Binding="{Binding NAME}"/>
+                                    Binding="{Binding NAME}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="TIME"
                                     Binding="{Binding TIME_ADDED}"
-                                    Width="60"/>
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="DATE"
                                     Binding="{Binding DATE_ADDED}"
-                                    Width="100"/>
+                                    Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

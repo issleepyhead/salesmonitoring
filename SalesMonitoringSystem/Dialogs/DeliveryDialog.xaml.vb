@@ -1,5 +1,7 @@
 ﻿Imports System.Data
+Imports System.Diagnostics.Tracing
 Imports System.Reflection
+Imports HandyControl.Controls
 Imports SalesMonitoringSystem.sgsmsdbTableAdapters
 
 Public Class DeliveryDialog
@@ -35,6 +37,12 @@ Public Class DeliveryDialog
 
         If _data IsNot Nothing Then
             ProductNameComboBox.SelectedValue = _data.Item("PRODUCT_ID")
+            ProductNameComboBox.IsEnabled = False
+            CostPriceTextBox.IsEnabled = False
+            SellingPriceTextBox.IsEnabled = False
+            DeleteButton.Visibility = Visibility.Collapsed
+            SaveButton.Visibility = Visibility.Collapsed
+            QuantityTextBox.IsEnabled = False
         Else
             ProductNameComboBox.SelectedIndex = 0
         End If
@@ -51,8 +59,11 @@ Public Class DeliveryDialog
         'Next
         Dim res As Object() = InputValidation.ValidateInputString(QuantityTextBox, DataInput.STRING_INTEGER)
         If res(0) Then
+            If ProductNameComboBox.SelectedIndex = -1 Then
+                Growl.Info("Please select a product first.")
+                Return
+            End If
             If _data Is Nothing Then
-
                 ' Temporarily adding the data to the datagrid
                 Dim is_existing As Boolean = False
                 For Each item As DataRow In _parent._itemSource.Rows
@@ -93,6 +104,9 @@ Public Class DeliveryDialog
             Dim product_info As DataTable = BaseProduct.ProductInfo(ProductNameComboBox.SelectedValue)
             SellingPriceTextBox.Text = product_info.Rows.Item(0).Item("PRICE").ToString
             CostPriceTextBox.Text = product_info.Rows.Item(0).Item("COST_PRICE").ToString
+        Else
+            SellingPriceTextBox.Text = "None"
+            CostPriceTextBox.Text = "None"
         End If
     End Sub
 

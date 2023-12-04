@@ -4,24 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:hc="https://handyorg.github.io/handycontrol">
-    <Grid Background="{StaticResource ApplicationLight}">
+    <hc:DrawerContainer>
+        <Grid Background="{StaticResource ApplicationLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+            <Grid VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <hc:Drawer Name="DrawerBottomInContainer" Dock="Top" ShowMask="False">
+                    <Border Background="{DynamicResource RegionBrush}" Height="70" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Button Margin="0 4 0 0"
+                                        VerticalAlignment="Center"
+                                        Command="hc:ControlCommands.Close"
+                                        HorizontalAlignment="Right"
+                                        Foreground="{DynamicResource PrimaryTextBrush}"
+                                        Style="{StaticResource ButtonIcon}"
+                                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="430"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <hc:FlexPanel JustifyContent="SpaceBetween"
+                                              AlignContent="Center"
+                                              AlignItems="Center"
+                                              VerticalAlignment="Center"
+                                              Width="430"
+                                              HorizontalAlignment="Left">
+                                    <DatePicker SelectedDate="{x:Static system:DateTime.Now}"
+                                                Width="115"
+                                                Margin="8 0 0 0"
+                                                Name="DatePickerFirstDate"
+                                                hc:BorderElement.CornerRadius="0"/>
+                                    <TextBlock Text="TO" FontSize="16" />
+                                    <DatePicker SelectedDate="{x:Static system:DateTime.Now}"
+                                                Width="115"
+                                                Margin="8 0 0 0"
+                                                Name="DatePickerSecondDate"
+                                                hc:BorderElement.CornerRadius="0"/>
+                                    <Button x:Name="ButtonFilterDate"
+                                            Foreground="{StaticResource ApplicationLight}"
+                                            FontSize="11"
+                                            hc:BorderElement.CornerRadius="0"
+                                            Content="Search"
+                                            Height="28"
+                                            Width="120"
+                                            Padding="0"
+                                            BorderThickness="0"
+                                            Background="{StaticResource ApplicationPrimaryDark}"
+                                            VerticalAlignment="Center"/>
+                                </hc:FlexPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </hc:Drawer>
+            </Grid>
+        
         <hc:FlexPanel Grid.Row="0"
                       JustifyContent="SpaceBetween"
                       Margin="10 10 10 0">
-            <hc:SearchBar x:Name="TransactionSearch"
+            <StackPanel Orientation="Horizontal">
+                <hc:SearchBar x:Name="TransactionSearch"
                           IsRealTime="True"
                           hc:InfoElement.Placeholder="Search Transaction"
                           Width="280"
                           Height="30"
+                          hc:BorderElement.CornerRadius="0"
                           VerticalAlignment="Center"
                           Style="{StaticResource SearchBarExtend}"/>
+                <ToggleButton IsChecked="{Binding IsOpen,ElementName=DrawerBottomInContainer}"
+                              BorderThickness="0"
+                              Margin="10 0 0 0"
+                              Style="{x:Null}"
+                              Height="30"
+                              Width="30"
+                              Background="Transparent">
+                    <Grid>
+                        <hc:Poptip.Instance>
+                            <hc:Poptip Content="Filter" PlacementType="TopRight"/>
+                        </hc:Poptip.Instance>
+                        <hc:ImageBlock Name="BottomContainerInventoryImage"
+                            Source="{StaticResource ic_filter}"
+                            Width="22"
+                            Height="22"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </Grid>
+                </ToggleButton>
+            </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -59,19 +152,22 @@
                   ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                   CellStyle="{DynamicResource CustomDataGridCellStyle}"
                   x:Name="TransactionsDataGridView"
-                  Style="{DynamicResource CustomDataGridStyle}"
+                  hc:Empty.ShowEmpty="True"
+                  Padding="0"
                   IsReadOnly="True"
                   CanUserResizeColumns="False"
                   AutoGenerateColumns="False"
                   Grid.Row="1"
-                  Margin="10 0">
+                  Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
                                     Header="INVOICE NO."
-                                    Binding="{Binding INVOICE_NO}"/>
+                                    Binding="{Binding INVOICE_NO}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="PROCESS BY"
-                                    Binding="{Binding PROCESSED_BY}"/>
+                                    Binding="{Binding PROCESSED_BY}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="DATE"
                                     Binding="{Binding DATE}"
@@ -79,4 +175,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+    </hc:DrawerContainer>
 </UserControl>

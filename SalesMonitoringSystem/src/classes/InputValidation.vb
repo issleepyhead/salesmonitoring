@@ -58,12 +58,11 @@ Public Class InputValidation
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_PHONE
-
                 If Regex.IsMatch(start_trim_o, "^(\+639|09)\d{2}[-\s]?\d{3}[-\s]?\d{4}$") Then
                     Return {True, start_trim_o}
                 End If
             Case DataInput.STRING_USERNAME
-                If stringInput.Count > 6 Then
+                If stringInput.Count > 6 AndAlso Not Regex.IsMatch(stringInput, "[^\w]+") Then
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_INTEGER

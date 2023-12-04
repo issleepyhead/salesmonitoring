@@ -186,11 +186,6 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -207,6 +202,11 @@ Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -231,11 +231,6 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRow">
 <summary>
 Represents strongly named DataRow class.
@@ -252,6 +247,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -276,11 +276,6 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRowChangeEvent">
 <summary>
 Row event argument class
@@ -297,6 +292,11 @@ Row event argument class
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -321,11 +321,6 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryrecordsTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -342,6 +337,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblcategoriesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -391,6 +391,13 @@ Used to sort self-referenced table's rows
  Serves as remove to the delivery cart.
  </summary>
 </member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FillByProductTransaction(System.String)">
+ <summary>
+ Search all the transaction base on the invoice number
+ </summary>
+ <param name="invoice_no">The invoce number to be searched</param>
+ <returns>A datatable containing all the result search for invoice number</returns>
+</member>
 <member name="M:SalesMonitoringSystem.BaseTransaction.ScalarSales">
  <summary>
  Gets the total sales of the current date.
@@ -415,6 +422,23 @@ Used to sort self-referenced table's rows
  Fetches the fifteen latest transactions in the transactions table.
  </summary>
  <returns>Returns a list of transactions.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FilterTransactionsByDate(System.DateTime,System.DateTime)">
+ <summary>
+ Filter the transactions data by dates
+ </summary>
+ <param name="fd">A starting date for the query</param>
+ <param name="sd">An end date for the querys</param>
+ <returns>A table of the result of search</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FetchReportransactions(System.DateTime,System.DateTime,System.Int32)">
+ <summary>
+  A function for filtering all the reports of the transactions.
+ </summary>
+ <param name="sdate">Start date of the query.</param>
+ <param name="edate">End date of the query.</param>
+ <param name="haystack">Haystack of the result whether it is weekly, monthly, or yearly</param>
+ <returns>Returns a number of records and revenue between two dates.</returns>
 </member>
 <member name="M:SalesMonitoringSystem.InputValidation.ValidateInputString(System.Object,SalesMonitoringSystem.DataInput)">
  <summary>
@@ -544,11 +568,6 @@ InitializeComponent
 CategoriesPanel
 </summary>
 </member>
-<member name="M:SalesMonitoringSystem.CategoriesPanel.PaginationConfig">
- <summary>
- To configure the paginations pages
- </summary>
-</member>
 <member name="M:SalesMonitoringSystem.CategoriesPanel.InitializeComponent">
 <summary>
 InitializeComponent
@@ -558,11 +577,6 @@ InitializeComponent
 <summary>
 DeliveryPanel
 </summary>
-</member>
-<member name="M:SalesMonitoringSystem.DeliveryPanel.PaginationConfig">
- <summary>
- To configure the paginations pages
- </summary>
 </member>
 <member name="M:SalesMonitoringSystem.DeliveryPanel.InitializeComponent">
 <summary>

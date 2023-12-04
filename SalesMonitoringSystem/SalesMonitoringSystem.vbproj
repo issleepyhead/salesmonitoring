@@ -66,6 +66,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\imgs\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
@@ -164,10 +167,14 @@
     <Compile Include="src\bases\BaseProduct.vb" />
     <Compile Include="src\bases\BaseSupplier.vb" />
     <Compile Include="src\bases\BaseTransaction.vb" />
+    <Compile Include="src\classes\ExcelParser.vb" />
     <Compile Include="src\classes\InputValidation.vb" />
     <Compile Include="src\classes\LoginModule.vb" />
+    <Compile Include="src\classes\parsers\CategoryParser.vb" />
     <Compile Include="src\classes\SqlBaseConnection.vb" />
     <Compile Include="src\classes\SqlConnectionSingleton.vb" />
+    <Compile Include="src\classes\types\TypeCategory.vb" />
+    <Compile Include="src\classes\types\TypeProduct.vb" />
     <Compile Include="src\commands\AddCommand.vb" />
     <Compile Include="src\commands\CancelCommand.vb" />
     <Compile Include="src\commands\DeleteCommand.vb" />
@@ -177,6 +184,7 @@
     <Compile Include="src\interfaces\ICommandInvoker.vb" />
     <Compile Include="src\interfaces\ICommandPanel.vb" />
     <Compile Include="src\interfaces\IDeliveryCommandPanel.vb" />
+    <Compile Include="src\interfaces\IFileParser.vb" />
     <Compile Include="src\interfaces\IObservablePanel.vb" />
     <Compile Include="src\interfaces\IObserverPanel.vb" />
     <Page Include="Custom\AuditTrailPanel.xaml">
@@ -444,6 +452,8 @@
     <Resource Include="Resources\imgs\tfvc-logo.png" />
     <Resource Include="Resources\imgs\ccs-logo.png" />
     <Resource Include="Resources\imgs\ic_welcome.png" />
+    <Resource Include="Resources\imgs\ic_filter.png" />
+    <Resource Include="Resources\imgs\icon.ico" />
     <Content Include="sgsmsdb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

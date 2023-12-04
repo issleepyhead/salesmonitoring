@@ -61,21 +61,31 @@ Public Class BaseSupplier
     End Sub
 
     Public Shared Function Search(query As String) As sgsmsdb.viewtblsuppliersDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT * FROM viewtblsuppliers WHERE SUPPLIER_NAME LIKE CONCAT('%', @query, '%')", conn)
-        cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New sgsmsdb.viewtblsuppliersDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT * FROM viewtblsuppliers WHERE SUPPLIER_NAME LIKE CONCAT('%', @query, '%')", conn)
+            cmd.Parameters.AddWithValue("@query", query)
+            Dim dTable As New sgsmsdb.viewtblsuppliersDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New sgsmsdb.viewtblsuppliersDataTable
+        End Try
     End Function
 
     Public Shared Function Exists(name As String, address As String) As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblsuppliers WHERE LOWER(SUPPLIER_NAME) = LOWER(@name) AND LOWER(ADDRESS) = LOWER(@address)", conn)
-        cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
-        cmd.Parameters.AddWithValue("@address", address.Trim.ToLower)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblsuppliers WHERE LOWER(SUPPLIER_NAME) = LOWER(@name) AND LOWER(ADDRESS) = LOWER(@address)", conn)
+            cmd.Parameters.AddWithValue("@name", name.Trim.ToLower)
+            cmd.Parameters.AddWithValue("@address", address.Trim.ToLower)
 
-        Return cmd.ExecuteScalar()
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 End Class

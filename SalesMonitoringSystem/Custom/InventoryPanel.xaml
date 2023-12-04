@@ -40,32 +40,32 @@
                     <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
                               ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                               CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                              Style="{DynamicResource CustomDataGridStyle}"
+                              hc:Empty.ShowEmpty="True"
+                              Padding="0"
                               IsReadOnly="True"
                               CanUserResizeColumns="False"
                               AutoGenerateColumns="False"
                               Grid.Row="1"
                               Margin="15 8 15 10"
                               Name="InventoryTransactionsDataGrid"
-                              Background="{StaticResource ApplicationLight}">
+                              Background="{StaticResource ApplicationLight}" RowHeight="30">
                         <DataGrid.Columns>
                             <DataGridTextColumn FontSize="13"
                                                 Header="REFERENCE NO"
-                                                Binding="{Binding REF_NO}"/>
-                            <DataGridTextColumn FontSize="13"
-                                                Header="PRODUCT"
-                                                Binding="{Binding PRODUCT_NAME}"/>
+                                                Binding="{Binding REF_NO}"
+                                                Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                                 Header="SUPPLIER"
-                                                Binding="{Binding SUPPLIER_NAME}"/>
+                                                Binding="{Binding SUPPLIER_NAME}"
+                                                Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                                 Header="STOCK IN"
                                                 Binding="{Binding STOCK_IN}"
-                                                Width="100"/>
+                                                Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                                 Header="ORDERED"
                                                 Binding="{Binding DATE_ORDERED}"
-                                                Width="100"/>
+                                                Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                                 Header="RECIEVED"
                                                 Binding="{Binding DATE_RECIEVED}"
@@ -85,7 +85,7 @@
                                   Margin="15 0">
                         <hc:SearchBar x:Name="SearchInventoryRecords"
                                       IsRealTime="True"
-                                      hc:InfoElement.Placeholder="Search Item"
+                                      hc:InfoElement.Placeholder="Search Product"
                                       Width="280"
                                       Height="30"
                                       VerticalAlignment="Center"
@@ -101,23 +101,27 @@
                     <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
                               ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                               CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                              Style="{DynamicResource CustomDataGridStyle}"
+                              hc:Empty.ShowEmpty="True"
+                              Padding="0"
                               IsReadOnly="True"
                               CanUserResizeColumns="False"
                               AutoGenerateColumns="False"
                               Grid.Row="1"
                               Margin="15 8 15 10"
-                              Name="InventoryRecordsDataGrid">
+                              Name="InventoryRecordsDataGrid" RowHeight="30">
                         <DataGrid.Columns>
                             <DataGridTextColumn FontSize="13"
                                         Header="PRODUCT"
-                                        Binding="{Binding PRODUCT_NAME}"/>
+                                        Binding="{Binding PRODUCT_NAME}"
+                                        Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                         Header="PRODUCT PRICE"
-                                        Binding="{Binding PRODUCT_PRICE}"/>
+                                        Binding="{Binding PRODUCT_PRICE}"
+                                        Width="*"/>
                             <DataGridTextColumn FontSize="13"
                                         Header="REMAINING STOCKS"
-                                        Binding="{Binding STOCK_IN}"/>
+                                        Binding="{Binding STOCK_IN}"
+                                        Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

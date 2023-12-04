@@ -76,7 +76,8 @@
                                  hc:BorderElement.CornerRadius="0"
                                  Height="35"
                                  Width="200"
-                                 Margin="8 0 0 0"/>
+                                 Margin="8 0 0 0"
+                                 IsEditable="True"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <hc:DatePicker Name="DeliveryDate"
@@ -104,28 +105,35 @@
                       RowStyle="{DynamicResource CustomDataGridRowStyle}"
                       ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                       CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                      Style="{DynamicResource CustomDataGridStyle}"
+                      Padding="0"
+                      hc:Empty.ShowEmpty="True"
+                      hc:DataGridAttach.ApplyDefaultStyle="False"
                       IsReadOnly="True"
                       CanUserResizeColumns="False"
                       AutoGenerateColumns="False"
                       Margin="30,0,30,0"
-                      Grid.ColumnSpan="2">
+                      Grid.ColumnSpan="2" RowHeight="30">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRODUCT NAME"
-                                        Binding="{Binding PRODUCT_NAME}"/>
+                                        Binding="{Binding PRODUCT_NAME}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="QUANTITY"
-                                        Binding="{Binding QUANTITY}"/>
+                                        Binding="{Binding QUANTITY}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="PRICE"
-                                        Binding="{Binding PRICE}"/>
+                                        Binding="{Binding PRICE}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="COST"
-                                        Binding="{Binding COST}"/>
+                                        Binding="{Binding COST}"
+                                        Width="*"/>
                     <DataGridTextColumn FontSize="13"
                                         Header="TOTAL"
-                                        Binding="{Binding TOTAL}"/>
+                                        Binding="{Binding TOTAL}"
+                                        Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

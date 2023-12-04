@@ -356,6 +356,35 @@
                                        TextAlignment="Center"/>
                         </hc:FlexPanel>
                     </Button>
+                    <Button Name="BottomContainerSalesReportButton"
+                            Style="{x:Null}"
+                            Height="50"
+                            Background="{x:Null}"
+                            Width="60"
+                            BorderThickness=".3"
+                            BorderBrush="{StaticResource ApplicationButtonBorderColor}"
+                            HorizontalAlignment="Center"
+                            Margin="0 10 0 0"
+                            Template="{StaticResource CustomTemplateButton}">
+                        <hc:FlexPanel Height="{Binding Height, ElementName=BottomContainerDashboardButton}"
+                                    Width="{Binding Width, ElementName=BottomContainerDashboardButton}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FlexDirection="Column"
+                                    JustifyContent="Center"
+                                    AlignContent="Center">
+                            <hc:ImageBlock Name="BottomContainerSalesReportImage"
+                                           Source="{StaticResource ic_logs}"
+                                           Width="28"
+                                           Height="28"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            <!-- STRING -->
+                            <TextBlock Text="Audit Trail"
+                                       FontSize="8"
+                                       TextAlignment="Center"/>
+                        </hc:FlexPanel>
+                    </Button>
                     <Button Name="BottomContainerLogsButton"
                             Style="{x:Null}"
                             Height="50"
@@ -457,7 +486,7 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="Total sales"
+                                    <TextBlock Text="Today's sales"
                                                VerticalAlignment="Center"
                                                FontWeight="Light"
                                                Grid.Row="0"
@@ -630,12 +659,21 @@
             </Grid>
             <!--#endregion-->
 
-            <!--#region INVENTORY -->
+            <!--#region AUDIT TRAIL -->
             <Grid x:Name="AuditTrailPanel"
                   Grid.Column="1"
                   Visibility="Collapsed"
                   Margin="15 10">
                 <local:AuditTrailPanel/>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region SALES REPORT -->
+            <Grid x:Name="SalesReportPanel"
+                  Grid.Column="1"
+                  Visibility="Collapsed"
+                  Margin="15 10">
+                <local:ReportsPanel/>
             </Grid>
             <!--#endregion-->
         </Grid>

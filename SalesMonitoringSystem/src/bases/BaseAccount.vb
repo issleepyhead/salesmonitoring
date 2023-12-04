@@ -70,39 +70,60 @@ Public Class BaseAccount
     End Sub
 
     Public Shared Function ScalarRoleName(rolename As String) As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT id FROM tblroles WHERE role_name = @role_name", conn)
-        cmd.Parameters.AddWithValue("@role_name", rolename)
+        Try
 
-        Return cmd.ExecuteScalar()
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT id FROM tblroles WHERE role_name = @role_name", conn)
+            cmd.Parameters.AddWithValue("@role_name", rolename)
+
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 
     Public Shared Function Exists(data As String) As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblusers WHERE USERNAME = @data", conn)
-        cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblusers WHERE USERNAME = @data", conn)
+            cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
 
-        Return cmd.ExecuteScalar()
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 
     Public Shared Function FillByRoles() As DataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT id, role_name FROM tblroles WHERE id <> 1", conn)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT id, role_name FROM tblroles WHERE id <> 1", conn)
 
-        Dim dTable As New DataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+            Dim dTable As New DataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New DataTable
+        End Try
     End Function
 
     Public Shared Function Search(query As String) As sgsmsdb.viewtblusersDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT * FROM viewtblusers WHERE id <> 1 AND FULL_NAME LIKE CONCAT('%', @query, '%') OR USERNAME LIKE CONCAT('%', @query, '%')", conn)
-        cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New sgsmsdb.viewtblusersDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT * FROM viewtblusers WHERE id <> 1 AND FULL_NAME LIKE CONCAT('%', @query, '%') OR USERNAME LIKE CONCAT('%', @query, '%')", conn)
+            cmd.Parameters.AddWithValue("@query", query)
+            Dim dTable As New sgsmsdb.viewtblusersDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New sgsmsdb.viewtblusersDataTable
+        End Try
     End Function
 
 

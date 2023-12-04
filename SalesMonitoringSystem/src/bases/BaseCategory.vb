@@ -65,70 +65,105 @@ Public Class BaseCategory
     End Sub
 
     Public Shared Function FillByParent() As viewtblcategoriesDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("EXEC FillParentCategoriesProcedure", conn)
-        Dim dTable As New viewtblcategoriesDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("EXEC FillParentCategoriesProcedure", conn)
+            Dim dTable As New viewtblcategoriesDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New viewtblcategoriesDataTable
+        End Try
     End Function
 
     Public Shared Function FillByFilterParent(id As String) As viewtblcategoriesDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("EXEC FilterCategoryProcedure @parent_id", conn)
-        cmd.Parameters.AddWithValue("@parent_id", id)
-        Dim dTable As New viewtblcategoriesDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("EXEC FilterCategoryProcedure @parent_id", conn)
+            cmd.Parameters.AddWithValue("@parent_id", id)
+            Dim dTable As New viewtblcategoriesDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New viewtblcategoriesDataTable
+        End Try
     End Function
 
     Public Shared Function IsParent(id As String) As Boolean
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT CASE WHEN COUNT(*) IS NULL THEN 0 ELSE COUNT(*) END AS s FROM tblcategories WHERE id = @id AND id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
-        cmd.Parameters.AddWithValue("@id", id)
-        If cmd.ExecuteScalar() > 0 Then
-            Return True
-        Else
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT CASE WHEN COUNT(*) IS NULL THEN 0 ELSE COUNT(*) END AS s FROM tblcategories WHERE id = @id AND id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
+            cmd.Parameters.AddWithValue("@id", id)
+            If cmd.ExecuteScalar() > 0 Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
             Return False
-        End If
+        End Try
     End Function
 
     Public Shared Function GetParent(id As String) As DataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT parent_id FROM tblsubcategories WHERE category_id = @id", conn)
-        cmd.Parameters.AddWithValue("@id", id)
-        Dim dTable As New DataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT parent_id FROM tblsubcategories WHERE category_id = @id", conn)
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim dTable As New DataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New DataTable
+        End Try
     End Function
 
     Public Shared Function Exists(data As String) As Integer
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblcategories WHERE LOWER(category_name) = @data", conn)
-        cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblcategories WHERE LOWER(category_name) = @data", conn)
+            cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
 
-        Return cmd.ExecuteScalar()
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
     End Function
 
     Public Shared Function FillByParentCategory() As DataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT id, category_name FROM tblcategories WHERE id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT id, category_name FROM tblcategories WHERE id NOT IN (SELECT category_id FROM tblsubcategories)", conn)
 
-        Dim dTable As New DataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+            Dim dTable As New DataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New DataTable
+        End Try
     End Function
 
     Public Shared Function Search(query As String) As viewtblcategoriesDataTable
-        Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-        Dim cmd As New SqlCommand("SELECT * FROM viewtblcategories WHERE CATEGORY_NAME LIKE CONCAT('%', @query, '%')", conn)
-        cmd.Parameters.AddWithValue("@query", query)
-        Dim dTable As New viewtblcategoriesDataTable
-        Dim adapter As New SqlDataAdapter(cmd)
-        adapter.Fill(dTable)
-        Return dTable
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT * FROM viewtblcategories WHERE CATEGORY_NAME LIKE CONCAT('%', @query, '%')", conn)
+            cmd.Parameters.AddWithValue("@query", query)
+            Dim dTable As New viewtblcategoriesDataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(dTable)
+            Return dTable
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return New viewtblcategoriesDataTable
+        End Try
     End Function
 End Class

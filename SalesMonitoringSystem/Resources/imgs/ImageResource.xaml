@@ -24,6 +24,7 @@
     <BitmapImage x:Key="ic_ccs" UriSource="/Resources/imgs/ccs-logo.png"/>
     <BitmapImage x:Key="ic_welcome" UriSource="/Resources/imgs/ic_welcome.png"/>
     <BitmapImage x:Key="ic_dashboard" UriSource="/Resources/imgs/ic_dashboard.png"/>
+    <BitmapImage x:Key="ic_filter" UriSource="/Resources/imgs/ic_filter.png"/>
     <!--#endregion-->
 
     <!--#region GEOMETRY ICONS-->

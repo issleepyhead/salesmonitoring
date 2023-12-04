@@ -32,7 +32,11 @@ Public Class TransactionProductDialog
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
         If InputValidation.ValidateInputString(QuantityTextBox, DataInput.STRING_INTEGER)(0) Then
-            If CInt(QuantityAvailable.Text) > QuantityTextBox.Text Then
+            If ProductNameComboBox.SelectedIndex = -1 Then
+                Growl.Info("Please select a product.")
+                Return
+            End If
+            If CInt(QuantityAvailable.Text) >= QuantityTextBox.Text Then
                 Dim is_existing As Boolean = False
                 For Each item As DataRow In _parent._itemSource.Rows
                     If item.Item("PRODUCT_NAME") = ProductNameComboBox.Text Then
@@ -50,7 +54,7 @@ Public Class TransactionProductDialog
                          CInt(SellingPriceTextBox.Text) * QuantityTextBox.Text
                     })
                 End If
-                _parent.UpdateVisual()
+                _parent.UpdateVisualData()
                 CloseDialog(Closebtn)
             Else
                 Growl.Warning("Insufficient stocks.")
@@ -61,8 +65,13 @@ Public Class TransactionProductDialog
     End Sub
 
     Private Sub ProductNameComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ProductNameComboBox.SelectionChanged
-        Dim info As DataTable = BaseProduct.ProductInfo(ProductNameComboBox.SelectedValue)
-        SellingPriceTextBox.Text = info.Rows(0).Item("PRICE").ToString
-        QuantityAvailable.Text = BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue).ToString
+        If ProductNameComboBox.SelectedIndex <> -1 Then
+            Dim info As DataTable = BaseProduct.ProductInfo(ProductNameComboBox.SelectedValue)
+            SellingPriceTextBox.Text = info.Rows(0).Item("PRICE").ToString
+            QuantityAvailable.Text = BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue).ToString
+        Else
+            SellingPriceTextBox.Text = "None"
+            QuantityAvailable.Text = "None"
+        End If
     End Sub
 End Class

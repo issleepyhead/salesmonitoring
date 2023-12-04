@@ -96,7 +96,8 @@
                                 hc:BorderElement.CornerRadius="0"
                                 Padding="10"
                                 ShowEyeButton="True"
-                                hc:InfoElement.Necessary="True"/>
+                                hc:InfoElement.Necessary="True"
+                                hc:PasswordBoxAttach.IsMonitoring="True"/>
                 <Button x:Name="LoginButton"
                         Content="{StaticResource en_login}"
                         Background="{StaticResource ApplicationDarkBlue}"

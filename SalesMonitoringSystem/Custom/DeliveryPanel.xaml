@@ -52,31 +52,38 @@
                     RowStyle="{DynamicResource CustomDataGridRowStyle}"
                     ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
                     CellStyle="{DynamicResource CustomDataGridCellStyle}"
-                    Style="{DynamicResource CustomDataGridStyle}"
+                    hc:Empty.ShowEmpty="True"
+                    Padding="0"
                     IsReadOnly="True"
                     CanUserResizeColumns="False"
                     AutoGenerateColumns="False"
                     Grid.Row="1"
-                    Margin="10 0 10 10">
+                    Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
                                     Header="REFERENCE NO."
-                                    Binding="{Binding REFERENCE_NUMBER}"/>
+                                    Binding="{Binding REFERENCE_NUMBER}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Binding="{Binding SUPPLIER}"
-                                    Header="SUPPLIER"/>
+                                    Header="SUPPLIER"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="QUANTITY"
-                                    Binding="{Binding QUANTITY}"/>
+                                    Binding="{Binding QUANTITY}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="TOTAL COST"
-                                    Binding="{Binding TOTAL_COST}"/>
+                                    Binding="{Binding TOTAL_COST}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="STATUS"
-                                    Binding="{Binding STATUS}"/>
+                                    Binding="{Binding STATUS}"
+                                    Width="*"/>
                 <DataGridTextColumn FontSize="13"
                                     Header="DALIVERY DATE"
-                                    Binding="{Binding DELIVERY_DATE}"/>
+                                    Binding="{Binding DELIVERY_DATE}"
+                                    Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

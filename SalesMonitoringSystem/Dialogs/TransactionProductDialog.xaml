@@ -44,7 +44,8 @@
                 <hc:ComboBox Name="ProductNameComboBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
-                             Height="40"/>
+                             Height="40"
+                             IsEditable="True"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
                 <TextBlock Padding="0 0 0 5"

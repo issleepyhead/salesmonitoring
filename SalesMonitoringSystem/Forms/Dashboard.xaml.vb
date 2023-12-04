@@ -49,7 +49,7 @@ Class Dashboard
     ' Use for panel switching
     Public Sub SwitchPanelEvents(sender As Object, e As EventArgs) Handles BottomContainerDashboardButton.Click,
         BottomContainerProductsButton.Click, BottomContainerTransactionsButton.Click, BottomContainerLogoutButton.Click,
-        BottomContainerMaintenaceButton.Click, BottomContainerInventoryButton.Click, BottomContainerLogsButton.Click
+        BottomContainerMaintenaceButton.Click, BottomContainerInventoryButton.Click, BottomContainerLogsButton.Click, BottomContainerSalesReportButton.Click
 
         If sender.Equals(BottomContainerLogoutButton) Then
             Dim res As MessageBoxResult = MessageBox.Ask("Do you want to log out?")
@@ -66,12 +66,12 @@ Class Dashboard
 
         Dim panels As Object() = {
             DashboardPanel, ProductsPanel, TransactionsPanel, MaintenancePanel, InventoryPanel,
-            AuditTrailPanel
+            AuditTrailPanel, SalesReportPanel
         }
         Dim buttons As Object() = {
             BottomContainerDashboardButton, BottomContainerProductsButton,
             BottomContainerTransactionsButton, BottomContainerMaintenaceButton,
-            BottomContainerInventoryButton, BottomContainerLogsButton
+            BottomContainerInventoryButton, BottomContainerLogsButton, BottomContainerSalesReportButton
         }
 
         ' Collapse all the panels first before opening the desired panel

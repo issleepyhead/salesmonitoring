@@ -37,4 +37,14 @@ Public Class TransactionsPanel
     Private Sub TransactionSearch_SearchStarted(sender As Object, e As FunctionEventArgs(Of String)) Handles TransactionSearch.SearchStarted
         TransactionsDataGridView.ItemsSource = BaseTransaction.Search(TransactionSearch.Text).DefaultView
     End Sub
+
+    Private Sub ButtonFilterDate_Click(sender As Object, e As RoutedEventArgs) Handles ButtonFilterDate.Click
+        If DatePickerFirstDate.SelectedDate < DatePickerSecondDate.SelectedDate Then
+            Dim fd As Date = DatePickerFirstDate.SelectedDate, sd As Date = DatePickerSecondDate.SelectedDate
+            _dataTable = BaseTransaction.FilterTransactionsByDate(fd, sd)
+            TransactionsDataGridView.ItemsSource = _dataTable
+        Else
+            Growl.Info("The first date should be less than the first.")
+        End If
+    End Sub
 End Class
