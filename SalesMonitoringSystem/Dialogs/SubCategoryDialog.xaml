@@ -74,7 +74,9 @@
                                   Height="Auto"
                                   ShowSelectAllButton="True"
                                   hc:InfoElement.ShowClearButton="True"
-                                  IsTextSearchEnabled="True"/>
+                                  Style="{StaticResource CheckComboBoxPlus}"
+                                  IsTextSearchEnabled="True"
+                                  SelectionMode="Multiple" IsTextSearchCaseSensitive="True"/>
             </StackPanel>
         </StackPanel>
         <hc:SimplePanel Grid.Row="2">

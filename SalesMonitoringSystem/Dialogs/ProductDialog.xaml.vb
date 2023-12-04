@@ -36,7 +36,7 @@ Public Class ProductDialog
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
         Dim controls As Object() = {ProductNameTextBox, ProductPriceTextBox, ProductCostTextBox, CategoryComboBox}
-        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_INTEGER, DataInput.STRING_INTEGER, DataInput.STRING_STRING}
+        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_PRICE, DataInput.STRING_PRICE, DataInput.STRING_STRING}
 
         Dim res As New List(Of Object())
         For i = 0 To controls.Count - 1
@@ -46,6 +46,10 @@ Public Class ProductDialog
         Dim baseCommand As ICommandPanel = Nothing
         Dim invoker As ICommandInvoker = Nothing
         If Not res.Any(Function(item As Object()) Not item(0)) Then
+            If CategoryComboBox.SelectedIndex = -1 Then
+                Growl.Info("Please select a category.")
+                Return
+            End If
             Dim data As New Dictionary(Of String, String) From {
                 {"id", _data?.Item("ID")},
                 {"category_id", CategoryComboBox.SelectedValue},

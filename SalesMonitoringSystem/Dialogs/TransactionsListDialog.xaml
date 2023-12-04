@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="TransactionsListDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesMonitoringSystem"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d"
+             Height="550" Width="800">
+    <Grid Background="{StaticResource ApplicationPrimaryLight}"
+          x:Name="ParentPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
+            <TextBlock Text="TRANSACTION LIST"
+                       Foreground="{StaticResource ApplicationLight}"
+                       FontSize="18"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30 0 0 0"
+                       FontWeight="DemiBold"/>
+            <Button Name="Closebtn"
+                    Height="24"
+                    Width="24"
+                    Style="{StaticResource ButtonIcon}"
+                    hc:IconElement.Geometry="{StaticResource ErrorGeometry}"
+                    Command="hc:ControlCommands.Close"
+                    Margin="0 0 30 0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+        </hc:SimplePanel>
+        <hc:SimplePanel Grid.Row="1"
+                        Margin="30 0 30 0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <TextBlock Text="RECORDS:"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Medium"/>
+                <TextBlock Name="TotalRecords"
+                           Text="{Binding NUMBER_RECORDS}"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Margin="4 0 30 0"/>
+            </StackPanel>
+        </hc:SimplePanel>
+
+        <Grid Grid.Row="2"
+              Margin="0 0 0 10"
+              x:Name="ThirdPanel">
+            <DataGrid RowStyle="{DynamicResource CustomDataGridRowStyle}"
+                  ColumnHeaderStyle="{DynamicResource CustomDataGridColumnHeaderStyle}"
+                  CellStyle="{DynamicResource CustomDataGridCellStyle}"
+                  x:Name="TransactionsDataGridView"
+                  hc:Empty.ShowEmpty="True"
+                  Padding="0"
+                  IsReadOnly="True"
+                  CanUserResizeColumns="False"
+                  AutoGenerateColumns="False"
+                  Grid.Row="1"
+                  Margin="30 0 30 10" RowHeight="30">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="INVOICE NO."
+                                    Binding="{Binding INVOICE_NO}"
+                                    Width="*"/>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="PROCESS BY"
+                                    Binding="{Binding PROCESSED_BY}"
+                                    Width="*"/>
+                    <DataGridTextColumn FontSize="13"
+                                    Header="DATE"
+                                    Binding="{Binding DATE}"
+                                    Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

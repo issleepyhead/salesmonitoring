@@ -141,6 +141,16 @@ TransactionProductDialog
 InitializeComponent
 </summary>
 </member>
+<member name="T:SalesMonitoringSystem.TransactionsListDialog">
+<summary>
+TransactionsListDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionsListDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:SalesMonitoringSystem.WelcomeDialog">
 <summary>
 WelcomeDialog

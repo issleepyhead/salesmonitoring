@@ -66,6 +66,11 @@ Public Class DeliveryCartDialog
             If _itemSource.Rows.Count > 0 Then
                 SupplierNameComboBox.SelectedValue = _itemSource.Rows(0).Item("SUPPLIER_ID")
             End If
+
+            If _data.Item("STATUS") <> "Pending" Then
+                RecievedButton.Visibility = Visibility.Collapsed
+                CancelButton.Visibility = Visibility.Collapsed
+            End If
             UpdateVisual()
         Else
             ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Delivery)
@@ -86,10 +91,17 @@ Public Class DeliveryCartDialog
     End Sub
 
     Private Sub ItemsDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ItemsDataGridView.SelectionChanged
-        If ItemsDataGridView.SelectedItems.Count > 0 Then
+        If _data IsNot Nothing Then
+            If ItemsDataGridView.SelectedItems.Count > 0 Then
+                Dim ddialog As New DeliveryDialog(Me, ItemsDataGridView.SelectedItems(0))
+                ddialog._is_from_delivery = False
+                Dialog.Show(ddialog)
+                ItemsDataGridView.SelectedIndex = -1
+            End If
+        Else
             Dialog.Show(New DeliveryDialog(Me, ItemsDataGridView.SelectedItems(0)))
-            ItemsDataGridView.SelectedIndex = -1
         End If
+        ItemsDataGridView.SelectedIndex = -1
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click

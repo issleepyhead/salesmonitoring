@@ -1,9 +1,6 @@
-﻿Imports SalesMonitoringSystem.sgsmsdb
-Imports SalesMonitoringSystem.sgsmsdbTableAdapters
-Imports BCrypt.Net.BCrypt
-Imports BCrypt.Net
-Imports System.Data
+﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports HandyControl.Controls
 
 Public Class LoginModule
     Private ReadOnly _sqlConnection As SqlConnection = SqlConnectionSingleton.GetInstance

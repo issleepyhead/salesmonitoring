@@ -32,6 +32,7 @@ Class Dashboard
         Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
         For Each item As DataRow In _itemSource.Rows
             Dim stackpan As New StackNotificationControl
+            stackpan._parent = Me
             stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
             stackpan.LabelStackHeading.Text = item.Item("invoice_number")
             If item.Item("status_id") = &H2 Then

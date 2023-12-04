@@ -8,6 +8,7 @@ Public Class TransactionDialog
     Private Const ID_NOT_SET As Integer = -1
     Public _itemSource As DataTable
     Public _is_from_notif As Boolean = False
+    Public _by_date As Boolean = False
     Public Sub New(
         Optional data As DataRowView = Nothing,
         Optional subject As IObservablePanel = Nothing
@@ -50,7 +51,11 @@ Public Class TransactionDialog
             AddItemButton.Visibility = Visibility.Collapsed
             ParentPanel.RowDefinitions.Item(2).Height = New GridLength(0)
             ParentPanel.RowDefinitions.Item(ParentPanel.RowDefinitions.Count - 1).Height = New GridLength(0)
-            _itemSource = BaseTransaction.FillByProductTransaction(ReferenceNumberLabel.Text)
+            If _by_date Then
+
+            Else
+                _itemSource = BaseTransaction.FillByProductTransaction(ReferenceNumberLabel.Text)
+            End If
             UpdateVisualData()
         Else
             ReferenceNumberLabel.Text = GenInvoiceNumber(InvoiceType.Transaction)
@@ -96,7 +101,7 @@ Public Class TransactionDialog
             Return
         End If
 
-        Growl.Info("Transaction has been added successfully!")
+        Growl.Success("Transaction has been added successfully!")
         _subject.NotifyObserver()
         CloseDialog(Closebtn)
     End Sub

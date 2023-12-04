@@ -57,6 +57,7 @@ Public Class BaseTransaction
         End Try
     End Function
 
+
     ''' <summary>
     ''' Gets the total sales of the current date.
     ''' </summary>
@@ -72,6 +73,17 @@ Public Class BaseTransaction
             Return 0
         End Try
     End Function
+
+    Public Shared Sub UpdateStatus(n As String)
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("UPDATE tbltransactions SET status_id = 2 WHERE invoice_number = @invoice_no", conn)
+            cmd.Parameters.AddWithValue("@invoice_no", n)
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+        End Try
+    End Sub
 
     ''' <summary>
     ''' Gets the total rows of the transactions

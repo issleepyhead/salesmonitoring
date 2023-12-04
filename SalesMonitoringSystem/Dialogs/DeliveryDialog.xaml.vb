@@ -8,6 +8,7 @@ Public Class DeliveryDialog
     Private _parent As DeliveryCartDialog
     Private _data As DataRowView
     Private _tableAdapter As New viewtblproductsTableAdapter
+    Public _is_from_delivery = True
     Private ID_NOT_SET = -1
     Public Sub New(
         Optional parent As DeliveryCartDialog = Nothing,
@@ -35,7 +36,7 @@ Public Class DeliveryDialog
         ProductNameComboBox.DisplayMemberPath = "PRODUCT_NAME"
         ProductNameComboBox.SelectedValuePath = "ID"
 
-        If _data IsNot Nothing Then
+        If _data IsNot Nothing AndAlso Not _is_from_delivery Then
             ProductNameComboBox.SelectedValue = _data.Item("PRODUCT_ID")
             ProductNameComboBox.IsEnabled = False
             CostPriceTextBox.IsEnabled = False

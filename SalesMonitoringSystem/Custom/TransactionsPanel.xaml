@@ -35,6 +35,7 @@
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Button Margin="0 4 0 0"
+                                        Name="BtnCloseFilter"
                                         VerticalAlignment="Center"
                                         Command="hc:ControlCommands.Close"
                                         HorizontalAlignment="Right"

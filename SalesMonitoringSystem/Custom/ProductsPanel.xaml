@@ -29,6 +29,7 @@
                                   HorizontalAlignment="Left"
                                   Style="{StaticResource SearchBarExtend}"/>
                     <StackPanel Orientation="Horizontal">
+                        
                         <hc:Pagination Name="Pagination"
                                        MaxPageCount="10"
                                        PageIndex="1"

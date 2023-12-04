@@ -28,12 +28,12 @@ Public Class CategoriesPanel
 
     Public Sub Update() Implements IObserverPanel.Update
 
-        If ComboboxCategoryFilter.SelectedIndex = 0 Then
-            _dataTable = BaseCategory.FillByParent()
-            CategoriesDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
-        Else
+        ComboboxCategoryFilter.SelectedIndex = 2
+        ComboboxParentFilter.SelectedValue = -2
+        If ComboboxCategoryFilter.SelectedIndex = 2 AndAlso ComboboxParentFilter.SelectedValue = -2 Then
             _tableAdapter.Fill(_dataTable)
             CategoriesDataGridView.ItemsSource = _dataTable.Take(MAX_PAGE_COUNT)
+            Return
         End If
 
         Dim data As DataTable = BaseCategory.FillByParentCategory()

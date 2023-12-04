@@ -1,4 +1,4 @@
-﻿Imports BCrypt.Net
+﻿
 Imports HandyControl.Controls
 Public Class Login
     Private _loginModule As New LoginModule
@@ -6,9 +6,34 @@ Public Class Login
     Private Sub LoginButton_Click(sender As Object, e As RoutedEventArgs) Handles LoginButton.Click
         Dim res As Object() = Nothing
         Dim controls As Object() = {UsernameTextBox, PasswordTextBox}
-        Dim types As DataInput() = {DataInput.STRING_STRING, DataInput.STRING_STRING}
+        Dim types As DataInput() = {DataInput.STRING_USERNAME, DataInput.STRING_PASSWORD}
 
-        UsernameTextBox.BorderBrush = Brushes.Red
+        If BaseAccount.CountUser() = 0 Then
+            Dim res1 As MessageBoxResult = MessageBox.Ask("This account will be created as a default user of this system.", "Create this account as default?")
+            If res1 = MessageBoxResult.OK Then
+                Dim pwd As String = PasswordTextBox.Password
+                Dim data As New Dictionary(Of String, String) From {
+                        {"id", Nothing},
+                        {"role_id", 1},
+                        {"first_name", ""},
+                        {"last_name", ""},
+                        {"address", ""},
+                        {"contact", ""},
+                        {"username", UsernameTextBox.Text},
+                        {"password", pwd}
+                    }
+                Dim baseCommand As New BaseAccount(data)
+                Dim invoker As New AddCommand(baseCommand)
+                invoker.Execute()
+                MessageBox.Info("Please log in your account.")
+            Else
+                MessageBox.Info("Please create a default account.")
+ 
+            End If
+            UsernameTextBox.Text = ""
+            PasswordTextBox.Password = ""
+            Return
+        End If
 
         Dim vres As New List(Of Object())
         For i = 0 To controls.Count - 1

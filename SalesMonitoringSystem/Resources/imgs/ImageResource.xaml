@@ -25,6 +25,7 @@
     <BitmapImage x:Key="ic_welcome" UriSource="/Resources/imgs/ic_welcome.png"/>
     <BitmapImage x:Key="ic_dashboard" UriSource="/Resources/imgs/ic_dashboard.png"/>
     <BitmapImage x:Key="ic_filter" UriSource="/Resources/imgs/ic_filter.png"/>
+    <BitmapImage x:Key="ic_salesreport" UriSource="/Resources/imgs/ic_salesreport.png"/>
     <!--#endregion-->
 
     <!--#region GEOMETRY ICONS-->

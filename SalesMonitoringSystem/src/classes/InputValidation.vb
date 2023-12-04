@@ -35,13 +35,15 @@ Public Class InputValidation
         Select Case type
             Case DataInput.STRING_STRING
                 If Not String.IsNullOrEmpty(stringInput) AndAlso Not String.IsNullOrWhiteSpace(stringInput) Then
-                    Dim nameString As String() = stringInput.Split(" ")
-                    For i = 0 To nameString.Count - 1
-                        Dim charArr As Char() = nameString(i).ToArray()
-                        charArr(0) = CStr(charArr(0)).ToUpper
-                        nameString(i) = String.Join("", charArr)
-                    Next
-                    Return {True, String.Join(" ", nameString)}
+                    If stringInput.Length > 1 Then
+                        Dim nameString As String() = stringInput.Split(" ")
+                        For i = 0 To nameString.Count - 1
+                            Dim charArr As Char() = nameString(i).ToArray()
+                            charArr(0) = CStr(charArr(0)).ToUpper
+                            nameString(i) = String.Join("", charArr)
+                        Next
+                        Return {True, String.Join(" ", nameString)}
+                    End If
                 End If
             Case DataInput.STRING_NAME
                 If stringInput.Count > 1 Then
@@ -54,19 +56,22 @@ Public Class InputValidation
                     Return {True, String.Join(" ", nameString)}
                 End If
             Case DataInput.STRING_PASSWORD
-                If stringInput.Count > 6 Then
-                    Return {True, stringInput}
-                End If
+                Return {True, stringInput}
+
             Case DataInput.STRING_PHONE
                 If Regex.IsMatch(start_trim_o, "^(\+639|09)\d{2}[-\s]?\d{3}[-\s]?\d{4}$") Then
                     Return {True, start_trim_o}
                 End If
             Case DataInput.STRING_USERNAME
-                If stringInput.Count > 6 AndAlso Not Regex.IsMatch(stringInput, "[^\w]+") Then
+                If Not Regex.IsMatch(stringInput, "[^\w]+") Then
                     Return {True, stringInput}
                 End If
             Case DataInput.STRING_INTEGER
                 If Regex.IsMatch(stringInput, "^\d+$") AndAlso Not stringInput = "0" Then
+                    Return {True, stringInput}
+                End If
+            Case DataInput.STRING_PRICE
+                If Regex.IsMatch(stringInput, "^(\d+)?\.?(\d+)$") Then
                     Return {True, stringInput}
                 End If
         End Select
@@ -84,4 +89,5 @@ Public Enum DataInput
     STRING_USERNAME
     STRING_PHONE
     STRING_INTEGER
+    STRING_PRICE
 End Enum

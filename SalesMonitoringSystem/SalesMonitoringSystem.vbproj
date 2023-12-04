@@ -148,6 +148,9 @@
     <Compile Include="Dialogs\TransactionProductDialog.xaml.vb">
       <DependentUpon>TransactionProductDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\TransactionsListDialog.xaml.vb">
+      <DependentUpon>TransactionsListDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\WelcomeDialog.xaml.vb">
       <DependentUpon>WelcomeDialog.xaml</DependentUpon>
     </Compile>
@@ -276,6 +279,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\TransactionProductDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\TransactionsListDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -454,6 +461,7 @@
     <Resource Include="Resources\imgs\ic_welcome.png" />
     <Resource Include="Resources\imgs\ic_filter.png" />
     <Resource Include="Resources\imgs\icon.ico" />
+    <Resource Include="Resources\imgs\ic_salesreport.png" />
     <Content Include="sgsmsdb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

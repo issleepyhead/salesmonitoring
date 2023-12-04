@@ -27,8 +27,12 @@ Public Class SubCategoryDialog
             SubCategoryNameTextBox.Text = _data.Item("category_name")
 
             Dim data As DataTable = BaseCategory.GetParent(_data?.Item("id"))
-            For Each item As DataRow In data.Rows
-                ParentCategoryCheckCombobox.SelectedValue = item.Item("parent_id")
+            For Each item As DataRowView In ParentCategoryCheckCombobox.Items
+                For Each dataitem As DataRow In data.Rows
+                    If item(0) = dataitem(0) Then
+                        ParentCategoryCheckCombobox.SelectedItems.Add(item)
+                    End If
+                Next
             Next
         End If
     End Sub

@@ -98,3 +98,5 @@ D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\SalesMonit
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\SalesMonitoringSystem.exe
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\SalesMonitoringSystem.xml
 D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\SalesMonitoringSystem.pdb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\TransactionsListDialog.g.vb
+D:\SCHOOL FILES\SalesMonitoringSystem\SalesMonitoringSystem\obj\Debug\Dialogs\TransactionsListDialog.baml

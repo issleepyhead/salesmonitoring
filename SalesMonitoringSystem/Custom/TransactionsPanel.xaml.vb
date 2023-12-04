@@ -43,6 +43,7 @@ Public Class TransactionsPanel
             Dim fd As Date = DatePickerFirstDate.SelectedDate, sd As Date = DatePickerSecondDate.SelectedDate
             _dataTable = BaseTransaction.FilterTransactionsByDate(fd, sd)
             TransactionsDataGridView.ItemsSource = _dataTable
+            CloseDialog(BtnCloseFilter)
         Else
             Growl.Info("The first date should be less than the first.")
         End If

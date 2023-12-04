@@ -52,17 +52,21 @@ Public Class BaseAccount
         Try
             _sqlCommand = New SqlCommand("EXEC InsertAccountProcedure @role_id, @first_name, @last_name, @address, @contact, @username, @password, @user_id;", _sqlConnection)
             _sqlCommand.Parameters.AddWithValue("@role_id", _data.Item("role_id"))
-            _sqlCommand.Parameters.AddWithValue("@first_name", _data.Item("first_name"))
-            _sqlCommand.Parameters.AddWithValue("@last_name", _data.Item("last_name"))
-            _sqlCommand.Parameters.AddWithValue("@address", _data.Item("address"))
-            _sqlCommand.Parameters.AddWithValue("@contact", _data.Item("contact"))
+            _sqlCommand.Parameters.AddWithValue("@first_name", If(String.IsNullOrEmpty(_data.Item("first_name")), DBNull.Value, _data.Item("first_name")))
+            _sqlCommand.Parameters.AddWithValue("@last_name", If(String.IsNullOrEmpty(_data.Item("last_name")), DBNull.Value, _data.Item("last_name")))
+            _sqlCommand.Parameters.AddWithValue("@address", If(String.IsNullOrEmpty(_data.Item("address")), DBNull.Value, _data.Item("address")))
+            _sqlCommand.Parameters.AddWithValue("@contact", If(String.IsNullOrEmpty(_data.Item("contact")), DBNull.Value, _data.Item("contact")))
             _sqlCommand.Parameters.AddWithValue("@username", _data.Item("username"))
             _sqlCommand.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(_data.Item("password")))
-            _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
-            If _sqlCommand.ExecuteNonQuery() <= 0 Then
-                Growl.Error("An error occured")
+            _sqlCommand.Parameters.AddWithValue("@user_id", If(My.Settings.userID = -1, DBNull.Value, My.Settings.userID))
+            If Not String.IsNullOrEmpty(_data.Item("first_name")) OrElse Not String.IsNullOrEmpty(_data.Item("last_name")) Then
+                If _sqlCommand.ExecuteNonQuery() <= 0 Then
+                    Growl.Error("An error occured")
+                Else
+                    Growl.Success("Account has been added successfully!")
+                End If
             Else
-                Growl.Success("Account has been added successfully!")
+                _sqlCommand.ExecuteNonQuery()
             End If
         Catch ex As Exception
             HandyControl.Controls.MessageBox.Show(ex.Message)
@@ -86,12 +90,23 @@ Public Class BaseAccount
     Public Shared Function Exists(data As String) As Integer
         Try
             Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM viewtblusers WHERE USERNAME = @data", conn)
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblusers WHERE lower(username) = @data", conn)
             cmd.Parameters.AddWithValue("@data", data.Trim.ToLower)
 
             Return cmd.ExecuteScalar()
         Catch ex As Exception
             HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
+    End Function
+
+    Public Shared Function CountUser() As Integer
+        Try
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM tblusers", conn)
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
             Return 0
         End Try
     End Function

@@ -374,13 +374,13 @@
                                     JustifyContent="Center"
                                     AlignContent="Center">
                             <hc:ImageBlock Name="BottomContainerSalesReportImage"
-                                           Source="{StaticResource ic_logs}"
+                                           Source="{StaticResource ic_salesreport}"
                                            Width="28"
                                            Height="28"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"/>
                             <!-- STRING -->
-                            <TextBlock Text="Audit Trail"
+                            <TextBlock Text="Sales Report"
                                        FontSize="8"
                                        TextAlignment="Center"/>
                         </hc:FlexPanel>
