@@ -43,10 +43,6 @@
                   Margin="10 0 10 10" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="13"
-                                    Header="ID"
-                                    Binding="{Binding ID}"
-                                    Width="60"/>
-                <DataGridTextColumn FontSize="13"
                                     Header="FULL_NAME"
                                     Binding="{Binding FULL_NAME}"
                                     Width="*"/>

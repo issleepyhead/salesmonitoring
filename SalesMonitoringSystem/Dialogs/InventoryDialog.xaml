@@ -36,7 +36,7 @@
                         Margin="0 8 0 0">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <TextBlock Text="INVOICE NUMBER:"
+                <TextBlock Text="Invoice Number:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"
@@ -50,15 +50,16 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <TextBlock Text="TOTAL:"
+                <TextBlock Text="Total:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"/>
                 <TextBlock Name="TotalCost"
-                           Text=""
+                           Text="0"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Bold"
+                           Foreground="red"
                            Margin="4 0 30 0"/>
             </StackPanel>
         </hc:SimplePanel>

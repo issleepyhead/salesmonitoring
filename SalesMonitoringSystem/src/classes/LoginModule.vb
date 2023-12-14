@@ -1,6 +1,5 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
-Imports HandyControl.Controls
 
 Public Class LoginModule
     Private ReadOnly _sqlConnection As SqlConnection = SqlConnectionSingleton.GetInstance

@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="ADD CATEGORY"
+            <TextBlock Text="Subcategory"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -37,36 +37,37 @@
                     Margin="30 8"
                     VerticalAlignment="Center">
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="SUB CATEGORY: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="SubCategoryNameTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SubCategoryNameTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                         hc:InfoElement.Placeholder="Subcategory Name"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="SUB CATEGORY DESCRIPTION: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="SubCategoryDescriptionTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SubCategoryDescriptionTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          MinHeight="40"
                          Height="Auto"
                          AcceptsReturn="True"
-                         hc:InfoElement.Placeholder="None"/>
+                         hc:InfoElement.Placeholder="Description"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="CATEGORY: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold"/>-->
                 <hc:CheckComboBox Name="ParentCategoryCheckCombobox"
                                   HorizontalAlignment="Stretch"
                                   hc:BorderElement.CornerRadius="0"
@@ -76,6 +77,7 @@
                                   hc:InfoElement.ShowClearButton="True"
                                   Style="{StaticResource CheckComboBoxPlus}"
                                   IsTextSearchEnabled="True"
+                                  hc:InfoElement.Placeholder="Select parent category"
                                   SelectionMode="Multiple" IsTextSearchCaseSensitive="True"/>
             </StackPanel>
         </StackPanel>

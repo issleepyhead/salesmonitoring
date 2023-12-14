@@ -16,7 +16,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="DELIVERY CART"
+            <TextBlock Text="Delivery Cart"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -37,7 +37,7 @@
                         Margin="0 8 0 0">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <TextBlock Text="REFERENCE NO:"
+                <TextBlock Text="Reference number:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"
@@ -51,7 +51,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <TextBlock Text="TOTAL:"
+                <TextBlock Text="Total:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"/>
@@ -60,6 +60,7 @@
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Bold"
+                           Foreground="#F00"
                            Margin="4 0 30 0"/>
             </StackPanel>
         </hc:SimplePanel>
@@ -67,7 +68,7 @@
             <hc:FlexPanel JustifyContent="SpaceBetween"
                           Margin="30 0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="SUPPLIER NAME"
+                    <TextBlock Text="Supplier Name"
                                VerticalAlignment="Center"
                                FontSize="16"
                                FontWeight="Medium"/>

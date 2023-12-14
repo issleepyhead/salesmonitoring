@@ -11,10 +11,10 @@
     <Shape ID="DesignTable:viewtblsuppliers" ZOrder="7" X="561" Y="326" Height="172" Width="239" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:viewtbltransactions" ZOrder="6" X="852" Y="80" Height="134" Width="258" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:viewtblinventoryrecords" ZOrder="5" X="1119" Y="80" Height="134" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:viewtbllogs" ZOrder="4" X="336" Y="297" Height="210" Width="211" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:viewtblproducts" ZOrder="3" X="601" Y="72" Height="208" Width="238" AdapterExpanded="false" DataTableExpanded="true" OldAdapterHeight="45" OldDataTableHeight="0" SplitterPosition="178" />
-    <Shape ID="DesignTable:viewtblcategories" ZOrder="2" X="68" Y="81" Height="134" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:viewtblinventory" ZOrder="1" X="356" Y="86" Height="172" Width="243" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:viewtblproducts" ZOrder="4" X="601" Y="72" Height="208" Width="238" AdapterExpanded="false" DataTableExpanded="true" OldAdapterHeight="45" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:viewtblcategories" ZOrder="3" X="68" Y="81" Height="134" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:viewtblinventory" ZOrder="2" X="356" Y="86" Height="172" Width="243" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:viewtbllogs" ZOrder="1" X="320" Y="288" Height="191" Width="211" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="ADD ITEM"
+            <TextBlock Text="Product"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"

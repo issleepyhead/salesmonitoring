@@ -60,7 +60,7 @@ Public Class CategoriesPanel
             Dim data As New Dictionary(Of String, String) From {
                 {"id", cols.ID},
                 {"category_name", cols.CATEGORY_NAME},
-                {"category_description", If(cols.DESCRIPTION = "NULL", "", cols.DESCRIPTION)}
+                {"category_description", If(DBNull.Value.Equals(cols.DESCRIPTION) OrElse cols.DESCRIPTION = "NULL", "", cols.DESCRIPTION)}
             }
 
             If BaseCategory.IsParent(cols.ID) Then
@@ -70,9 +70,6 @@ Public Class CategoriesPanel
                 data.Add("is_subcategory", "1")
                 Dialog.Show(New SubCategoryDialog(data, _subject))
             End If
-
-
-            CategoriesDataGridView.SelectedIndex = -1
         End If
     End Sub
 

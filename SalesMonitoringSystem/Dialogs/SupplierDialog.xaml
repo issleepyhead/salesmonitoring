@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="SUPPLIER"
+            <TextBlock Text="Supplier"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -36,35 +36,38 @@
                     Margin="30 8"
                     VerticalAlignment="Center">
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="SUPPLIER NAME: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="SupplierNameTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SupplierNameTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                            hc:InfoElement.Placeholder="Supplier Name"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="SUPPLIER ADDRESS: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="SupplierAddressTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SupplierAddressTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                            hc:InfoElement.Placeholder="Address"
                          Height="40" InputScope="AddressCity"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="SUPPLIER CONTACT: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="SupplierContactTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SupplierContactTextBox"
                          HorizontalAlignment="Stretch"
+                            hc:InfoElement.Placeholder="Phone e.g 09XX XXX XXXX"
                          hc:BorderElement.CornerRadius="0"
                          Height="40" InputScope="Default"/>
             </StackPanel>
@@ -76,7 +79,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="DELETE"
+                        Content="Delete"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
@@ -87,7 +90,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="SAVE"
+                        Content="Save"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

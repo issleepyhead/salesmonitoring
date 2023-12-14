@@ -1,0 +1,781 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SalesMonitoringSystem
+</name>
+</assembly>
+<members>
+<member name="T:SalesMonitoringSystem.My.MyWpfExtension">
+ <summary>
+ Module used to define the properties that are available in the My Namespace for WPF
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:SalesMonitoringSystem.My.MyWpfExtension.Application">
+ <summary>
+ Returns the application object for the running application
+ </summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.MyWpfExtension.Computer">
+ <summary>
+ Returns information about the host computer.
+ </summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.MyWpfExtension.User">
+ <summary>
+ Returns information for the current user.  If you wish to run the application with the current 
+ Windows user credentials, call My.User.InitializeWithWindowsUser().
+ </summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.MyWpfExtension.Log">
+ <summary>
+ Returns the application log. The listeners can be configured by the application's configuration file.
+ </summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.MyWpfExtension.Windows">
+ <summary>
+ Returns the collection of Windows defined in the project.
+ </summary>
+</member>
+<member name="T:SalesMonitoringSystem.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SalesMonitoringSystem.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.AuditTrailPanel">
+<summary>
+AuditTrailPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.AuditTrailPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.StackNotificationControl">
+<summary>
+StackNotificationControl
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.StackNotificationControl.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.TutorialPanel">
+<summary>
+TutorialPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TutorialPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.AboutDialog">
+<summary>
+AboutDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.AboutDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.InventoryDialog">
+<summary>
+InventoryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.InventoryDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.SubCategoryDialog">
+<summary>
+SubCategoryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.SubCategoryDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.TransactionDialog">
+<summary>
+TransactionDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionDialog.DeliveryCartDialog_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+ <summary>
+ Loaded is only used here to initialize all the necessary data.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.TransactionProductDialog">
+<summary>
+TransactionProductDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionProductDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.TransactionsListDialog">
+<summary>
+TransactionsListDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionsListDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.WelcomeDialog">
+<summary>
+WelcomeDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.WelcomeDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.Login">
+<summary>
+Login
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.Login.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblsuppliersDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbltransactionsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblsuppliersRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbltransactionsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbldeliveriesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblusersRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblsuppliersRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbltransactionsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryrecordsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblproductsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblcategoriesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtblinventoryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdb.viewtbllogsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbldeliveriesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblusersTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblsuppliersTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbltransactionsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryrecordsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblproductsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblcategoriesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtblinventoryTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.viewtbllogsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.UpdateUpdatedRows(SalesMonitoringSystem.sgsmsdb,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.UpdateInsertedRows(SalesMonitoringSystem.sgsmsdb,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.UpdateDeletedRows(SalesMonitoringSystem.sgsmsdb,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.UpdateAll(SalesMonitoringSystem.sgsmsdb)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.sgsmsdbTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.BaseDeliveryCart.Delete">
+ <summary>
+ Serves as remove to the delivery cart.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FillByProductTransaction(System.String)">
+ <summary>
+ Search all the transaction base on the invoice number
+ </summary>
+ <param name="invoice_no">The invoce number to be searched</param>
+ <returns>A datatable containing all the result search for invoice number</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.ScalarSales">
+ <summary>
+ Gets the total sales of the current date.
+ </summary>
+ <returns>An integer sum of the sales in the current date.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.ScalarTransactions">
+ <summary>
+ Gets the total rows of the transactions
+ </summary>
+ <returns>An integer of the total rows of transaction table</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.Search(System.String)">
+ <summary>
+ Search query for the transactions.
+ </summary>
+ <param name="query">A string query for invoice.</param>
+ <returns>A list of the result from the query.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FetchLatestTransactions">
+ <summary>
+ Fetches the fifteen latest transactions in the transactions table.
+ </summary>
+ <returns>Returns a list of transactions.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FilterTransactionsByDate(System.DateTime,System.DateTime)">
+ <summary>
+ Filter the transactions data by dates
+ </summary>
+ <param name="fd">A starting date for the query</param>
+ <param name="sd">An end date for the querys</param>
+ <returns>A table of the result of search</returns>
+</member>
+<member name="M:SalesMonitoringSystem.BaseTransaction.FetchReportransactions(System.DateTime,System.DateTime,System.Int32)">
+ <summary>
+  A function for filtering all the reports of the transactions.
+ </summary>
+ <param name="sdate">Start date of the query.</param>
+ <param name="edate">End date of the query.</param>
+ <param name="haystack">Haystack of the result whether it is weekly, monthly, or yearly</param>
+ <returns>Returns a number of records and revenue between two dates.</returns>
+</member>
+<member name="M:SalesMonitoringSystem.InputValidation.ValidateInputString(System.Object,SalesMonitoringSystem.DataInput)">
+ <summary>
+ Use to validate the control's text
+ </summary>
+ <param name="control">Control to be validated</param>
+ <param name="type">Type of string validation</param>
+ <returns></returns>
+</member>
+<member name="T:SalesMonitoringSystem.SqlBaseConnection">
+ <summary>
+ A base class for the commands to inherit.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.SqlConnectionSingleton.#ctor">
+ <summary>
+ Sets the constructor as private to ensure that the instance will not be
+ instantiated again.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.SqlConnectionSingleton.GetInstance">
+ <summary>
+ A single instance of the connection for all the operations
+ </summary>
+ <returns>An open instancne of the connection.</returns>
+</member>
+<member name="T:SalesMonitoringSystem.Helpers">
+ <summary>
+ Collection of functions that will be generally used in forms.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.Helpers.GenInvoiceNumber(SalesMonitoringSystem.Helpers.InvoiceType)">
+ <summary>
+ An invoice generator function that returns a string with a format of SGMS-{DATE}-{8_DIGIT_SINCE_FIRST_EPOCH_UNIX_TIME}
+ </summary>
+ <returns>String containing the generated invoice number</returns>
+</member>
+<member name="M:SalesMonitoringSystem.Helpers.CloseDialog(System.Windows.Controls.Button)">
+ <summary>
+ Searches for button within a dialog then invoke the click command in it.
+ </summary>
+ <param name="btn">A button control.</param>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandInvoker.Execute">
+ <summary>
+ Invokes the command passed to the command class.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Delete">
+ <summary>
+ Serves as a delete command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Update">
+ <summary>
+ Serves as an update command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ICommandPanel.Add">
+ <summary>
+ Serves as an add command to tables
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IDeliveryCommandPanel.Receive">
+ <summary>
+ Receive command for the delivery panel.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IDeliveryCommandPanel.Cancel">
+ <summary>
+ Cancel command for the delivery panel.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IObservablePanel.RegisterObserver(SalesMonitoringSystem.IObserverPanel)">
+ <summary>
+ Register the observer to the observable.
+ </summary>
+ <param name="o">An IObserverPanel to register in the observable.</param>
+</member>
+<member name="M:SalesMonitoringSystem.IObservablePanel.NotifyObserver">
+ <summary>
+ Notifies all the observes that are listed in observable.
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.IObserverPanel.Update">
+ <summary>
+ Updates the data of the panel.
+ </summary>
+</member>
+<member name="T:SalesMonitoringSystem.AccountDialog">
+<summary>
+AccountDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.AccountDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.Application">
+<summary>
+Application
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.Application.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.Application.Main">
+<summary>
+Application Entry Point.
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.AccountsPanel">
+<summary>
+AccountsPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.AccountsPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.CategoriesPanel">
+<summary>
+CategoriesPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.CategoriesPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.DeliveryPanel">
+<summary>
+DeliveryPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.InventoryPanel">
+<summary>
+InventoryPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.InventoryPanel.PaginationConfig">
+ <summary>
+ To configure the paginations pages
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.InventoryPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.MaintenancePanel">
+<summary>
+MaintenancePanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.MaintenancePanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.ProductsPanel">
+<summary>
+ProductsPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.ProductsPanel.PaginationConfig">
+ <summary>
+ To configure the paginations pages
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.ProductsPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.ReportsPanel">
+<summary>
+ReportsPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.ReportsPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.SuppliersPanel">
+<summary>
+SuppliersPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.SuppliersPanel.PaginationConfig">
+ <summary>
+ To configure the paginations pages
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.SuppliersPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.TransactionsPanel">
+<summary>
+TransactionsPanel
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.TransactionsPanel.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.CategoryDialog">
+<summary>
+CategoryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.CategoryDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.DeliveryCartDialog">
+<summary>
+DeliveryCartDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryCartDialog.DeliveryCartDialog_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+ <summary>
+ Loaded is only used here to initialize all the controls and data.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryCartDialog.UpdateVisual">
+ <summary>
+ To update the total and datagrid data
+ </summary>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryCartDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.DeliveryDialog">
+<summary>
+DeliveryDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryDialog.DeliveryDialog_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+ <summary>
+ Initialize all the necessary data of the dialog.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:SalesMonitoringSystem.DeliveryDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.ProductDialog">
+<summary>
+ProductDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.ProductDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.SupplierDialog">
+<summary>
+SupplierDialog
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.SupplierDialog.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.Dashboard">
+<summary>
+Dashboard
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.Dashboard.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+<summary>
+GeneratedInternalTypeHelper
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+<summary>
+CreateInstance
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+<summary>
+GetPropertyValue
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+<summary>
+SetPropertyValue
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+<summary>
+CreateDelegate
+</summary>
+</member>
+<member name="M:SalesMonitoringSystem.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+<summary>
+AddEventHandler
+</summary>
+</member>
+</members>
+</doc>

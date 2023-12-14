@@ -30,7 +30,7 @@ Public Class ProductDialog
         If _data Is Nothing Then
             CategoryComboBox.SelectedIndex = 0
         Else
-            CategoryComboBox.SelectedValue = _data.Item("CATEGORY_ID")
+            CategoryComboBox.SelectedValue = If(DBNull.Value.Equals(_data.Item("CATEGORY_ID")), -1, _data.Item("CATEGORY_ID"))
         End If
     End Sub
 
@@ -70,6 +70,8 @@ Public Class ProductDialog
             invoker?.Execute()
             _subject?.NotifyObserver()
             CloseDialog(Closebtn)
+        Else
+            MessageBox.Info("Please fill out the empty field(s) or input a valid data.")
         End If
     End Sub
 
@@ -77,12 +79,12 @@ Public Class ProductDialog
         Dim baseCommand As New BaseProduct(New Dictionary(Of String, String) From {{"id", _data.Item("ID")}})
         Dim invoker As New DeleteCommand(baseCommand)
 
-        invoker.Execute()
-        _subject.NotifyObserver()
+        invoker?.Execute()
+        _subject?.NotifyObserver()
         CloseDialog(Closebtn)
     End Sub
 
     Private Sub Closebtn_Click(sender As Object, e As RoutedEventArgs) Handles Closebtn.Click
-        _subject.NotifyObserver()
+        _subject?.NotifyObserver()
     End Sub
 End Class

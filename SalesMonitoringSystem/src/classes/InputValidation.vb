@@ -1,4 +1,5 @@
 ﻿Imports System.Text.RegularExpressions
+Imports HandyControl.Controls
 
 Public Class InputValidation
 
@@ -57,7 +58,6 @@ Public Class InputValidation
                 End If
             Case DataInput.STRING_PASSWORD
                 Return {True, stringInput}
-
             Case DataInput.STRING_PHONE
                 If Regex.IsMatch(start_trim_o, "^(\+639|09)\d{2}[-\s]?\d{3}[-\s]?\d{4}$") Then
                     Return {True, start_trim_o}

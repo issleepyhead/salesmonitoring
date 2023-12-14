@@ -29,7 +29,7 @@ Public Class SubCategoryDialog
             Dim data As DataTable = BaseCategory.GetParent(_data?.Item("id"))
             For Each item As DataRowView In ParentCategoryCheckCombobox.Items
                 For Each dataitem As DataRow In data.Rows
-                    If item(0) = dataitem(0) Then
+                    If Not DBNull.Value.Equals(item(0)) OrElse item(0) = dataitem(0) Then
                         ParentCategoryCheckCombobox.SelectedItems.Add(item)
                     End If
                 Next

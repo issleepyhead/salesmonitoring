@@ -33,8 +33,8 @@ Public Class DeliveryCartDialog
             RecievedButton.Visibility = Visibility.Collapsed
             CancelButton.Visibility = Visibility.Collapsed
         Else
-            Dim values As String() = _data.Item("DELIVERY_DATE").Split("/")
-            DeliveryDate.SelectedDate = New Date(values(2), values(0), values(1))
+            'Dim values As String() = _data.Item("DELIVERY_DATE").Split("/")
+            DeliveryDate.SelectedDate = Date.Parse(_data.Item("DELIVERY_DATE"))
             DeliveryDate.IsEnabled = False
             SupplierNameComboBox.IsEnabled = False
             SaveButton.Visibility = Visibility.Collapsed
@@ -93,8 +93,9 @@ Public Class DeliveryCartDialog
     Private Sub ItemsDataGridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ItemsDataGridView.SelectionChanged
         If _data IsNot Nothing Then
             If ItemsDataGridView.SelectedItems.Count > 0 Then
-                Dim ddialog As New DeliveryDialog(Me, ItemsDataGridView.SelectedItems(0))
-                ddialog._is_from_delivery = False
+                Dim ddialog As New DeliveryDialog(Me, ItemsDataGridView.SelectedItems(0)) With {
+                    ._is_from_delivery = False
+                }
                 Dialog.Show(ddialog)
                 ItemsDataGridView.SelectedIndex = -1
             End If
@@ -166,12 +167,24 @@ Public Class DeliveryCartDialog
     End Sub
 
     Private Sub RecievedButton_Click(sender As Object, e As RoutedEventArgs) Handles RecievedButton.Click
+        If Date.Parse(_data.Item("DELIVERY_DATE")) = Date.Now Then
+            ReceiveProducts()
+            CloseDialog(Closebtn)
+        Else
+            Dim res As MessageBoxResult = MessageBox.Ask("Are the products delivered today?")
+            If res = MessageBoxResult.OK Then
+                ReceiveProducts()
+                CloseDialog(Closebtn)
+            End If
+        End If
+    End Sub
+
+    Private Sub ReceiveProducts()
         Dim baseCommand As New BaseDeliveryCart(New Dictionary(Of String, String) From {
-            {"reference_number", ReferenceNumberLabel.Text}
-        })
+                {"reference_number", ReferenceNumberLabel.Text}
+            })
         Dim invoker As New RecieveCommand(baseCommand)
         invoker.Execute()
         _subject.NotifyObserver()
-        CloseDialog(Closebtn)
     End Sub
 End Class

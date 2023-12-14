@@ -17,7 +17,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="TRANSACTION CART"
+            <TextBlock Text="Transaction Cart"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="18"
                        HorizontalAlignment="Left"
@@ -39,7 +39,7 @@
                         Margin="0 8 0 0">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <TextBlock Text="INVOICE NO:"
+                <TextBlock Text="Invoice No:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"
@@ -53,12 +53,13 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <TextBlock Text="TOTAL:"
+                <TextBlock Text="Total:"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Medium"/>
                 <TextBlock Name="TotalPrice"
-                           Text=""
+                           Foreground="Red"
+                           Text="0"
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Bold"

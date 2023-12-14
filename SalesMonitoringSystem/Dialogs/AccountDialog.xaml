@@ -13,7 +13,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="ADD ACCOUNT"
+            <TextBlock Text="Account"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -42,27 +42,21 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0"
                     Margin="0 0 5 0">
-                    <TextBlock HorizontalAlignment="Left"
-                               Text="FIRST NAME: "
-                               FontSize="18"
-                               Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                    <TextBox Name="FirstNameTextBox"
+                    <hc:TextBox Name="FirstNameTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
-                             hc:InfoElement.Necessary="True"
-                             hc:InfoElement.RegexPattern="(^[^\p{P}0-9]$)(.*[A-Za-z].*)" InputScope="PersonalGivenName"/>
+                             hc:InfoElement.Placeholder="First Name"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Margin="5 0 0 0">
-                    <TextBlock HorizontalAlignment="Left"
+                    <!--<TextBlock HorizontalAlignment="Left"
                                Text="LAST NAME: "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                    <TextBox Name="LastNameTextBox"
-
+                               FontWeight="Bold"/>-->
+                    <hc:TextBox Name="LastNameTextBox"
+                             hc:InfoElement.Placeholder="Last Name"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
@@ -77,39 +71,46 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0"
                             Margin="0 0 5 0">
-                    <TextBlock HorizontalAlignment="Left"
+                    <!--<TextBlock HorizontalAlignment="Left"
                                Text="ROLE: "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"/>-->
                     <hc:ComboBox Name="RoleComboBox"
                                  HorizontalAlignment="Stretch"
                                  hc:BorderElement.CornerRadius="0"
-                                 Height="40"/>
+                                 IsEnabled="False"
+                                 Height="40"
+                                 hc:InfoElement.Placeholder="Role"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Margin="5 0 0 0">
-                    <TextBlock HorizontalAlignment="Left"
+                    <!--<TextBlock HorizontalAlignment="Left"
                                Text="CONTACT : "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                    <TextBox Name="ContactTextBox"
+                               FontWeight="Bold"/>-->
+                    <hc:TextBox Name="ContactTextBox"
+                             hc:InfoElement.Placeholder="09XX XXX XXXX"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40" InputScope="TelephoneNumber"/>
                 </StackPanel>
             </Grid>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="ADDRESS: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="AddressTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="AddressTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40" InputScope="AddressCity"/>
+                         MinHeight="40"
+                         MaxHeight="60"
+                         TextWrapping="Wrap"
+                         hc:InfoElement.Placeholder="Address"
+                         Height="Auto" InputScope="AddressCity"/>
             </StackPanel>
             <Grid Margin="0 15 0 0">
                 <Grid.ColumnDefinitions>
@@ -118,28 +119,30 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0"
                             Margin="0 0 5 0">
-                    <TextBlock HorizontalAlignment="Left"
+                    <!--<TextBlock HorizontalAlignment="Left"
                                Text="USERNAME: "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                    <TextBox Name="UsernameTextBox"
+                               FontWeight="Bold"/>-->
+                    <hc:TextBox Name="UsernameTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
+                             hc:InfoElement.Placeholder="Username"
                              hc:InfoElement.RegexPattern="\w+{6, 20}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Margin="5 0 0 0">
-                    <TextBlock HorizontalAlignment="Left"
+                    <!--<TextBlock HorizontalAlignment="Left"
                                Text="PASSWORD: "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"/>-->
                     <hc:PasswordBox Name="PasswordTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              ShowEyeButton="True"
+                             hc:InfoElement.Placeholder="Password"
                              Height="40"/>
                 </StackPanel>
             </Grid>
@@ -151,7 +154,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="DELETE"
+                        Content="Delete"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
@@ -161,7 +164,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="ADD"
+                        Content="Add"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

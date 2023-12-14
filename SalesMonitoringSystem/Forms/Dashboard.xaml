@@ -525,7 +525,7 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="Total trasactions"
+                                    <TextBlock Text="Total transactions"
                                                VerticalAlignment="Center"
                                                FontWeight="Light"
                                                Grid.Row="0"

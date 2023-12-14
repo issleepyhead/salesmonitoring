@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="ADD CATEGORY"
+            <TextBlock Text="Category"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -37,27 +37,29 @@
                     Margin="30 8"
                     VerticalAlignment="Center">
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="CATEGORY NAME: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="CategoryNameTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="CategoryNameTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                         hc:InfoElement.Placeholder="Category Name"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                                Text="CATEGORY DESCRIPTION: "
                                FontSize="18"
                                Padding="0 0 0 5"
-                               FontWeight="Bold"/>
-                <TextBox Name="CategoryDescriptionTextBox"
+                               FontWeight="Bold"/>-->
+                <hc:TextBox Name="CategoryDescriptionTextBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              MinHeight="40"
                              Height="Auto"
+                             hc:InfoElement.Placeholder="Description"
                              AcceptsReturn="True"/>
             </StackPanel>
         </StackPanel>
@@ -68,7 +70,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="DELETE"
+                        Content="Delete"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
@@ -78,7 +80,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="ADD"
+                        Content="Add"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

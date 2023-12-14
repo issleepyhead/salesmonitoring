@@ -15,10 +15,10 @@ Public Class Login
                 Dim data As New Dictionary(Of String, String) From {
                         {"id", Nothing},
                         {"role_id", 1},
-                        {"first_name", ""},
-                        {"last_name", ""},
-                        {"address", ""},
-                        {"contact", ""},
+                        {"first_name", "John"},
+                        {"last_name", "Doe"},
+                        {"address", "Taguig City"},
+                        {"contact", "09123456789"},
                         {"username", UsernameTextBox.Text},
                         {"password", pwd}
                     }

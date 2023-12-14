@@ -87,6 +87,20 @@ Public Class BaseAccount
         End Try
     End Function
 
+    Public Shared Function FetchRole(id As String) As Integer
+        Try
+
+            Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
+            Dim cmd As New SqlCommand("SELECT role_id FROM tblusers WHERE id = @id", conn)
+            cmd.Parameters.AddWithValue("@id", id)
+
+            Return cmd.ExecuteScalar()
+        Catch ex As Exception
+            HandyControl.Controls.MessageBox.Show(ex.Message)
+            Return 0
+        End Try
+    End Function
+
     Public Shared Function Exists(data As String) As Integer
         Try
             Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
@@ -114,7 +128,7 @@ Public Class BaseAccount
     Public Shared Function FillByRoles() As DataTable
         Try
             Dim conn As SqlConnection = SqlConnectionSingleton.GetInstance
-            Dim cmd As New SqlCommand("SELECT id, role_name FROM tblroles WHERE id <> 1", conn)
+            Dim cmd As New SqlCommand("SELECT id, role_name FROM tblroles", conn)
 
             Dim dTable As New DataTable
             Dim adapter As New SqlDataAdapter(cmd)
@@ -125,6 +139,7 @@ Public Class BaseAccount
             Return New DataTable
         End Try
     End Function
+
 
     Public Shared Function Search(query As String) As sgsmsdb.viewtblusersDataTable
         Try

@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="PRODUCT"
+            <TextBlock Text="Product"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -36,63 +36,68 @@
                     Margin="30 8"
                     VerticalAlignment="Center">
             <StackPanel>
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="CATEGORY: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold"/>-->
                 <hc:ComboBox Name="CategoryComboBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"
+                             hc:InfoElement.Placeholder="Select category"
                          IsEditable="True"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="PRODUCT NAME : "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="ProductNameTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="ProductNameTextBox"
                          Text="{Binding PRODUCT_NAME}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                            hc:InfoElement.Placeholder="Product Name"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="PRODUCT DESCRIPTION: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="ProductDescriptionTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="ProductDescriptionTextBox"
                          Text="{Binding PRODUCT_DESCRIPTION}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                         hc:InfoElement.Placeholder="Description"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="PRODUCT PRICE: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold"/>-->
                 <hc:TextBox Name="ProductPriceTextBox"
                          Text="{Binding PRICE}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
-                         Height="40" InputScope="Number"/>
+                         Height="40" InputScope="Number"
+                            hc:InfoElement.Placeholder="Price"/>
             </StackPanel>
             <StackPanel Margin="0 15 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="PRODUCT COST: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="ProductCostTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="ProductCostTextBox"
                          Text="{Binding COST_PRICE}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                         hc:InfoElement.Placeholder="Cost price"
                          Height="40" InputScope="Number"/>
             </StackPanel>
         </StackPanel>
@@ -103,7 +108,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="DELETE"
+                        Content="Delete"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
@@ -113,7 +118,7 @@
                         Foreground="#fff"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="SAVE"
+                        Content="Save"
                         Height="40"
                         Width="140"
                         BorderThickness="0"

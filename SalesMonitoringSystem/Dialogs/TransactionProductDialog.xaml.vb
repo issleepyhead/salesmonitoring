@@ -70,8 +70,8 @@ Public Class TransactionProductDialog
             SellingPriceTextBox.Text = info.Rows(0).Item("PRICE").ToString
             QuantityAvailable.Text = BaseInventory.ScalarStocks(ProductNameComboBox.SelectedValue).ToString
         Else
-            SellingPriceTextBox.Text = "None"
-            QuantityAvailable.Text = "None"
+            SellingPriceTextBox.Text = Nothing
+            QuantityAvailable.Text = Nothing
         End If
     End Sub
 End Class

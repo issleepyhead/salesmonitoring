@@ -34,8 +34,8 @@ Public Class BaseCategory
             _sqlCommand = New SqlCommand("EXEC UpdateCategoryProcedure @id, @category_name, @category_description, @parent_id, @user_id;", _sqlConnection)
             _sqlCommand.Parameters.AddWithValue("@id", _data.Item("id"))
             _sqlCommand.Parameters.AddWithValue("@category_name", _data.Item("category_name"))
-            _sqlCommand.Parameters.AddWithValue("@category_description", If(String.IsNullOrEmpty(_data.Item("category_description")), DBNull.Value, _data.Item("category_description")))
-            _sqlCommand.Parameters.AddWithValue("@parent_id", If(String.IsNullOrEmpty(_data.Item("parent_id")), DBNull.Value, _data.Item("parent_id")))
+            _sqlCommand.Parameters.AddWithValue("@category_description", If(DBNull.Value.Equals(_data.Item("category_description")) OrElse String.IsNullOrEmpty(_data.Item("category_description")), DBNull.Value, _data.Item("category_description")))
+            _sqlCommand.Parameters.AddWithValue("@parent_id", If(DBNull.Value.Equals(_data.Item("parent_id")) OrElse String.IsNullOrEmpty(_data.Item("parent_id")), DBNull.Value, _data.Item("parent_id")))
             _sqlCommand.Parameters.AddWithValue("@user_id", My.Settings.userID)
             If _sqlCommand.ExecuteNonQuery() > 0 Then
                 Growl.Success("Category has been updated successfully!")

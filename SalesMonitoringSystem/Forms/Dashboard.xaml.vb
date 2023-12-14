@@ -2,9 +2,18 @@
 Imports HandyControl.Controls
 Imports HandyControl.Tools.Extension
 
+''' <summary>
+''' An class that implements the IObservablePanel and IObseverPanel.
+''' This is the second window of this system and it holds different Panels(UserControl) that implements the IObserverPanel.
+''' @see /src/interfaces/IObserverPanel
+''' @see /src/interfaces/IObservablePanel
+''' </summary>
 Class Dashboard
     Implements IObservablePanel, IObserverPanel
 
+    ''' <summary>
+    ''' List of observers registered to this Observale.
+    ''' </summary>
     Private _observables As New List(Of IObserverPanel)
 
     Public Sub New()
@@ -24,26 +33,30 @@ Class Dashboard
     End Sub
 
     Public Sub Update() Implements IObserverPanel.Update
-        StackNotifContainer.Children.Clear()
-        LabelTotalProducts.Text = BaseProduct.ScalarProducts()
-        LabelTotalSales.Text = BaseTransaction.ScalarSales()
-        LabelTotalTransactions.Text = BaseTransaction.ScalarTransactions()
+        Try
+            StackNotifContainer.Children.Clear()
+            LabelTotalProducts.Text = BaseProduct.ScalarProducts()
+            LabelTotalSales.Text = BaseTransaction.ScalarSales()
+            LabelTotalTransactions.Text = BaseTransaction.ScalarTransactions()
 
-        Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
-        For Each item As DataRow In _itemSource.Rows
-            Dim stackpan As New StackNotificationControl
-            stackpan._parent = Me
-            stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
-            stackpan.LabelStackHeading.Text = item.Item("invoice_number")
-            If item.Item("status_id") = &H2 Then
-                stackpan.ActiveIndicator.Background = Brushes.Transparent
-            Else
-                stackpan.ActiveIndicator.Background = Brushes.Red
-                stackpan.Background = New BrushConverter().ConvertFromString("#E1F1FD")
-            End If
-            StackNotifContainer.Children.Add(stackpan)
-            stackpan.Show
-        Next
+            Dim _itemSource As DataTable = BaseTransaction.FetchLatestTransactions()
+            For Each item As DataRow In _itemSource.Rows
+                Dim stackpan As New StackNotificationControl
+                stackpan._parent = Me
+                stackpan.LabelDateAdded.Text = CDate(item.Item("date_added")).ToLongDateString
+                stackpan.LabelStackHeading.Text = item.Item("invoice_number")
+                If item.Item("status_id") = &H2 Then
+                    stackpan.ActiveIndicator.Background = Brushes.Transparent
+                Else
+                    stackpan.ActiveIndicator.Background = Brushes.Red
+                    stackpan.Background = New BrushConverter().ConvertFromString("#E1F1FD")
+                End If
+                StackNotifContainer.Children.Add(stackpan)
+                stackpan.Show
+            Next
+        Catch ex As Exception
+            MessageBox.Info(ex.Message)
+        End Try
     End Sub
 
 #Region "SwithPanelEvents"

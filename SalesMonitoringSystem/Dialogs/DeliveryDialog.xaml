@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <hc:SimplePanel Background="{StaticResource ApplicationDimBlue}">
-            <TextBlock Text="ADD ITEM"
+            <TextBlock Text="Product"
                        Foreground="{StaticResource ApplicationLight}"
                        FontSize="24"
                        HorizontalAlignment="Left"
@@ -36,51 +36,55 @@
                     Margin="30 8"
                     VerticalAlignment="Center">
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="PRODUCT NAME: "
                            FontSize="18"
                            Padding="0 0 8 0"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold"/>-->
                 <hc:ComboBox Name="ProductNameComboBox"
                              HorizontalAlignment="Stretch"
                              hc:BorderElement.CornerRadius="0"
                              Height="40"
+                             hc:InfoElement.Placeholder="Select product"
                              IsEditable="True"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock Padding="0 0 0 5"
+                <!--<TextBlock Padding="0 0 0 5"
                            Text="SELLING PRICE: "
                            FontSize="18"
                            HorizontalAlignment="Left"
-                           FontWeight="Bold"/>
-                <TextBox Name="SellingPriceTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="SellingPriceTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          Height="40"
+                         hc:InfoElement.Placeholder="Selling price"
                          IsEnabled="False"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="COST PRICE: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="CostPriceTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="CostPriceTextBox"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
                          IsEnabled="False"
+                         hc:InfoElement.Placeholder="Cost price"
                          Height="40"/>
             </StackPanel>
             <StackPanel Margin="0 8 0 0">
-                <TextBlock HorizontalAlignment="Left"
+                <!--<TextBlock HorizontalAlignment="Left"
                            Text="QUANTITY: "
                            FontSize="18"
                            Padding="0 0 0 5"
-                           FontWeight="Bold"/>
-                <TextBox Name="QuantityTextBox"
+                           FontWeight="Bold"/>-->
+                <hc:TextBox Name="QuantityTextBox"
                          Text="{Binding QUANTITY}"
                          HorizontalAlignment="Stretch"
                          hc:BorderElement.CornerRadius="0"
+                         hc:InfoElement.Placeholder="Quantity"
                          Height="40"/>
             </StackPanel>
         </StackPanel>
@@ -91,7 +95,7 @@
                         Foreground="{StaticResource ApplicationPrimaryLight}"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="DELETE"
+                        Content="Delete"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
@@ -101,7 +105,7 @@
                         Foreground="{StaticResource ApplicationPrimaryLight}"
                         FontSize="16"
                         hc:BorderElement.CornerRadius="0"
-                        Content="SAVE"
+                        Content="Save"
                         Height="40"
                         Width="140"
                         BorderThickness="0"
